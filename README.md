@@ -16,13 +16,13 @@ To this end, we’d like to develop a series of related open source tools:
 
 We'd like to have the following in place to support the sprint.
 - GenNotes server (web app)
--- User accounts
--- Variant model, pre-populated with variants found in ClinVar
--- Key/value tag model
+  - User accounts
+  - Variant model, pre-populated with variants found in ClinVar
+  - Key/value tag model
 - Genevieve client (web app)
--- User accounts
--- VCF file upload
--- process VCF to store in db list of variants matching ClinVar records ("variant report")
+  - User accounts
+  - VCF file upload
+  - process VCF to store in db list of variants matching ClinVar records ("variant report")
 
 ## Sprint goals
 - on GenNotes server, import ClinVar key/value tags for variant positions
