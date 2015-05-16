@@ -4,6 +4,8 @@
 
 **Chat via IRC:** #gennotes on irc.freenode. If you're new to IRC, the easiest way to join is Freenode's webchat interface: http://webchat.freenode.net/?channels=gennotes
 
+**Languages**: Python (Django), JavaScript, CSS, HTML
+
 ## Motivation
 
 We’d like to empower understanding about claims of diseases or traits caused by variants in a personal genome, and comment upon these claims.
@@ -12,18 +14,18 @@ ClinVar a public domain resource that aggregates and reports assertions of clini
 
 To this end, we’d like to develop a series of related open source tools:
 - **GenNotes**
-  - A server storing publicly shared and flexibly structured tags associated with genetic variants. These tags are structured as key/value tags, in the manner of Open Street Map. These can be arbitrary keys, but initially we'd like to focus on ClinVar and Genevieve tags.
+  - A web server storing publicly shared and flexibly structured tags associated with genetic variants. These tags are structured as key/value tags, in the manner of Open Street Map. These can be arbitrary keys, but initially we'd like to focus on ClinVar and Genevieve tags.
 - **Genevieve**
   - A client web app that can process individual genomes to find variants matching ClinVar positions. Using GenNotes, the client retrieves and reports the latest ClinVar and Genevieve tags for this variant list.
 
 ## Pre-sprint
 
 We plan to have the following in place to support the sprint.
-- GenNotes server (web app)
+- GenNotes server (Django web app)
   - User accounts
   - Variant model, pre-populated with variants found in ClinVar
   - Key/value tag model
-- Genevieve client (web app)
+- Genevieve client (Django web app)
   - User accounts
   - genome file upload (VCF format)
   - process VCF to store in db variants matching ClinVar records ("variant report")
