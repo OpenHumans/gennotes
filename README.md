@@ -25,10 +25,16 @@ We'd like to have the following in place to support the sprint.
   - process VCF to store in db list of variants matching ClinVar records ("variant report")
 
 ## Sprint goals
-- on GenNotes server, import ClinVar key/value tags for variant positions
-- Specify the method (widget/API) for client apps to update or submit new tags.
+- **Add Clinvar:** On the GenNotes server, import ClinVar key/value tags.
+  - (tagging variant) "clinvar-accession": [clinvar accession]
+  - (tagging clinvar-accession) "clinvar-significance": [Uncertain significance/not provided/Benign/Likely benign/Likely pathogenic/Pathogenic/drug response/histocompatibility/other]
+  - (tagging clinvar-accession) "clinvar-disease": [disease name]
+- Specify the method (widget/API) for client apps to update or submit new tags
 - display Genevieve client variant report w/AJAX GenNotes query & display ClinVar/Genevieve tag data
 
 ## Stretch goals
-- Implement the API/widget on Genevieve client
+- Implement the API/widget on Genevieve client to add/update following tags
+  - (tagging clinvar-accession) "genevieve-inheritance": [dominant/recessive/additive/-] (default: -)
+  - (tagging clinvar-accession) "genevieve-evidence": [well-established/reported/disputed/disproven] (default: reported)
+  - (tagging clinvar-accession) "genevieve-notes": free text field for explaining rationale for current genevieve evaluation
 - Import ExAC key/value tags for variant positions
