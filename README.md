@@ -8,11 +8,11 @@
 
 ## Motivation
 
-We’d like to empower understanding about claims of diseases or traits caused by variants in a personal genome, and comment upon these claims.
+GenNotes and Genevieve are about access to genomic knowledge. We believe access and discussion of knowledge is a right and necessity for informed, participatory research. We want to empower individuals to access published claims of diseases or traits caused by variants in a personal genome. We also want to enable discussion and consensus understanding of these claims.
 
-ClinVar a public domain resource that aggregates and reports assertions of clinical impact of genetic variants. While invaluable, these assertions can be flawed – this is especially apparent when evaluating assertions made for a personal genome. Coupling genome reports with consensus, structured note-taking helps re-evaluate assertions efficiently, and improves the quality of reports generated for future genomes.
+ClinVar a public domain resource that aggregates and reports assertions of clinical impact of genetic variants. While invaluable, these assertions can be flawed – this is especially apparent when evaluating assertions made for a personal genome. Coupling "genome reports" and "consensus, structured note-taking" helps evaluate assertions efficiently, and improves the quality of reports generated for future genomes.
 
-To this end, we’d like to develop a series of related open source tools:
+To this end, we’d like to develop a set of related open source tools:
 - **GenNotes**
   - A web server storing publicly shared and flexibly structured tags associated with genetic variants. These tags are structured as key/value tags, in the manner of Open Street Map. These can be arbitrary keys, but initially we'd like to focus on ClinVar and Genevieve tags.
 - **Genevieve**
