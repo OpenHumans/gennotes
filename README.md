@@ -1,6 +1,6 @@
 # GenNotes
 
-**GenNotes** and **Genevieve** are a pair of projects designed to empower individuals to understand putative diseases or traits reported for variants in a personal genome.
+**GenNotes** and **Genevieve** are a pair of projects designed to empower individuals to understand putative effects reported for variants in an individual genome.
 
 **Chat via IRC:** #gennotes on irc.freenode. If you're new to IRC, the easiest way to join is Freenode's webchat interface: http://webchat.freenode.net/?channels=gennotes
 
