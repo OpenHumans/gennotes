@@ -27,14 +27,16 @@ The tools that we create for this project may involve claims related to health a
 ## Pre-sprint
 
 We plan to have the following in place to support the sprint.
-- GenNotes server (Django web app)
-  - User accounts
-  - Variant model, pre-populated with variants found in ClinVar
-  - Key/value tag model
-- Genevieve client (Django web app)
-  - User accounts
-  - genome file upload (VCF format)
-  - process VCF to store in db variants matching ClinVar records ("variant report")
+- GenNotes server (this repository)
+  - :white_check_mark: Django web app
+  - :white_check_mark: User accounts
+  - :white_medium_square: Variant model, pre-populated with variants found in ClinVar
+  - :white_medium_square: Key/value tag model
+- [Genevieve client](https://github.com/PersonalGenomesOrg/genevieve)
+  - :white_check_mark: Django web app
+  - :white_check_mark: User accounts
+  - :white_medium_square: genome file upload (VCF format)
+  - :white_medium_square: process VCF to store in db variants matching ClinVar records ("variant report")
 
 ## Sprint goals
 - **Add Clinvar:** On the GenNotes server, import ClinVar key/value tags.
