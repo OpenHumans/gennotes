@@ -1,6 +1,6 @@
 # GenNotes
 
-**GenNotes** and **Genevieve** are a pair of projects designed to empower individuals to understand putative effects reported for variants in an individual genome.
+**GenNotes** and **Genevieve** are a pair of projects designed to empower individuals to understand putative effects reported for variants in an individual genome. We're planning to work on these during the [Mozilla Science Lab Global Sprint 2015](https://www.mozillascience.org/global-sprint-2015), on June 4th and 5th.
 
 **Chat via IRC:** #gennotes on irc.freenode. If you're new to IRC, the easiest way to join is Freenode's webchat interface: http://webchat.freenode.net/?channels=gennotes
 
