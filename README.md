@@ -30,7 +30,7 @@ We plan to have the following in place to support the sprint.
 - GenNotes server (this repository)
   - :white_check_mark: Django web app
   - :white_check_mark: User accounts
-  - :white_medium_square: Variant model, pre-populated with variants found in ClinVar
+  - :white_check_mark: Variant model, pre-populated with variants found in ClinVar
   - :white_medium_square: Key/value tag model
 - [Genevieve client](https://github.com/PersonalGenomesOrg/genevieve)
   - :white_check_mark: Django web app
