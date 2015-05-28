@@ -35,8 +35,8 @@ We plan to have the following in place to support the sprint.
 - [Genevieve client](https://github.com/PersonalGenomesOrg/genevieve)
   - :white_check_mark: Django web app
   - :white_check_mark: User accounts
-  - :white_medium_square: genome file upload (VCF format)
-  - :white_medium_square: process VCF to store in db variants matching ClinVar records ("variant report")
+  - :white_check_mark: genome file upload (VCF format)
+  - :white_check_mark: process VCF to store in db variants matching ClinVar records ("variant report")
 
 ## Sprint goals
 - **Add Clinvar:** On the GenNotes server, import ClinVar key/value tags.
