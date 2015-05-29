@@ -42,22 +42,23 @@ class Command(BaseCommand):
             if line.startswith('#'):
                 continue
             data = line.rstrip('\n').split('\t')
-            chromosome = map_chrom_to_index(data[0])
+            chrom = map_chrom_to_index(data[0])
             pos = int(data[1])
             ref_allele = data[3]
             var_alleles = data[4].split(',')
             all_alleles = [ref_allele] + var_alleles
-            info_dict = {v[0]:v[1] for v in
+            info_dict = {v[0]: v[1] for v in
                          [x.split('=') for x in data[7].split(';')]
                          if len(v) == 2}
             for allele in info_dict['CLNALLE'].split(','):
                 var_allele = all_alleles[int(allele)]
-                matched_var = Variant.objects.filter(chromosome=chromosome,
-                                                     pos=pos,
-                                                     ref_allele=ref_allele,
-                                                     var_allele=var_allele)
+                matched_var = Variant.objects.filter(
+                    chrom=chrom,
+                    pos=pos,
+                    ref_allele=ref_allele,
+                    var_allele=var_allele)
                 if not matched_var.exists():
-                    variant = Variant(chromosome=chromosome,
+                    variant = Variant(chrom=chrom,
                                       pos=pos,
                                       ref_allele=ref_allele,
                                       var_allele=var_allele)

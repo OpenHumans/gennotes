@@ -49,7 +49,7 @@ def map_chrom_to_index(chrom_str):
 
 
 class Variant(models.Model):
-    chromosome = models.PositiveSmallIntegerField(choices=CHROMOSOMES.items())
+    chrom = models.PositiveSmallIntegerField(choices=CHROMOSOMES.items())
     pos = models.PositiveIntegerField()
     ref_allele = models.CharField(max_length=255)
     var_allele = models.CharField(max_length=255)
