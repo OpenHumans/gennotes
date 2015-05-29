@@ -110,7 +110,7 @@ class VariantEdit(models.Model):
     # Note that VariantEdits are not themselves editable, they are logs.
     tags = HStoreField()
     edit_set = models.ForeignKey(EditSet)
-    relation = models.ForeignKey(Relation)
+    variant = models.ForeignKey(Variant)
     # Values for this relation tags as of this edit?
     variant_chrom = models.PositiveSmallIntegerField(
         choices=CHROMOSOMES.items())
