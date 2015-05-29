@@ -1,5 +1,7 @@
 from collections import OrderedDict
 
+from django.conf import settings
+from django.contrib.postgres.fields import HStoreField
 from django.db import models
 
 CHROMOSOMES = OrderedDict([
@@ -49,7 +51,81 @@ def map_chrom_to_index(chrom_str):
 
 
 class Variant(models.Model):
+    # This is roughly equivalent to a "node" in OSM.
     chrom = models.PositiveSmallIntegerField(choices=CHROMOSOMES.items())
     pos = models.PositiveIntegerField()
     ref_allele = models.CharField(max_length=255)
     var_allele = models.CharField(max_length=255)
+    tags = HStoreField()
+
+
+class Relation(models.Model):
+    # Is Relation the best name?
+    #
+    # In OSM, a relation has an ordered list of member elements (node, way,
+    # and/or relation). The equivalent member elements for us would be variant
+    # and relation. I think it could be done with two fields, but would we take
+    # an efficiency hit on searching? (I don't know enough about dbs.) -mpb
+    # e.g.
+    # member_types = ArrayField(ForeignKey(ContentType))
+    # member_ids = ArrayField(PositiveIntegerField())
+    # Instead of ...
+    variant = models.ForeignKey(Variant)
+    # Example relations:
+    #  - "type": "ClinVar accession", a relation to a single Variant member,
+    #    with tags regarding associated data from ClinVar, and tags from
+    #    Genevieve.
+    #  - "type": "ExAC variant", a relation to a single Variant member, with
+    #    tags regarding associated data from ExAC.
+    #
+    # I'm having trouble imagining Relations that aren't to a single Variant.
+    #
+    # "When should something be a relation, and when should it be a tag?"
+    # Some thoughts...
+    # - There can only be one tag for a given key. If a given 'type' (e.g. a
+    #   ClinVar accession) could have multiple valid values for a given item
+    #   (e.g. multiple accessions for a given Variant) then it doesn't make
+    #   sense to try to store it as tags (where the 'type' is the key).
+    # - If there's multiple related data to associate with the item, e.g. ExAC
+    #   data, it may make sense to store these as tags on a relation to the
+    #   item rather than tags on the item itself?
+
+    # Type stored as 'type' tag in OSM - should it be a hardcoded field? -mpb
+    tags = HStoreField()
+
+
+class EditSet(models.Model):
+    # Roughly equivalent to OSM's Changeset?
+    # Note that EditSets are not themselves editable, they are logs.
+    # While OSM stores user as a tag on the EditSet, maybe we should hardcode
+    # it, make sure we always have a legit user associated with edits? -mpb
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    timestamp = models.DateTimeField()
+    # EditSet comments stored as a 'comments' tag.
+    tags = HStoreField()
+
+
+class VariantEdit(models.Model):
+    # VariantEdit comments stored as a 'comments' tag.
+    # Note that VariantEdits are not themselves editable, they are logs.
+    tags = HStoreField()
+    edit_set = models.ForeignKey(EditSet)
+    relation = models.ForeignKey(Relation)
+    # Values for this relation tags as of this edit?
+    variant_chrom = models.PositiveSmallIntegerField(
+        choices=CHROMOSOMES.items())
+    variant_pos = models.PositiveIntegerField()
+    variant_ref_allele = models.CharField(max_length=255)
+    variant_var_allele = models.CharField(max_length=255)
+    variant_tags = HStoreField()
+
+
+class RelationEdit(models.Model):
+    # RelationEdit comments stored as a 'comments' tag.
+    # Note that RelationEdits are not themselves editable, they are logs.
+    tags = HStoreField()
+    edit_set = models.ForeignKey(EditSet)
+    relation = models.ForeignKey(Relation)
+    # Values for this relation tags as of this edit?
+    relation_variant = models.ForeignKey(Variant)
+    relation_tags = HStoreField()
