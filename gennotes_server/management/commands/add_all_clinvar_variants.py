@@ -7,7 +7,8 @@ import tempfile
 
 from django.core.management.base import BaseCommand, CommandError
 
-from gennotes_server.models import map_chrom_to_index, Variant
+from gennotes_server.models import Variant
+from gennotes_server.utils import map_chrom_to_index
 
 CV_VCF_DIR = 'pub/clinvar/vcf_GRCh37'
 CV_VCF_REGEX = r'^clinvar_[0-9]{8}.vcf.gz$'
@@ -43,7 +44,7 @@ class Command(BaseCommand):
                 continue
             data = line.rstrip('\n').split('\t')
             chrom = map_chrom_to_index(data[0])
-            pos = int(data[1])
+            pos = data[1]
             ref_allele = data[3]
             var_alleles = data[4].split(',')
             all_alleles = [ref_allele] + var_alleles
@@ -53,16 +54,18 @@ class Command(BaseCommand):
             all_variants = Variant.objects.all()
             for allele in info_dict['CLNALLE'].split(','):
                 var_allele = all_alleles[int(allele)]
-                matched_var = all_variants.filter(
-                    chrom=chrom,
-                    pos=pos,
-                    ref_allele=ref_allele,
-                    var_allele=var_allele)
+                matched_var = all_variants.filter(tags__contains={
+                    'chrom-b37': chrom,
+                    'pos-b37': pos,
+                    'ref-allele-b37': data[3],
+                    'var-allele-b37': var_allele
+                    })
                 if not matched_var.exists():
-                    variant = Variant(chrom=chrom,
-                                      pos=pos,
-                                      ref_allele=ref_allele,
-                                      var_allele=var_allele)
+                    variant = Variant(tags={
+                        'chrom-b37': chrom,
+                        'pos-b37': str(int(pos)),
+                        'ref-allele-b37': ref_allele,
+                        'var-allele-b37': var_allele})
                     new_variants.append(variant)
         print "Adding {0} new variants to database".format(len(new_variants))
         Variant.objects.bulk_create(new_variants)

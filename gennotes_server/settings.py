@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.postgres',
     'django.contrib.staticfiles',
     # Required by django-allauth
     'django.contrib.sites',
@@ -52,6 +53,7 @@ INSTALLED_APPS = (
     # Third party apps
     'allauth',
     'allauth.account',
+    'reversion',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

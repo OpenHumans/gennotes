@@ -3,6 +3,7 @@ argparse==1.2.1
 configparser==3.5.0b2
 dj-database-url==0.3.0
 django-allauth==0.19.1
+django-reversion==1.8.7
 env-tools==2.0.0
 oauthlib==0.7.2
 psycopg2==2.6
