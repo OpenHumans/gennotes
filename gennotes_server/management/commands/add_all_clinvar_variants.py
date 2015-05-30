@@ -50,9 +50,10 @@ class Command(BaseCommand):
             info_dict = {v[0]: v[1] for v in
                          [x.split('=') for x in data[7].split(';')]
                          if len(v) == 2}
+            all_variants = Variant.objects.all()
             for allele in info_dict['CLNALLE'].split(','):
                 var_allele = all_alleles[int(allele)]
-                matched_var = Variant.objects.filter(
+                matched_var = all_variants.filter(
                     chrom=chrom,
                     pos=pos,
                     ref_allele=ref_allele,
