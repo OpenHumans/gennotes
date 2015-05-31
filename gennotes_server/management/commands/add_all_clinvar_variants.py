@@ -54,18 +54,18 @@ class Command(BaseCommand):
             all_variants = Variant.objects.all()
             for allele in info_dict['CLNALLE'].split(','):
                 var_allele = all_alleles[int(allele)]
-                matched_var = all_variants.filter(tags__contains={
-                    'chrom-b37': chrom,
-                    'pos-b37': pos,
-                    'ref-allele-b37': data[3],
-                    'var-allele-b37': var_allele
-                    })
+                matched_var = all_variants.filter(
+                    tags__chrom_b37=chrom,
+                    tags__pos_b37=pos,
+                    tags__ref_allele_b37=ref_allele,
+                    tags__var_allele_b37=var_allele)
                 if not matched_var.exists():
                     variant = Variant(tags={
-                        'chrom-b37': chrom,
-                        'pos-b37': str(int(pos)),
-                        'ref-allele-b37': ref_allele,
-                        'var-allele-b37': var_allele})
+                        'chrom_b37': chrom,
+                        # Check pos is a valid int before adding.
+                        'pos_b37': str(int(pos)),
+                        'ref_allele_b37': ref_allele,
+                        'var_allele_b37': var_allele})
                     new_variants.append(variant)
         print "Adding {0} new variants to database".format(len(new_variants))
         Variant.objects.bulk_create(new_variants)

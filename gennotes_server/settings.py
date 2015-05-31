@@ -111,6 +111,7 @@ DATABASES = {
     'default': dj_database_url.config()
 }
 
+PSQL_USER_IS_SUPERUSER = to_bool('PSQL_USER_IS_SUPERUSER', "True")
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

@@ -1,3 +1,13 @@
+"""
+Models for GenNotes Variant and Relation elements.
+
+## About Tags
+Most data in GenNotes is stored as key/value tags related to these elements.
+Users aren't constrained by database design to particular keys or values, but
+for now, I recommend tag keys match this regex format (it may be important for
+later optimizing with db indexing and Django): `^[a-z][a-z0-9]*(_[a-z0-9]+)*`.
+    -- Madeleine
+"""
 from django.contrib.postgres.fields import HStoreField
 from django.db import models
 
@@ -5,35 +15,28 @@ import reversion
 
 
 class Variant(models.Model):
-    # This is roughly equivalent to a "node" in OSM.
-    # Expected/protected tags:
-    # 'chrom-b37', 'pos-b37', 'ref-allele-b37', 'var-allele-b37'
-    # Chromosome values should be integers, with X=24, Y=25, MT=26.
+    """
+    Gennotes Variant element model.
+
+    ## Special Tags
+    The following keys are currently special/protected. They're used to find a
+    variant based on location and sequence and are indexed in our db to
+    optimize searches:
+    'chrom_b37', 'pos_b37', 'ref_allele_b37', 'var_allele_b37'
+    """
     tags = HStoreField()
 
 
 class Relation(models.Model):
-    # Example relations:
-    #  - "type": "ClinVar accession", a relation to a single Variant member,
-    #    with tags regarding associated data from ClinVar, and tags from
-    #    Genevieve.
-    #  - "type": "ExAC variant", a relation to a single Variant member, with
-    #    tags regarding associated data from ExAC.
-    #
-    # I'm having trouble imagining Relations that aren't to a single Variant.
-    #
-    # "When should something be a relation vs. a tag on the variant?"
-    # Some thoughts...
-    # - There can only be one tag for a given key. If a given 'type' (e.g. a
-    #   ClinVar accession) could have multiple valid values for a given item
-    #   (e.g. multiple accessions for a given Variant) then it doesn't make
-    #   sense to try to store it as tags (where the 'type' is the key).
-    # - If there's multiple related data to associate with the variant, e.g.
-    #   ExAC data, it makes sense to store these as tags on a relation to the
-    #   variant rather than tags on the item itself.
-    variant = models.ForeignKey(Variant)
+    """
+    Gennotes Relation element model.
 
-    # Expected/protected tags: 'type'
+    ## Special Tags
+    The following key is special/protected; it's used to identify a relation
+    and is indexed in our db to optimize searches:
+    'type'
+    """
+    variant = models.ForeignKey(Variant)
     tags = HStoreField()
 
 
