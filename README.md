@@ -31,7 +31,7 @@ We plan to have the following in place to support the sprint.
   - :white_check_mark: Django web app
   - :white_check_mark: User accounts
   - :white_check_mark: Variant model, pre-populated with variants found in ClinVar
-  - :white_medium_square: Key/value tag model
+  - :white_check_mark: Key/value tag model
 - [Genevieve client](https://github.com/PersonalGenomesOrg/genevieve)
   - :white_check_mark: Django web app
   - :white_check_mark: User accounts
