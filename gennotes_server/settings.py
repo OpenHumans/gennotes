@@ -31,8 +31,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = to_bool('DEBUG', 'true')
-ALLOWED_HOSTS = ['*']
 
+# Settings per Heroku instructions:
+# https://devcenter.heroku.com/articles/getting-started-with-django
+ALLOWED_HOSTS = ['*']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -53,6 +56,7 @@ INSTALLED_APPS = (
     # Third party apps
     'allauth',
     'allauth.account',
+    'django_extensions',
     'reversion',
 )
 
