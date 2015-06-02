@@ -14,10 +14,12 @@ http://webchat.freenode.net/?channels=gennotes
 
 ## Local development set-up
 
-We've set up a copy of GenNotes running on Heroku at gennotes.herokuapp.com.
-Unlikely [Genevieve](https://github.com/PersonalGenomesOrg/genevieve) this web
-app isn't intended for re-use. But if you'd like to contribute code changes
-here's some instructions for running the site for local development.
+We've set up a copy of GenNotes running on Heroku at
+[gennotes.herokuapp.com](http://gennotes.herokuapp.com/) (NOT REMOTELY STABLE).
+Unlike [Genevieve](https://github.com/PersonalGenomesOrg/genevieve), the
+GenNotes web app isn't intended for re-use. But if you'd like to contribute
+code changes here's some instructions for running the site for local
+development.
 
 * **Use pip and virtualenv. In the virtualenv install required packages with:
 `pip install -r requirements.txt`**
