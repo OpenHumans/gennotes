@@ -42,6 +42,8 @@ to start learning! Maybe you'd be interested in contributing to [Geneevieve](htt
   * The easiest mail set-up is probably to set `EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"`. Emails "sent" by the site will show up in console output.
 * **Initialize the database:** `python manage.py migrate`
 * **Run the site:** `python manage.py runserver`
+* You can now load GenNotes in your web browser by visiting `http://localhost:8000/`.
+* You can also interact directly with your site via shell_plus using `python manage.py shell_plus`
 
 ## Motivation
 
