@@ -1,10 +1,47 @@
 # GenNotes
 
-**GenNotes** and **Genevieve** are a pair of projects designed to empower individuals to understand putative effects reported for variants in an individual genome. We're planning to work on these during the [Mozilla Science Lab Global Sprint 2015](https://www.mozillascience.org/global-sprint-2015), on June 4th and 5th.
+**GenNotes** and **Genevieve** are a pair of projects designed to empower
+individuals to understand putative effects reported for variants in an
+individual genome. We're planning to work on these during the [Mozilla Science
+Lab Global Sprint 2015](https://www.mozillascience.org/global-sprint-2015), on
+June 4th and 5th.
 
-**Chat via IRC:** #gennotes on irc.freenode. If you're new to IRC, the easiest way to join is Freenode's webchat interface: http://webchat.freenode.net/?channels=gennotes
+**Chat via IRC:** #gennotes on irc.freenode. If you're new to IRC, the easiest
+way to join is Freenode's webchat interface:
+http://webchat.freenode.net/?channels=gennotes
 
 **Languages**: Python (Django), JavaScript, CSS, HTML
+
+## Local development set-up
+
+We've set up a copy of GenNotes running on Heroku at gennotes.herokuapp.com.
+Unlikely [Genevieve](https://github.com/PersonalGenomesOrg/genevieve) this web
+app isn't intended for re-use. But if you'd like to contribute code changes
+here's some instructions for running the site for local development.
+
+* **Use pip and virtualenv. In the virtualenv install required packages with:
+`pip install -r requirements.txt`**
+  * If pip and virtualenv are new to you, this repo may not be the best place
+to start learning! Maybe you'd be interested in contributing to [Geneevieve](https://github.com/PersonalGenomesOrg/genevieve)?
+* **Set up PostgreSQL**
+  * Ubuntu/Debian
+    * For working with PostgreSQL: `sudo apt-get install libpq-dev python-dev`
+    * Install PostgreSQL: `sudo apt-get install postgresql postgresql-contrib`
+    * Become the postgres user: `sudo su - postgres`.
+    * [as postgres] Create your databasae, e.g.: `createdb mydb`
+    * [as postgres] Create your database user, e.g.: `createuser -P myuser`. Remember the password used, you'll need it in your configuration later!
+    * [as postgres] Log in to PostgreSQL: `psql mydb`
+    * [as postgres, in psql] Grant user privileges, e.g.: `GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser;`
+    * [as postgres, in psql] Add HStore extension to this database: `CREATE EXTENSION IF NOT EXISTS "hstore";`
+    * Use `\q` to quit psql, and `exit` to log off as the postgres user.
+  * *OSX instructions (Homebrew?) invited!*
+* **Copy `env.example` to `.env`** (note the leading dot!)
+  * Set your `SECRET_KEY` with a random string.
+  * Set the `DATABASE_URL` using appropriate PostgreSQL database name, user, and password.
+  * Set `PSQL_USER_IS_SUPERUSER = "False"`. (If "True" we can automatically install the hstore extension duing the first migration, but you've already done this manually.)
+  * The easiest mail set-up is probably to set `EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"`. Emails "sent" by the site will show up in console output.
+* **Initialize the database:** `python manage.py migrate`
+* **Run the site:** `python manage.py runserver`
 
 ## Motivation
 
