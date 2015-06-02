@@ -16,15 +16,16 @@ http://webchat.freenode.net/?channels=gennotes
 
 We've set up a copy of GenNotes running on Heroku at
 [gennotes.herokuapp.com](http://gennotes.herokuapp.com/) (NOT REMOTELY STABLE).
-Unlike [Genevieve](https://github.com/PersonalGenomesOrg/genevieve), the
-GenNotes web app isn't intended for re-use. But if you'd like to contribute
-code changes here's some instructions for running the site for local
-development.
+While users can run their own copy of
+[Genevieve](https://github.com/PersonalGenomesOrg/genevieve), the intention
+is to have a single GenNotes service that every copy of Genevieve talks to.
+The instructions are *only* intended to assist developers interested in
+contributing to the centrally-run website's features.
 
 * **Use pip and virtualenv. In the virtualenv install required packages with:
 `pip install -r requirements.txt`**
   * If pip and virtualenv are new to you, this repo may not be the best place
-to start learning! Maybe you'd be interested in contributing to [Geneevieve](https://github.com/PersonalGenomesOrg/genevieve)?
+to start learning! Maybe you'd be interested in contributing to [Genevieve](https://github.com/PersonalGenomesOrg/genevieve)?
 * **Set up PostgreSQL**
   * Ubuntu/Debian
     * For working with PostgreSQL: `sudo apt-get install libpq-dev python-dev`
