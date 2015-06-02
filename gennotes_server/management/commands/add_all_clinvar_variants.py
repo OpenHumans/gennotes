@@ -5,7 +5,11 @@ import re
 import shutil
 import tempfile
 
+import reversion
+
+from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
+from django.db import transaction
 
 from gennotes_server.models import Variant
 from gennotes_server.utils import map_chrom_to_index
@@ -30,15 +34,20 @@ class Command(BaseCommand):
         dest_filepath = os.path.join(dest_dir, ftp_vcf_filename)
         with open(dest_filepath, 'w') as fh:
             ftp.retrbinary('RETR {0}'.format(ftp_vcf_filename), fh.write)
-        return dest_filepath
+        return dest_filepath, ftp_vcf_filename
 
+    @transaction.atomic()
+    @reversion.create_revision()
     def handle(self, *args, **options):
+        print get_user_model().objects.all()
+        clinvar_user = get_user_model().objects.get(
+            username='clinvar-variant-importer')
+        print clinvar_user
         tempdir = tempfile.mkdtemp()
         print "Created tempdir {}".format(tempdir)
-        clinvar_fp = self._download_latest_clinvar(tempdir)
+        clinvar_fp, clinvar_filename = self._download_latest_clinvar(tempdir)
         print "Downloaded latest Clinvar, stored at {}".format(clinvar_fp)
         clinvar_vcf = gzip.open(clinvar_fp)
-        new_variants = []
         for line in clinvar_vcf:
             if line.startswith('#'):
                 continue
@@ -66,7 +75,9 @@ class Command(BaseCommand):
                         'pos_b37': str(int(pos)),
                         'ref_allele_b37': ref_allele,
                         'var_allele_b37': var_allele})
-                    new_variants.append(variant)
-        print "Adding {0} new variants to database".format(len(new_variants))
-        Variant.objects.bulk_create(new_variants)
+                    variant.save()
+                    reversion.set_user(user=clinvar_user)
+                    reversion.set_comment(
+                        'Variant added based on presence in ClinVar file: ' +
+                        clinvar_filename)
         shutil.rmtree(tempdir)
