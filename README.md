@@ -74,6 +74,7 @@ We plan to have the following in place to support the sprint.
   - :white_check_mark: User accounts
   - :white_check_mark: Variant model, pre-populated with variants found in ClinVar
   - :white_check_mark: Key/value tag model
+  - :white_check_mark: Django-reversion history for elements and tags.
 - [Genevieve client](https://github.com/PersonalGenomesOrg/genevieve)
   - :white_check_mark: Django web app
   - :white_check_mark: User accounts
@@ -82,15 +83,15 @@ We plan to have the following in place to support the sprint.
 
 ## Sprint goals
 - **Add Clinvar:** On the GenNotes server, import ClinVar key/value tags.
-  - (tagging variant) "clinvar-accession": [clinvar accession]
-  - (tagging clinvar-accession) "clinvar-significance": [Uncertain significance/not provided/Benign/Likely benign/Likely pathogenic/Pathogenic/drug response/histocompatibility/other]
-  - (tagging clinvar-accession) "clinvar-disease": [disease name]
+  - (tagging variant) "clinvar_accession": [clinvar accession]
+  - (tagging clinvar-accession) "clinvar_significance": [Uncertain significance/not provided/Benign/Likely benign/Likely pathogenic/Pathogenic/drug response/histocompatibility/other]
+  - (tagging clinvar-accession) "clinvar_disease": [disease name]
 - **Programmatic tag submission:** Specify the method (widget/API) for client apps to update or submit new tags
 - **Display GenNotes data in Genevieve:** make Genevieve client variant report with an AJAX GenNotes query, displaying returned ClinVar & Genevieve tag data
 - **Implement tag submission:** Implement tag submission on Genevieve client to add/update following tags
-  - (tagging clinvar-accession) "genevieve-inheritance": [dominant/recessive/additive/-] (default: -)
-  - (tagging clinvar-accession) "genevieve-evidence": [well-established/reported/disputed/disproven] (default: reported)
-  - (tagging clinvar-accession) "genevieve-notes": free text field for explaining rationale for current genevieve evaluation
+  - (tagging clinvar-accession) "genevieve_inheritance": [dominant/recessive/additive/-] (default: -)
+  - (tagging clinvar-accession) "genevieve_evidence": [well-established/reported/disputed/disproven] (default: reported)
+  - (tagging clinvar-accession) "genevieve_notes": free text field for explaining rationale for current genevieve evaluation
 
 ## Secondary/stretch projects
 - Parse and import ExAC key/value tags for variant positions
