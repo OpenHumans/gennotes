@@ -6,9 +6,13 @@ individual genome. We're planning to work on these during the [Mozilla Science
 Lab Global Sprint 2015](https://www.mozillascience.org/global-sprint-2015), on
 June 4th and 5th.
 
-**Chat via IRC:** #gennotes on irc.freenode. If you're new to IRC, the easiest
+**Chat via IRC or gitter:**
+* #gennotes on irc.freenode. If you're new to IRC, the easiest
 way to join is Freenode's webchat interface:
 http://webchat.freenode.net/?channels=gennotes
+* or, use your GitHub account to start a Gitter account and chat in our Gitter
+room: https://gitter.im/PersonalGenomesOrg/gennotes
+* These two rooms are synced by the GennoteGitterBot.
 
 **Languages**: Python (Django), JavaScript, CSS, HTML
 
