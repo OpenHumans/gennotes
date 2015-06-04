@@ -79,6 +79,7 @@ AUTHENTICATION_BACKENDS = (
 ) + global_settings.AUTHENTICATION_BACKENDS
 
 MIDDLEWARE_CLASSES = (
+    'reversion.middleware.RevisionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
