@@ -18,6 +18,26 @@ room: https://gitter.im/PersonalGenomesOrg/gennotes
 
 **Languages**: Python (Django), JavaScript, CSS, HTML
 
+## Sprint goals
+
+Also check out the issues, some of these have generated various subtasks!
+
+- **Add Clinvar:** On the GenNotes server, import ClinVar key/value tags.
+  - (tagging variant) "clinvar_accession": [clinvar accession]
+  - (tagging clinvar-accession) "clinvar_significance": [Uncertain significance/not provided/Benign/Likely benign/Likely pathogenic/Pathogenic/drug response/histocompatibility/other]
+  - (tagging clinvar-accession) "clinvar_disease": [disease name]
+- **Programmatic tag submission:** Specify the method (widget/API) for client apps to update or submit new tags
+- **Display GenNotes data in Genevieve:** make Genevieve client variant report with an AJAX GenNotes query, displaying returned ClinVar & Genevieve tag data
+- **Implement tag submission:** Implement tag submission on Genevieve client to add/update following tags
+  - (tagging clinvar-accession) "genevieve_inheritance": [dominant/recessive/additive/-] (default: -)
+  - (tagging clinvar-accession) "genevieve_evidence": [well-established/reported/disputed/disproven] (default: reported)
+  - (tagging clinvar-accession) "genevieve_notes": free text field for explaining rationale for current genevieve evaluation
+
+## Additional ideas
+
+- Parse and import ExAC key/value tags for variant positions
+- Parse and import dbSNP key/value tags for variant positions
+
 ## Local development set-up
 
 We've set up a copy of GenNotes running on Heroku at
@@ -71,34 +91,3 @@ To this end, we’d like to develop a set of related open source tools:
 ### Not for clinical use!
 
 The tools that we create for this project may involve claims related to health and disease, but primary literature is research: reports may be contradicted or challenged by later findings. Edits may come from any source and are not vetted. None of the resources produced in this project are for medical use and they should not be used as a substitute for professional medical care or advice. Users seeking information about a personal genetic disease, syndrome, or condition should consult with a qualified healthcare professional.
-
-## Pre-sprint
-
-We plan to have the following in place to support the sprint.
-- GenNotes server (this repository)
-  - :white_check_mark: Django web app
-  - :white_check_mark: User accounts
-  - :white_check_mark: Variant model, pre-populated with variants found in ClinVar
-  - :white_check_mark: Key/value tag model
-  - :white_check_mark: Django-reversion history for elements and tags.
-- [Genevieve client](https://github.com/PersonalGenomesOrg/genevieve)
-  - :white_check_mark: Django web app
-  - :white_check_mark: User accounts
-  - :white_check_mark: genome file upload (VCF format)
-  - :white_check_mark: process VCF to store in db variants matching ClinVar records ("variant report")
-
-## Sprint goals
-- **Add Clinvar:** On the GenNotes server, import ClinVar key/value tags.
-  - (tagging variant) "clinvar_accession": [clinvar accession]
-  - (tagging clinvar-accession) "clinvar_significance": [Uncertain significance/not provided/Benign/Likely benign/Likely pathogenic/Pathogenic/drug response/histocompatibility/other]
-  - (tagging clinvar-accession) "clinvar_disease": [disease name]
-- **Programmatic tag submission:** Specify the method (widget/API) for client apps to update or submit new tags
-- **Display GenNotes data in Genevieve:** make Genevieve client variant report with an AJAX GenNotes query, displaying returned ClinVar & Genevieve tag data
-- **Implement tag submission:** Implement tag submission on Genevieve client to add/update following tags
-  - (tagging clinvar-accession) "genevieve_inheritance": [dominant/recessive/additive/-] (default: -)
-  - (tagging clinvar-accession) "genevieve_evidence": [well-established/reported/disputed/disproven] (default: reported)
-  - (tagging clinvar-accession) "genevieve_notes": free text field for explaining rationale for current genevieve evaluation
-
-## Secondary/stretch projects
-- Parse and import ExAC key/value tags for variant positions
-- Parse and import dbSNP key/value tags for variant positions
