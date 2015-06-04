@@ -58,7 +58,8 @@ INSTALLED_APPS = (
     'allauth.account',
     'django_extensions',
     'reversion',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework_swagger'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
