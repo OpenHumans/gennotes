@@ -1,11 +1,13 @@
+from django.contrib.auth import get_user_model
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
-from rest_framework import permissions, viewsets
+from rest_framework import viewsets
+from rest_framework.generics import RetrieveAPIView
 
 from .models import Relation, Variant
 from .permissions import IsVerifiedOrReadOnly
-from .serializers import RelationSerializer, VariantSerializer
+from .serializers import RelationSerializer, UserSerializer, VariantSerializer
 
 
 class VariantLookupMixin(object):
@@ -62,3 +64,15 @@ class RelationViewSet(viewsets.ModelViewSet):
     permission_classes = (IsVerifiedOrReadOnly,)
     queryset = Relation.objects.all()
     serializer_class = RelationSerializer
+
+
+class CurrentUserView(RetrieveAPIView):
+    """
+    A viewset that returns the current user.
+    """
+
+    model = get_user_model()
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        return self.request.user
