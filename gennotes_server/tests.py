@@ -15,6 +15,7 @@ class VariantTests(APITestCase):
         response = self.verify_request('/1-883516-G-A/')
 
         self.assertEqual(response.data, {
+            'b37_id': '1-883516-G-A',
             'tags': {
                 'chrom_b37': '1',
                 'pos_b37': '883516',
