@@ -126,7 +126,7 @@ if os.getenv('CI_NAME') == 'codeship':
 elif dj_database_url.config():
     DATABASES['default'] = dj_database_url.config()
 
-PSQL_USER_IS_SUPERUSER = to_bool('PSQL_USER_IS_SUPERUSER', "True")
+PSQL_USER_IS_SUPERUSER = to_bool('PSQL_USER_IS_SUPERUSER', 'True')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -136,13 +136,10 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 SITE_ID = 1
-
 
 # Email set up.
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', global_settings.EMAIL_BACKEND)
@@ -153,15 +150,17 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD',
                                 global_settings.EMAIL_HOST_PASSWORD)
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', str(global_settings.EMAIL_PORT)))
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static-files')
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Settings for django-allauth and account interactions.
 # Signup and login take both email and username.
