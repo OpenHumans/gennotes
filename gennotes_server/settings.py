@@ -110,13 +110,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gennotes_server.wsgi.application'
 
+# Use DATABASE_URL to do database setup, for a local Postgres database it would
+# look like: postgres://localhost/database_name
+DATABASES = {}
 
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': dj_database_url.config()
-}
+if os.getenv('CI_NAME') == 'codeship':
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test',
+        'USER': os.getenv('PG_USER'),
+        'PASSWORD': os.getenv('PG_PASSWORD'),
+        'HOST': '127.0.0.1',
+    }
+# Only override the default if there's a database URL specified
+elif dj_database_url.config():
+    DATABASES['default'] = dj_database_url.config()
 
 PSQL_USER_IS_SUPERUSER = to_bool('PSQL_USER_IS_SUPERUSER', "True")
 
