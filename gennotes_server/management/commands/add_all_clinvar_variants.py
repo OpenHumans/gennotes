@@ -208,10 +208,6 @@ class Command(BaseCommand):
                 # either no or too many variations for this RCV
                 continue
             
-            "type", "clinvar-accession:id", "clinvar-accession:version", "clinvar-accession:significance",
-            "clinvar-accession:disease-name", 'num_submissions', 'record_status', 'gene:name', 'gene:symbol',
-            'citations'
-            
             val_store = {"type": "clinvar-accession", "clinvar-accession:id": rcv, "clinvar-accession:version": rcv_ver}
             val_store["clinvar-accession:significance"] = rcva.findtext('ClinicalSignificance/Description')
             val_store["clinvar-accession:disease-name"] = rcva.findtext('TraitSet[@Type="Disease"]/Trait[@Type="Disease"]/Name/ElementValue[@Type="Preferred"]')
