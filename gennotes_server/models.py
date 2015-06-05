@@ -25,6 +25,9 @@ class Variant(models.Model):
     'chrom_b37', 'pos_b37', 'ref_allele_b37', 'var_allele_b37'
     """
     tags = HStoreField()
+    
+    def __unicode__(self):
+        return u'; '.join([u'%s=%s' % (k, v) for k, v in self.tags.iteritems()])
 
 
 class Relation(models.Model):

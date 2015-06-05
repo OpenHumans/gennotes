@@ -1,26 +1,69 @@
+import codecs
 from ftplib import FTP
 import gzip
+from optparse import make_option
 import os
 import re
 import shutil
 import tempfile
 
-import reversion
-
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
+import reversion
+from vcf2clinvar.clinvar import ClinVarVCFLine
 
 from gennotes_server.models import Variant
 from gennotes_server.utils import map_chrom_to_index
+import fileinput
+
+
+try:
+    from xml.etree import cElementTree as ET
+except ImportError:
+    print 'Falling back to default ElementTree implementation'
+    from xml.etree import ElementTree as ET
 
 CV_VCF_DIR = 'pub/clinvar/vcf_GRCh37'
-CV_VCF_REGEX = r'^clinvar_[0-9]{8}.vcf.gz$'
+CV_XML_DIR = 'pub/clinvar/xml'
 
+CV_VCF_REGEX = r'^clinvar_[0-9]{8}.vcf.gz$'
+CV_XML_REGEX = r'^ClinVarFullRelease_[0-9]{4}-[0-9]{2}.xml.gz$'
+
+SPLITTER = re.compile('[,|]')
 
 class Command(BaseCommand):
     help = 'Download latest ClinVar VCF, import variants not already in db.'
 
+    option_list = BaseCommand.option_list + (
+        make_option('-c', '--local-vcf',
+            dest='local_vcf',
+            help='Open local ClinVar VCF file'),
+        make_option('-x', '--local-xml',
+            dest='local_xml',
+            help='Open local ClinVar XML file'),
+        )
+    
+    def _get_elements(self, fp, tag):
+        '''
+            Convenience and memory management function that iterates required tags
+        '''
+        context = iter(ET.iterparse(fp, events=('start', 'end')))
+        _, root = next(context) # get root element
+        for event, elem in context:
+            if event == 'end' and elem.tag == tag:
+                yield elem
+                root.clear() # preserve memory
+    
+    def _open(self, fp):
+        if 'xml' in fp:
+            return fileinput.hook_compressed(fp, 'r')
+        
+        if fp.endswith('.gz'):
+            reader = codecs.getreader("utf-8")
+            return reader(gzip.open(fp))
+        return codecs.open(fp, encoding='utf-8', mode='r')
+    
     def _download_latest_clinvar(self, dest_dir):
         ftp = FTP('ftp.ncbi.nlm.nih.gov')
         ftp.login()
@@ -36,21 +79,50 @@ class Command(BaseCommand):
             ftp.retrbinary('RETR {0}'.format(ftp_vcf_filename), fh.write)
         return dest_filepath, ftp_vcf_filename
 
+    def _download_latest_clinvar_xml(self, dest_dir):
+        ftp = FTP('ftp.ncbi.nlm.nih.gov')
+        ftp.login()
+        ftp.cwd(CV_XML_DIR)
+        # sort just in case the ftp lists the files in random order
+        cv_xml_w_date = sorted([f for f in ftp.nlst() if re.match(CV_XML_REGEX, f)])
+        if len(cv_xml_w_date) == 0:
+            raise CommandError('ClinVar reporting zero XML matching' +
+                               ' regex: \'{0}\' in directory {1}'.format(
+                                   CV_XML_REGEX, CV_XML_DIR))
+        ftp_xml_filename = cv_xml_w_date[-1]
+        dest_filepath = os.path.join(dest_dir, ftp_xml_filename)
+        with open(dest_filepath, 'w') as fh:
+            ftp.retrbinary('RETR {0}'.format(ftp_xml_filename), fh.write)
+        return dest_filepath, ftp_xml_filename
+    
     @transaction.atomic()
     @reversion.create_revision()
-    def handle(self, *args, **options):
+    def handle(self, local_vcf=None, local_xml=None, *args, **options):
         print get_user_model().objects.all()
         clinvar_user = get_user_model().objects.get(
             username='clinvar-variant-importer')
         print clinvar_user
         tempdir = tempfile.mkdtemp()
         print "Created tempdir {}".format(tempdir)
-        clinvar_fp, clinvar_filename = self._download_latest_clinvar(tempdir)
+        if local_vcf:
+            clinvar_fp, clinvar_filename = local_vcf, os.path.split(local_vcf)[-1]
+        else:
+            clinvar_fp, clinvar_filename = self._download_latest_clinvar(tempdir)
         print "Downloaded latest Clinvar, stored at {}".format(clinvar_fp)
-        clinvar_vcf = gzip.open(clinvar_fp)
+        
+        # speed optimization
+        variant_map = {(v.tags['chrom_b37'], v.tags['pos_b37'], v.tags['ref_allele_b37'], v.tags['var_allele_b37']): v.pk for v in Variant.objects.all()}
+        rcv_map = {}
+        
+        print 'Reading VCF'
+        clinvar_vcf = self._open(clinvar_fp)
+        
         for line in clinvar_vcf:
             if line.startswith('#'):
                 continue
+            
+            cvvl = ClinVarVCFLine(vcf_line=line).as_dict()
+            
             data = line.rstrip('\n').split('\t')
             chrom = map_chrom_to_index(data[0])
             pos = data[1]
@@ -60,15 +132,12 @@ class Command(BaseCommand):
             info_dict = {v[0]: v[1] for v in
                          [x.split('=') for x in data[7].split(';')]
                          if len(v) == 2}
-            all_variants = Variant.objects.all()
+            
             for allele in info_dict['CLNALLE'].split(','):
                 var_allele = all_alleles[int(allele)]
-                matched_var = all_variants.filter(
-                    tags__chrom_b37=chrom,
-                    tags__pos_b37=pos,
-                    tags__ref_allele_b37=ref_allele,
-                    tags__var_allele_b37=var_allele)
-                if not matched_var.exists():
+                var_key = (chrom, pos, ref_allele, var_allele)
+                if var_key not in variant_map:
+                    print 'Inserting new Variant {}, {}, {}, {}'.format(*var_key)
                     variant = Variant(tags={
                         'chrom_b37': chrom,
                         # Check pos is a valid int before adding.
@@ -76,8 +145,77 @@ class Command(BaseCommand):
                         'ref_allele_b37': ref_allele,
                         'var_allele_b37': var_allele})
                     variant.save()
+                    variant_map[var_key] = variant.pk
                     reversion.set_user(user=clinvar_user)
                     reversion.set_comment(
                         'Variant added based on presence in ClinVar file: ' +
                         clinvar_filename)
+                
+                for record in cvvl['alleles'][int(allele)].get('records', []):
+                    rcv, rcv_ver = record['acc'].split('.')
+                    rcv_map.setdefault((rcv, rcv_ver), set()).add(variant_map[var_key])
+                
+        clinvar_vcf.close()
+        
+        print 'Multiple variants for single RCV#:'
+        for k, v in rcv_map.iteritems():
+            if len(v) > 1:
+                print '\t', k, Variant.objects.filter(pk__in=list(v))
+        
+        if local_xml:
+            clinvar_fp, clinvar_filename = local_xml, os.path.split(local_xml)[-1]
+        else:
+            clinvar_fp, clinvar_filename = self._download_latest_clinvar_xml(tempdir)
+        print "Downloaded latest Clinvar XML, stored at {}".format(clinvar_fp)
+        
+        print 'Reading XML'
+        clinvar_xml = self._open(clinvar_fp)
+        i = 0
+        for ele in self._get_elements(clinvar_xml, 'ClinVarSet'):
+            i+= 1
+            
+            ref_acc = ele.find('ReferenceClinVarAssertion').find('ClinVarAccession')
+            rcv, rcv_ver = ref_acc.get('Acc'), ref_acc.get('Version')
+            
+            if (rcv, rcv_ver) not in rcv_map:
+                continue
+            
+            val_store = {}
+            val_store['num_submissions'] = len(ele.findall('ClinVarAssertion'))
+            
+            refcva = ele.find('ReferenceClinVarAssertion')
+            val_store['record_status'] = refcva.find('RecordStatus').text
+            
+            ch = refcva.find('MeasureSet').find('Measure').find('MeasureRelationship')
+            if ch and ch.get('Type') == 'variant in gene':
+                val_store['gene:name'] = ch.find('Name').find('ElementValue').text
+                val_store['gene:symbol'] = ch.find('Symbol').find('ElementValue').text
+            
+            citations = []
+            for cit in refcva.find('MeasureSet').find('Measure').findall('Citation'):
+                c = cit.find('ID')
+                if c.get('Source') == 'PubMed':
+                    citations.append('PMID' + c.text)
+            if citations:
+                val_store['citations'] = ';'.join(citations)
+            
+            print i, rcv, rcv_ver, rcv_map.get((rcv, rcv_ver)), '; '.join(map(lambda x: '%s=%s' % x, val_store.iteritems()))
+            
+            # number of ClinVarAssertion tags == # of submissions
+            
+            # <RecordStatus>current</RecordStatus>
+            
+            # <MeasureRelationship Type="variant in gene">
+            # <Name>
+            # <ElementValue Type="Preferred">calcium-sensing receptor</ElementValue>
+            # </Name>
+            # <Symbol>
+            # <ElementValue Type="Preferred">CASR</ElementValue>
+            
+            
+            
+            if i == 100: break
+        
+        clinvar_xml.close()
+        
         shutil.rmtree(tempdir)

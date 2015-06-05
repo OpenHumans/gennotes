@@ -23,3 +23,5 @@ six==1.9.0
 static3==0.6.1
 tini==3.0.1
 wsgiref==0.1.2
+# our VCF to ClinVar matching tool
+https://github.com/PersonalGenomesOrg/vcf2clinvar/archive/master.zip
