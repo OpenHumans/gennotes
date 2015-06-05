@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./manage.py syncdb --noinput
+./manage.py migrate --noinput
