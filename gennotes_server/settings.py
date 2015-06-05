@@ -58,6 +58,8 @@ INSTALLED_APPS = (
     'allauth.account',
     'django_extensions',
     'reversion',
+    'rest_framework',
+    'rest_framework_swagger'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -77,6 +79,7 @@ AUTHENTICATION_BACKENDS = (
 ) + global_settings.AUTHENTICATION_BACKENDS
 
 MIDDLEWARE_CLASSES = (
+    'reversion.middleware.RevisionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -107,15 +110,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gennotes_server.wsgi.application'
 
+# Use DATABASE_URL to do database setup, for a local Postgres database it would
+# look like: postgres://localhost/database_name
+DATABASES = {}
 
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+if os.getenv('CI_NAME') == 'codeship':
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test',
+        'USER': os.getenv('PG_USER'),
+        'PASSWORD': os.getenv('PG_PASSWORD'),
+        'HOST': '127.0.0.1',
+    }
+# Only override the default if there's a database URL specified
+elif dj_database_url.config():
+    DATABASES['default'] = dj_database_url.config()
 
-DATABASES = {
-    'default': dj_database_url.config()
-}
-
-PSQL_USER_IS_SUPERUSER = to_bool('PSQL_USER_IS_SUPERUSER', "True")
+PSQL_USER_IS_SUPERUSER = to_bool('PSQL_USER_IS_SUPERUSER', 'True')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -125,13 +136,10 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 SITE_ID = 1
-
 
 # Email set up.
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', global_settings.EMAIL_BACKEND)
@@ -142,15 +150,17 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD',
                                 global_settings.EMAIL_HOST_PASSWORD)
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', str(global_settings.EMAIL_PORT)))
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static-files')
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Settings for django-allauth and account interactions.
 # Signup and login take both email and username.

@@ -1,0 +1,582 @@
+[
+{
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
+  },
+  "model": "sites.site",
+  "pk": 1
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"883516\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 1
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"891344\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 2
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"906168\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 3
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"949696\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"CG\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 4
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"949739\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 5
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"955597\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 6
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"957640\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 7
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"976629\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 8
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"A\", \"pos_b37\": \"976963\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 9
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"T\", \"pos_b37\": \"977330\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 10
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"979514\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 11
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"A\", \"pos_b37\": \"979748\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 12
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"980773\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 13
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"A\", \"pos_b37\": \"981931\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 14
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"982213\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 15
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"A\", \"pos_b37\": \"982722\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 16
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"T\", \"pos_b37\": \"982783\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 17
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"982844\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 18
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"T\", \"pos_b37\": \"982994\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 19
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"983006\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 20
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"983506\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 21
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"983604\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 22
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"983612\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 23
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"T\", \"pos_b37\": \"984302\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 24
+},
+{
+  "fields": {
+    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"984769\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+  },
+  "model": "gennotes_server.variant",
+  "pk": 25
+},
+{
+  "fields": {
+    "codename": "add_logentry",
+    "name": "Can add log entry",
+    "content_type": 1
+  },
+  "model": "auth.permission",
+  "pk": 1
+},
+{
+  "fields": {
+    "codename": "change_logentry",
+    "name": "Can change log entry",
+    "content_type": 1
+  },
+  "model": "auth.permission",
+  "pk": 2
+},
+{
+  "fields": {
+    "codename": "delete_logentry",
+    "name": "Can delete log entry",
+    "content_type": 1
+  },
+  "model": "auth.permission",
+  "pk": 3
+},
+{
+  "fields": {
+    "codename": "add_permission",
+    "name": "Can add permission",
+    "content_type": 2
+  },
+  "model": "auth.permission",
+  "pk": 4
+},
+{
+  "fields": {
+    "codename": "change_permission",
+    "name": "Can change permission",
+    "content_type": 2
+  },
+  "model": "auth.permission",
+  "pk": 5
+},
+{
+  "fields": {
+    "codename": "delete_permission",
+    "name": "Can delete permission",
+    "content_type": 2
+  },
+  "model": "auth.permission",
+  "pk": 6
+},
+{
+  "fields": {
+    "codename": "add_group",
+    "name": "Can add group",
+    "content_type": 3
+  },
+  "model": "auth.permission",
+  "pk": 7
+},
+{
+  "fields": {
+    "codename": "change_group",
+    "name": "Can change group",
+    "content_type": 3
+  },
+  "model": "auth.permission",
+  "pk": 8
+},
+{
+  "fields": {
+    "codename": "delete_group",
+    "name": "Can delete group",
+    "content_type": 3
+  },
+  "model": "auth.permission",
+  "pk": 9
+},
+{
+  "fields": {
+    "codename": "add_user",
+    "name": "Can add user",
+    "content_type": 4
+  },
+  "model": "auth.permission",
+  "pk": 10
+},
+{
+  "fields": {
+    "codename": "change_user",
+    "name": "Can change user",
+    "content_type": 4
+  },
+  "model": "auth.permission",
+  "pk": 11
+},
+{
+  "fields": {
+    "codename": "delete_user",
+    "name": "Can delete user",
+    "content_type": 4
+  },
+  "model": "auth.permission",
+  "pk": 12
+},
+{
+  "fields": {
+    "codename": "add_contenttype",
+    "name": "Can add content type",
+    "content_type": 5
+  },
+  "model": "auth.permission",
+  "pk": 13
+},
+{
+  "fields": {
+    "codename": "change_contenttype",
+    "name": "Can change content type",
+    "content_type": 5
+  },
+  "model": "auth.permission",
+  "pk": 14
+},
+{
+  "fields": {
+    "codename": "delete_contenttype",
+    "name": "Can delete content type",
+    "content_type": 5
+  },
+  "model": "auth.permission",
+  "pk": 15
+},
+{
+  "fields": {
+    "codename": "add_session",
+    "name": "Can add session",
+    "content_type": 6
+  },
+  "model": "auth.permission",
+  "pk": 16
+},
+{
+  "fields": {
+    "codename": "change_session",
+    "name": "Can change session",
+    "content_type": 6
+  },
+  "model": "auth.permission",
+  "pk": 17
+},
+{
+  "fields": {
+    "codename": "delete_session",
+    "name": "Can delete session",
+    "content_type": 6
+  },
+  "model": "auth.permission",
+  "pk": 18
+},
+{
+  "fields": {
+    "codename": "add_site",
+    "name": "Can add site",
+    "content_type": 7
+  },
+  "model": "auth.permission",
+  "pk": 19
+},
+{
+  "fields": {
+    "codename": "change_site",
+    "name": "Can change site",
+    "content_type": 7
+  },
+  "model": "auth.permission",
+  "pk": 20
+},
+{
+  "fields": {
+    "codename": "delete_site",
+    "name": "Can delete site",
+    "content_type": 7
+  },
+  "model": "auth.permission",
+  "pk": 21
+},
+{
+  "fields": {
+    "codename": "add_variant",
+    "name": "Can add variant",
+    "content_type": 8
+  },
+  "model": "auth.permission",
+  "pk": 22
+},
+{
+  "fields": {
+    "codename": "change_variant",
+    "name": "Can change variant",
+    "content_type": 8
+  },
+  "model": "auth.permission",
+  "pk": 23
+},
+{
+  "fields": {
+    "codename": "delete_variant",
+    "name": "Can delete variant",
+    "content_type": 8
+  },
+  "model": "auth.permission",
+  "pk": 24
+},
+{
+  "fields": {
+    "codename": "add_relation",
+    "name": "Can add relation",
+    "content_type": 9
+  },
+  "model": "auth.permission",
+  "pk": 25
+},
+{
+  "fields": {
+    "codename": "change_relation",
+    "name": "Can change relation",
+    "content_type": 9
+  },
+  "model": "auth.permission",
+  "pk": 26
+},
+{
+  "fields": {
+    "codename": "delete_relation",
+    "name": "Can delete relation",
+    "content_type": 9
+  },
+  "model": "auth.permission",
+  "pk": 27
+},
+{
+  "fields": {
+    "codename": "add_emailaddress",
+    "name": "Can add email address",
+    "content_type": 10
+  },
+  "model": "auth.permission",
+  "pk": 28
+},
+{
+  "fields": {
+    "codename": "change_emailaddress",
+    "name": "Can change email address",
+    "content_type": 10
+  },
+  "model": "auth.permission",
+  "pk": 29
+},
+{
+  "fields": {
+    "codename": "delete_emailaddress",
+    "name": "Can delete email address",
+    "content_type": 10
+  },
+  "model": "auth.permission",
+  "pk": 30
+},
+{
+  "fields": {
+    "codename": "add_emailconfirmation",
+    "name": "Can add email confirmation",
+    "content_type": 11
+  },
+  "model": "auth.permission",
+  "pk": 31
+},
+{
+  "fields": {
+    "codename": "change_emailconfirmation",
+    "name": "Can change email confirmation",
+    "content_type": 11
+  },
+  "model": "auth.permission",
+  "pk": 32
+},
+{
+  "fields": {
+    "codename": "delete_emailconfirmation",
+    "name": "Can delete email confirmation",
+    "content_type": 11
+  },
+  "model": "auth.permission",
+  "pk": 33
+},
+{
+  "fields": {
+    "codename": "add_revision",
+    "name": "Can add revision",
+    "content_type": 12
+  },
+  "model": "auth.permission",
+  "pk": 34
+},
+{
+  "fields": {
+    "codename": "change_revision",
+    "name": "Can change revision",
+    "content_type": 12
+  },
+  "model": "auth.permission",
+  "pk": 35
+},
+{
+  "fields": {
+    "codename": "delete_revision",
+    "name": "Can delete revision",
+    "content_type": 12
+  },
+  "model": "auth.permission",
+  "pk": 36
+},
+{
+  "fields": {
+    "codename": "add_version",
+    "name": "Can add version",
+    "content_type": 13
+  },
+  "model": "auth.permission",
+  "pk": 37
+},
+{
+  "fields": {
+    "codename": "change_version",
+    "name": "Can change version",
+    "content_type": 13
+  },
+  "model": "auth.permission",
+  "pk": 38
+},
+{
+  "fields": {
+    "codename": "delete_version",
+    "name": "Can delete version",
+    "content_type": 13
+  },
+  "model": "auth.permission",
+  "pk": 39
+},
+{
+  "fields": {
+    "username": "clinvar-variant-importer",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": null,
+    "groups": [],
+    "user_permissions": [],
+    "password": "",
+    "email": "",
+    "date_joined": "2015-06-05T00:11:16.019Z"
+  },
+  "model": "auth.user",
+  "pk": 1
+},
+{
+  "fields": {
+    "username": "clinvar-data-importer",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": null,
+    "groups": [],
+    "user_permissions": [],
+    "password": "",
+    "email": "",
+    "date_joined": "2015-06-05T00:11:16.022Z"
+  },
+  "model": "auth.user",
+  "pk": 2
+},
+{
+  "fields": {
+    "comment": "Variant added based on presence in ClinVar file: clinvar_20150504.vcf.gz",
+    "date_created": "2015-06-05T00:44:29.648Z",
+    "manager_slug": "default",
+    "user": 1
+  },
+  "model": "reversion.revision",
+  "pk": 1
+}
+]
