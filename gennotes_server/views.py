@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import permissions, viewsets
 
 from .models import Relation, Variant
+from .permissions import IsVerifiedOrReadOnly
 from .serializers import RelationSerializer, VariantSerializer
 
 
@@ -44,7 +45,7 @@ class VariantViewSet(VariantLookupMixin, viewsets.ModelViewSet):
     A viewset for Variants which uses "1-883516-G-A" notation for lookups.
     """
 
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsVerifiedOrReadOnly,)
     queryset = Variant.objects.all()
     serializer_class = VariantSerializer
 
@@ -58,6 +59,6 @@ class RelationViewSet(viewsets.ModelViewSet):
     A viewset for Relations.
     """
 
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsVerifiedOrReadOnly,)
     queryset = Relation.objects.all()
     serializer_class = RelationSerializer
