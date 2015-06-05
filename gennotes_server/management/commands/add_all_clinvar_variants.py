@@ -10,12 +10,14 @@ import tempfile
 
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
-from django.db import transaction
+from django.db import transaction, connection
 import reversion
 from vcf2clinvar.clinvar import ClinVarVCFLine
 
-from gennotes_server.models import Variant
+from gennotes_server.models import Variant, Relation
 from gennotes_server.utils import map_chrom_to_index
+import json
+import md5
 
 
 try:
@@ -33,6 +35,10 @@ CV_XML_REGEX = r'^ClinVarFullRelease_[0-9]{4}-[0-9]{2}.xml.gz$'
 
 SPLITTER = re.compile('[,|]')
 
+HASH_KEYS = ("type", "clinvar-accession:id", "clinvar-accession:version", "clinvar-accession:significance",
+            "clinvar-accession:disease-name", 'num_submissions', 'record_status', 'gene:name', 'gene:symbol',
+            'citations')
+
 class Command(BaseCommand):
     help = 'Download latest ClinVar VCF, import variants not already in db.'
 
@@ -44,6 +50,9 @@ class Command(BaseCommand):
             dest='local_xml',
             help='Open local ClinVar XML file'),
         )
+    
+    def _hash_xml_dict(self, d):
+        return md5.md5(json.dumps(zip(HASH_KEYS, map(lambda k: d[k], HASH_KEYS)))).hexdigest()
     
     def _get_elements(self, fp, tag):
         '''
@@ -116,7 +125,7 @@ class Command(BaseCommand):
                         v.tags['chrom_b37'], 
                         v.tags['pos_b37'], 
                         v.tags['ref_allele_b37'], 
-                        v.tags['var_allele_b37']): v.pk for v in Variant.objects.all()}
+                        v.tags['var_allele_b37']): v for v in Variant.objects.all()}
         rcv_map = {}
         
         print 'Reading VCF'
@@ -150,7 +159,7 @@ class Command(BaseCommand):
                         'ref_allele_b37': ref_allele,
                         'var_allele_b37': var_allele})
                     variant.save()
-                    variant_map[var_key] = variant.pk
+                    variant_map[var_key] = variant
                     reversion.set_user(user=clinvar_user)
                     reversion.set_comment(
                         'Variant added based on presence in ClinVar file: ' +
@@ -165,13 +174,20 @@ class Command(BaseCommand):
         print 'Multiple variants for single RCV#:'
         for k, v in rcv_map.iteritems():
             if len(v) > 1:
-                print '\t', k[0], k[1], Variant.objects.filter(pk__in=list(v))
+                print '\t', k[0], k[1], v
         
         if local_xml:
             clinvar_fp, clinvar_filename = local_xml, os.path.split(local_xml)[-1]
         else:
             clinvar_fp, clinvar_filename = self._download_latest_clinvar_xml(tempdir)
         print "Downloaded latest Clinvar XML, stored at {}".format(clinvar_fp)
+        
+        print "Creating Relation cache"
+        cur = connection.cursor()
+        cur.execute("SELECT id, tags -> 'clinvar-accession:id', tags -> 'clinvar-accession:version', tags -> 'xml:hash' FROM {};".format(Relation._meta.db_table))  # @UndefinedVariable
+        rcv_hash_cache = {}
+        for id, accid, accver, xhash in cur.fetchall():
+            rcv_hash_cache[(accid, accver)] = (id, xhash)
         
         print 'Reading XML'
         clinvar_xml = self._open(clinvar_fp)
@@ -182,16 +198,25 @@ class Command(BaseCommand):
             
             ref_acc = rcva.find('ClinVarAccession')
             rcv, rcv_ver = ref_acc.get('Acc'), ref_acc.get('Version')
+            rel_key = (rcv, rcv_ver)
             
-            if (rcv, rcv_ver) not in rcv_map:
+            if rel_key not in rcv_map:
                 # We do not have a record of this RCV from VCF, skip parsing...
                 continue
+            
+            if len(rcv_map[rel_key]) != 1:
+                # either no or too many variations for this RCV
+                continue
+            
+            "type", "clinvar-accession:id", "clinvar-accession:version", "clinvar-accession:significance",
+            "clinvar-accession:disease-name", 'num_submissions', 'record_status', 'gene:name', 'gene:symbol',
+            'citations'
             
             val_store = {"type": "clinvar-accession", "clinvar-accession:id": rcv, "clinvar-accession:version": rcv_ver}
             val_store["clinvar-accession:significance"] = rcva.findtext('ClinicalSignificance/Description')
             val_store["clinvar-accession:disease-name"] = rcva.findtext('TraitSet[@Type="Disease"]/Trait[@Type="Disease"]/Name/ElementValue[@Type="Preferred"]')
             
-            val_store['num_submissions'] = len(ele.findall('ClinVarAssertion'))
+            val_store['num_submissions'] = str(len(ele.findall('ClinVarAssertion')))
             val_store['record_status'] = rcva.findtext('RecordStatus')
             
             ch = rcva.find('MeasureSet/Measure/MeasureRelationship[@Type="variant in gene"]')
@@ -201,9 +226,38 @@ class Command(BaseCommand):
             
             val_store['citations'] = ';'.join(['PMID%s' % c.text for c in rcva.findall('MeasureSet/Measure/Citation/ID[@Source="PubMed"]')])
             
-            print i, rcv, rcv_ver, rcv_map.get((rcv, rcv_ver))
-            for k, v in sorted(val_store.iteritems()):
-                print '\t %s := %s' % (k, v)
+            val_store['xml:hash'] = self._hash_xml_dict(val_store)
+            
+            if rel_key not in rcv_hash_cache:
+                # We got a brand new record
+                rel = Relation(variant=list(rcv_map[rel_key])[0], tags=val_store)
+                rel.save()
+                reversion.set_user(user=clinvar_user)
+                reversion.set_comment(
+                    'Relation added based on presence in XML file: ' +
+                    clinvar_filename)
+                
+                rcv_hash_cache[rel_key] = (rel.pk, val_store['xml:hash'])
+                
+                # TODO: set HGVS tag in Variant
+                
+                print 'Added new:', i, rcv, rcv_ver, rcv_map[rel_key], val_store['xml:hash']
+                for k, v in sorted(val_store.iteritems()):
+                    print '\t %s := %s' % (k, v)
+            elif rcv_hash_cache[rel_key][1] != val_store['xml:hash']:
+                # XML parameters have changed, update required
+                print 'Need to update', rcv, rcv_ver
+                rel = Relation.objects.get(**{'tags__clinvar-accession:id': rcv, 'tags__clinvar-accession:version': rcv_ver, "tags__type": "clinvar-accession"})
+                rel.tags.update(val_store)
+                rel.save()
+                
+                reversion.set_user(user=clinvar_user)
+                reversion.set_comment(
+                    'Relation updated based on presence in XML file: ' +
+                    clinvar_filename + ' and hash difference')
+            else:
+                # nothing to do here, move along 
+                pass
             
             if i == 100: break
         
