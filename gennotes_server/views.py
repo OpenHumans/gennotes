@@ -1,13 +1,49 @@
+from django.http import Http404
+from django.shortcuts import get_object_or_404
+
 from rest_framework import permissions, viewsets
 
 from .models import Relation, Variant
 from .serializers import RelationSerializer, VariantSerializer
 
+
+class VariantLookupMixin(object):
+    """
+    Apply this mixin to any view or viewset to get lookup by variant.
+    """
+
+    def get_object(self):
+        queryset = self.get_queryset()
+        queryset = self.filter_queryset(queryset)
+
+        try:
+            parts = self.kwargs['pk'].split('-')
+
+            filter_kwargs = {
+                'tags__chrom_b37': parts[0],
+                'tags__pos_b37': parts[1],
+                'tags__ref_allele_b37': parts[2],
+                'tags__var_allele_b37': parts[3],
+            }
+        except IndexError:
+            raise Http404('No {} matches the given query.'.format(
+                queryset.model._meta.object_name))
+
+        return get_object_or_404(queryset, **filter_kwargs)
+
+
 # http GET localhost:8000/api/variant/   # all variants
-# http GET localhost:8000/api/variant/2/ # variant with ID 2
-# http -a youruser:yourpass PATCH localhost:8000/api/variant/2/ \
+# http GET localhost:8000/api/variant/1-123456-C-T/ # a specific variant
+#
+# TODO: you should never be able to PATCH a variant, each change to a variant
+# should create a new changeset
+# http -a youruser:yourpass PATCH localhost:8000/api/variant/1-123456-C-T/ \
 #  tags:='{"foo": "bar"}'                # set tags to '{"foo": "bar"}'
-class VariantViewSet(viewsets.ModelViewSet):
+class VariantViewSet(VariantLookupMixin, viewsets.ModelViewSet):
+    """
+    A viewset for Variants which uses "1-883516-G-A" notation for lookups.
+    """
+
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Variant.objects.all()
     serializer_class = VariantSerializer
@@ -18,6 +54,10 @@ class VariantViewSet(viewsets.ModelViewSet):
 # http -a youruser:yourpass PATCH localhost:8000/api/relation/2/ \
 #  tags:='{"foo": "bar"}'                # set tags to '{"foo": "bar"}'
 class RelationViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for Relations.
+    """
+
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Relation.objects.all()
     serializer_class = RelationSerializer
