@@ -1,4 +1,5 @@
 import codecs
+import fileinput
 from ftplib import FTP
 import gzip
 from optparse import make_option
@@ -15,11 +16,11 @@ from vcf2clinvar.clinvar import ClinVarVCFLine
 
 from gennotes_server.models import Variant
 from gennotes_server.utils import map_chrom_to_index
-import fileinput
 
 
 try:
-    from xml.etree import cElementTree as ET
+    # faster implementation using bindings to libxml
+    from lxml import etree as ET
 except ImportError:
     print 'Falling back to default ElementTree implementation'
     from xml.etree import ElementTree as ET
@@ -111,7 +112,11 @@ class Command(BaseCommand):
         print "Downloaded latest Clinvar, stored at {}".format(clinvar_fp)
         
         # speed optimization
-        variant_map = {(v.tags['chrom_b37'], v.tags['pos_b37'], v.tags['ref_allele_b37'], v.tags['var_allele_b37']): v.pk for v in Variant.objects.all()}
+        variant_map = {(
+                        v.tags['chrom_b37'], 
+                        v.tags['pos_b37'], 
+                        v.tags['ref_allele_b37'], 
+                        v.tags['var_allele_b37']): v.pk for v in Variant.objects.all()}
         rcv_map = {}
         
         print 'Reading VCF'
@@ -160,7 +165,7 @@ class Command(BaseCommand):
         print 'Multiple variants for single RCV#:'
         for k, v in rcv_map.iteritems():
             if len(v) > 1:
-                print '\t', k, Variant.objects.filter(pk__in=list(v))
+                print '\t', k[0], k[1], Variant.objects.filter(pk__in=list(v))
         
         if local_xml:
             clinvar_fp, clinvar_filename = local_xml, os.path.split(local_xml)[-1]
@@ -172,47 +177,35 @@ class Command(BaseCommand):
         clinvar_xml = self._open(clinvar_fp)
         i = 0
         for ele in self._get_elements(clinvar_xml, 'ClinVarSet'):
+            rcva = ele.find('ReferenceClinVarAssertion')
             i+= 1
             
-            ref_acc = ele.find('ReferenceClinVarAssertion').find('ClinVarAccession')
+            ref_acc = rcva.find('ClinVarAccession')
             rcv, rcv_ver = ref_acc.get('Acc'), ref_acc.get('Version')
             
             if (rcv, rcv_ver) not in rcv_map:
+                # We do not have a record of this RCV from VCF, skip parsing...
                 continue
             
-            val_store = {}
+            val_store = {"type": "clinvar-accession", "clinvar-accession:id": rcv, "clinvar-accession:version": rcv_ver}
+            val_store["clinvar-accession:significance"] = rcva.findtext('ClinicalSignificance/Description')
+            val_store["clinvar-accession:disease-name"] = rcva.findtext('TraitSet[@Type="Disease"]/Trait[@Type="Disease"]/Name/ElementValue[@Type="Preferred"]')
+            
             val_store['num_submissions'] = len(ele.findall('ClinVarAssertion'))
+            val_store['record_status'] = rcva.findtext('RecordStatus')
             
-            refcva = ele.find('ReferenceClinVarAssertion')
-            val_store['record_status'] = refcva.find('RecordStatus').text
+            ch = rcva.find('MeasureSet/Measure/MeasureRelationship[@Type="variant in gene"]')
+            if ch is not None:
+                val_store['gene:name'] = ch.findtext('Name/ElementValue')
+                val_store['gene:symbol'] = ch.findtext('Symbol/ElementValue')
             
-            ch = refcva.find('MeasureSet').find('Measure').find('MeasureRelationship')
-            if ch and ch.get('Type') == 'variant in gene':
-                val_store['gene:name'] = ch.find('Name').find('ElementValue').text
-                val_store['gene:symbol'] = ch.find('Symbol').find('ElementValue').text
-            
-            citations = []
-            for cit in refcva.find('MeasureSet').find('Measure').findall('Citation'):
-                c = cit.find('ID')
-                if c.get('Source') == 'PubMed':
-                    citations.append('PMID' + c.text)
+            citations = rcva.findall('MeasureSet/Measure/Citation/ID[@Source="PubMed"]')
             if citations:
-                val_store['citations'] = ';'.join(citations)
+                val_store['citations'] = ';'.join(['PMID%s' % c.text for c in citations])
             
-            print i, rcv, rcv_ver, rcv_map.get((rcv, rcv_ver)), '; '.join(map(lambda x: '%s=%s' % x, val_store.iteritems()))
-            
-            # number of ClinVarAssertion tags == # of submissions
-            
-            # <RecordStatus>current</RecordStatus>
-            
-            # <MeasureRelationship Type="variant in gene">
-            # <Name>
-            # <ElementValue Type="Preferred">calcium-sensing receptor</ElementValue>
-            # </Name>
-            # <Symbol>
-            # <ElementValue Type="Preferred">CASR</ElementValue>
-            
-            
+            print i, rcv, rcv_ver, rcv_map.get((rcv, rcv_ver))
+            for k, v in sorted(val_store.iteritems()):
+                print '\t %s := %s' % (k, v)
             
             if i == 100: break
         
