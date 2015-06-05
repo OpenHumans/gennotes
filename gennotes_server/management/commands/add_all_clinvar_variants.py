@@ -113,10 +113,16 @@ class Command(BaseCommand):
         
         # speed optimization
         variant_map = {(
-                        v.tags['chrom_b37'], 
-                        v.tags['pos_b37'], 
-                        v.tags['ref_allele_b37'], 
-                        v.tags['var_allele_b37']): v.pk for v in Variant.objects.all()}
+            v.tags['chrom_b37'],
+            v.tags['pos_b37'],
+            v.tags['ref_allele_b37'],
+            v.tags['var_allele_b37']):
+            v.pk for v in Variant.objects.all() if
+            ('chrom_b37' in v.tags and
+             'pos_b37' in v.tags and
+             'ref_allele_b37' in v.tags and
+             'var_allele_b37' in v.tags)
+            }
         rcv_map = {}
         
         print 'Reading VCF'
