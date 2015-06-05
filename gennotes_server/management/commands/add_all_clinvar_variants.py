@@ -199,9 +199,7 @@ class Command(BaseCommand):
                 val_store['gene:name'] = ch.findtext('Name/ElementValue')
                 val_store['gene:symbol'] = ch.findtext('Symbol/ElementValue')
             
-            citations = rcva.findall('MeasureSet/Measure/Citation/ID[@Source="PubMed"]')
-            if citations:
-                val_store['citations'] = ';'.join(['PMID%s' % c.text for c in citations])
+            val_store['citations'] = ';'.join(['PMID%s' % c.text for c in rcva.findall('MeasureSet/Measure/Citation/ID[@Source="PubMed"]')])
             
             print i, rcv, rcv_ver, rcv_map.get((rcv, rcv_ver))
             for k, v in sorted(val_store.iteritems()):
