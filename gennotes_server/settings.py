@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     # Third party apps
     'allauth',
     'allauth.account',
+    'corsheaders',
     'django_extensions',
     'reversion',
     'rest_framework',
@@ -79,6 +80,7 @@ AUTHENTICATION_BACKENDS = (
 ) + global_settings.AUTHENTICATION_BACKENDS
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'reversion.middleware.RevisionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -171,3 +173,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 LOGIN_REDIRECT_URL = 'home'
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/api/.*$'

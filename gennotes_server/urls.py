@@ -6,15 +6,17 @@ from django.views.generic import TemplateView
 
 from rest_framework import routers
 
-from .views import RelationViewSet, VariantViewSet
+from .views import CurrentUserView, RelationViewSet, VariantViewSet
 
 router = routers.DefaultRouter()
-router.register(r"relation", RelationViewSet)
-router.register(r"variant", VariantViewSet)
 
+router.register(r'relation', RelationViewSet)
+router.register(r'variant', VariantViewSet)
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),
+    url(r'^api/me/$', CurrentUserView.as_view(), name='current-user'),
+
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
     url(r'^api-docs/', include('rest_framework_swagger.urls')),
