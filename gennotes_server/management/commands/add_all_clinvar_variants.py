@@ -56,7 +56,7 @@ class Command(BaseCommand):
 
     def _hash_xml_dict(self, d):
         return md5.md5(json.dumps(
-            zip(HASH_KEYS, map(lambda k: d[k], HASH_KEYS)))).hexdigest()
+            zip(HASH_KEYS, [d.get(k, '') for k in HASH_KEYS]))).hexdigest()
 
     def _get_elements(self, fp, tag):
         '''
@@ -260,8 +260,8 @@ class Command(BaseCommand):
 
                 print 'Added new:', i, rcv, rcv_ver,\
                     rcv_map[rel_key], val_store['xml:hash']
-                for k, v in sorted(val_store.iteritems()):
-                    print '\t %s := %s' % (k, v)
+#                 for k, v in sorted(val_store.iteritems()):
+#                     print '\t %s := %s' % (k, v)
             elif rcv_hash_cache[rel_key][1] != val_store['xml:hash']:
                 # XML parameters have changed, update required
                 print 'Need to update', rcv, rcv_ver
@@ -280,8 +280,8 @@ class Command(BaseCommand):
                 # nothing to do here, move along
                 pass
 
-            if i == 100:
-                break
+#             if i == 100:
+#                 break
 
         clinvar_xml.close()
 
