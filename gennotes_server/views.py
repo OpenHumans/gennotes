@@ -60,7 +60,6 @@ class RelationViewSet(viewsets.ModelViewSet):
     """
     A viewset for Relations.
     """
-
     permission_classes = (IsVerifiedOrReadOnly,)
     queryset = Relation.objects.all()
     serializer_class = RelationSerializer
