@@ -1,4 +1,7 @@
+import json
+
 from django.contrib.auth import get_user_model
+from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
@@ -15,25 +18,31 @@ class VariantLookupMixin(object):
     Apply this mixin to any view or viewset to get lookup by variant.
     """
 
-    def get_object(self):
-        queryset = self.get_queryset()
-        queryset = self.filter_queryset(queryset)
-
+    def _get_variant_filter_kwargs(self, variant_lookup):
+        """
+        For a variant lookup string, return the variant filter arguments.
+        """
         try:
-            parts = self.kwargs['pk'].split('-')
-
-            lookup_type = parts[0]
-
-            if lookup_type == 'b37':
-                filter_kwargs = {
+            parts = variant_lookup.split('-')
+            if parts[0] == 'b37':
+                return {
                     'tags__chrom_b37': parts[1],
                     'tags__pos_b37': parts[2],
                     'tags__ref_allele_b37': parts[3],
                     'tags__var_allele_b37': parts[4],
                 }
-            else:
-                raise IndexError
         except IndexError:
+            return None
+        return None
+
+    def get_object(self):
+        print "In get_object"
+        queryset = self.get_queryset()
+        queryset = self.filter_queryset(queryset)
+
+        filter_kwargs = self._get_variant_filter_kwargs(self.kwargs['pk'])
+
+        if not filter_kwargs:
             raise Http404('No {} matches the given query.'.format(
                 queryset.model._meta.object_name))
 
@@ -55,6 +64,29 @@ class VariantViewSet(VariantLookupMixin, viewsets.ModelViewSet):
     permission_classes = (IsVerifiedOrReadOnly,)
     queryset = Variant.objects.all()
     serializer_class = VariantSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        """
+        Return all variant data, or a subset if a specific list is requested.
+        """
+        queryset = super(VariantViewSet, self).get_queryset(*args, **kwargs)
+
+        variant_list_json = self.request.query_params.get('variant_list', None)
+        if not variant_list_json:
+            return queryset
+        variant_list = json.loads(variant_list_json)
+
+        # Combine the variant list to make a single db query.
+        Q_obj = None
+        for variant_lookup in variant_list:
+            filter_kwargs = self._get_variant_filter_kwargs(variant_lookup)
+            if filter_kwargs:
+                if not Q_obj:
+                    Q_obj = Q(**filter_kwargs)
+                else:
+                    Q_obj = Q_obj | Q(**filter_kwargs)
+        queryset = queryset.filter(Q_obj)
+        return queryset
 
 
 # http GET localhost:8000/api/relation/   # all relations

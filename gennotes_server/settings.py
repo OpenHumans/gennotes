@@ -174,6 +174,13 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 LOGIN_REDIRECT_URL = 'home'
 
+# Settings for Django REST Framework
+REST_FRAMEWORK = REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'gennotes_server.pagination.PageNumberPaginationUpTo1000',
+    'PAGE_SIZE': 100,
+}
+
+# Settings for CORS (in dev)
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'
