@@ -175,7 +175,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 LOGIN_REDIRECT_URL = 'home'
 
 # Settings for Django REST Framework
-REST_FRAMEWORK = REST_FRAMEWORK = {
+REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'gennotes_server.pagination.PageNumberPaginationUpTo1000',
     'PAGE_SIZE': 100,
 }
