@@ -4,9 +4,9 @@
 
 **GenNotes** and **Genevieve** are a pair of projects designed to empower
 individuals to understand putative effects reported for variants in an
-individual genome. We're planning to work on these during the [Mozilla Science
-Lab Global Sprint 2015](https://www.mozillascience.org/global-sprint-2015), on
-June 4th and 5th.
+individual genome. We worked on these during the [Mozilla Science
+Lab Global Sprint 2015](https://www.mozillascience.org/global-sprint-2015), and
+are continuing work on the project.
 
 **Chat via IRC or gitter:**
 * #gennotes on irc.freenode. If you're new to IRC, the easiest
