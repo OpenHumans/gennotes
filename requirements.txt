@@ -27,3 +27,6 @@ static3==0.6.1
 tini==3.0.1
 whitenoise==1.0.6
 wsgiref==0.1.2
+lxml==3.4.4
+# our VCF to ClinVar matching tool
+https://github.com/PersonalGenomesOrg/vcf2clinvar/archive/master.zip

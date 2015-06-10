@@ -13,16 +13,26 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'username')
 
 
+class RelationSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Serialize a Relation object.
+    """
+
+    class Meta:
+        model = Relation
+        fields = ['tags']
+
+
 class VariantSerializer(serializers.HyperlinkedModelSerializer):
     """
     Serialize a Variant object.
     """
-
     b37_id = serializers.SerializerMethodField()
+    relation_set = RelationSerializer(many=True)
 
     class Meta:
         model = Variant
-        fields = ['b37_id', 'tags']
+        fields = ['b37_id', 'tags', 'relation_set']
 
     @staticmethod
     def get_b37_id(obj):
@@ -35,13 +45,3 @@ class VariantSerializer(serializers.HyperlinkedModelSerializer):
             obj.tags['ref_allele_b37'],
             obj.tags['var_allele_b37'],
         ])
-
-
-class RelationSerializer(serializers.HyperlinkedModelSerializer):
-    """
-    Serialize a Relation object.
-    """
-
-    class Meta:
-        model = Relation
-        fields = ['tags']
