@@ -12,7 +12,7 @@ class VariantTests(APITestCase):
         """
         Ensure we can get a Variant with no credentials.
         """
-        response = self.verify_request('/1-883516-G-A/')
+        response = self.verify_request('/b37-1-883516-G-A/')
 
         self.assertEqual(response.data, {
             'b37_id': '1-883516-G-A',
@@ -42,8 +42,8 @@ class VariantTests(APITestCase):
         })
 
         # TODO: should be 405, method not allowed
-        self.verify_request('/1-883516-G-A/', status=403, method='delete')
-        self.verify_request('/1-883516-G-A/', method='post', status=403,
+        self.verify_request('/b37-1-883516-G-A/', status=403, method='delete')
+        self.verify_request('/b37-1-883516-G-A/', method='post', status=403,
                             data={'tags': '{"a": "b"}'})
 
         self.verify_request('/garbage/', status=404)
