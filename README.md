@@ -57,22 +57,29 @@ to start learning! Maybe you'd be interested in contributing to [Genevieve](http
     * For working with PostgreSQL: `sudo apt-get install libpq-dev python-dev`
     * Install PostgreSQL: `sudo apt-get install postgresql postgresql-contrib`
     * Become the postgres user: `sudo su - postgres`.
-    * [as postgres] Create your databasae, e.g.: `createdb mydb`
-    * [as postgres] Create your database user, e.g.: `createuser -P myuser`. Remember the password used, you'll need it in your configuration later!
-    * [as postgres] Log in to PostgreSQL: `psql mydb`
-    * [as postgres, in psql] Grant user privileges, e.g.: `GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser;`
-    * [as postgres, in psql] Add HStore extension to this database: `CREATE EXTENSION IF NOT EXISTS "hstore";`
+    * [As postgres] Create your databasae, e.g.: `createdb mydb`
+    * [As postgres] Create your database user, e.g.: `createuser -P myuser`. Remember the password used, you'll need it in your configuration later!
+    * [As postgres] Log in to PostgreSQL, e.g.: `psql mydb`
+    * **RECOMMENDED WITH WARNING:** The following grants **superuser** status to your database user:
+      * [As postgres, in psql] `GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser;`
+    * **ALTERNATE APPROACH:** If superuser isn't possible, you won't be able to run `python manage.py tests` as the database user won't be able to automatically create the test database. You can still set your project up with the following three steps:
+      * [As postgres, in psql] Add HStore extension to this database: `CREATE EXTENSION IF NOT EXISTS "hstore";`
+      * [As postgres, in psql] Grant database privileges to your user, e.g.: `GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser`
+      * [Later] When you edit your `.env` (see below) make sure to specify `PSQL_USER_IS_SUPERUSER="False"`
     * Use `\q` to quit psql, and `exit` to log off as the postgres user.
   * *OSX instructions (Homebrew?) invited!*
 * **Copy `env.example` to `.env`** (note the leading dot!)
   * Set your `SECRET_KEY` with a random string.
   * Set the `DATABASE_URL` using appropriate PostgreSQL database name, user, and password.
-  * Set `PSQL_USER_IS_SUPERUSER = "False"`. (If "True" we can automatically install the hstore extension duing the first migration, but you've already done this manually.)
   * The easiest mail set-up is probably to set `EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"`. Emails "sent" by the site will show up in console output.
 * **Initialize the database:** `python manage.py migrate`
 * **Run the site:** `python manage.py runserver`
 * You can now load GenNotes in your web browser by visiting `http://localhost:8000/`.
 * You can also interact directly with your site via shell_plus using `python manage.py shell_plus`
+
+### Testing
+
+Test your code changes by running `python manage.py test`.
 
 ## Motivation
 
