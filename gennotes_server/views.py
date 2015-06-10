@@ -22,12 +22,17 @@ class VariantLookupMixin(object):
         try:
             parts = self.kwargs['pk'].split('-')
 
-            filter_kwargs = {
-                'tags__chrom_b37': parts[0],
-                'tags__pos_b37': parts[1],
-                'tags__ref_allele_b37': parts[2],
-                'tags__var_allele_b37': parts[3],
-            }
+            lookup_type = parts[0]
+
+            if lookup_type == 'b37':
+                filter_kwargs = {
+                    'tags__chrom_b37': parts[1],
+                    'tags__pos_b37': parts[2],
+                    'tags__ref_allele_b37': parts[3],
+                    'tags__var_allele_b37': parts[4],
+                }
+            else:
+                raise IndexError
         except IndexError:
             raise Http404('No {} matches the given query.'.format(
                 queryset.model._meta.object_name))
