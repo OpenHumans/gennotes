@@ -132,6 +132,10 @@ class Command(BaseCommand):
             v.tags['pos_b37'],
             v.tags['ref_allele_b37'],
             v.tags['var_allele_b37']): v for v in Variant.objects.all()}
+
+        # Dict to track ClinVar RCV records in VCF and corresponding Variants.
+        # Key: RCV accession number. Value: set of tuples of values for Variant
+        # tags: ('chrom_b37', 'pos_b37', 'ref_allele_b37', 'var_allele_b37')
         rcv_map = {}
 
         print 'Reading VCF'
@@ -173,16 +177,15 @@ class Command(BaseCommand):
                         cv_filename)
 
                 for record in cvvl['alleles'][int(allele)].get('records', []):
-                    rcv, rcv_ver = record['acc'].split('.')
-                    rcv_map.setdefault((rcv, rcv_ver), set()).add(
-                        variant_map[var_key])
+                    rcv, _ = record['acc'].split('.')
+                    rcv_map.setdefault(rcv, set()).add(variant_map[var_key])
 
         clinvar_vcf.close()
 
         print 'Multiple variants for single RCV#:'
         for k, v in rcv_map.iteritems():
             if len(v) > 1:
-                print '\t', k[0], k[1], v
+                print '\t', k[0], v
 
         if local_xml:
             cv_fp, cv_filename = local_xml, os.path.split(local_xml)[-1]
