@@ -18,15 +18,11 @@ room: https://gitter.im/PersonalGenomesOrg/gennotes
 
 **Languages**: Python (Django), JavaScript, CSS, HTML
 
-## Sprint goals
+## Ongoing goals
 
 Also check out the issues, some of these have generated various subtasks!
 
-- **Add Clinvar:** On the GenNotes server, import ClinVar key/value tags.
-  - (tagging variant) "clinvar_accession": [clinvar accession]
-  - (tagging clinvar-accession) "clinvar_significance": [Uncertain significance/not provided/Benign/Likely benign/Likely pathogenic/Pathogenic/drug response/histocompatibility/other]
-  - (tagging clinvar-accession) "clinvar_disease": [disease name]
-- **Programmatic tag submission:** Specify the method (widget/API) for client apps to update or submit new tags
+- **Programmatic tag submission:** Methods (widget/API) for client apps to update or submit new tags
 - **Display GenNotes data in Genevieve:** make Genevieve client variant report with an AJAX GenNotes query, displaying returned ClinVar & Genevieve tag data
 - **Implement tag submission:** Implement tag submission on Genevieve client to add/update following tags
   - (tagging clinvar-accession) "genevieve_inheritance": [dominant/recessive/additive/-] (default: -)
