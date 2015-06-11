@@ -40,8 +40,8 @@ class VariantSerializer(serializers.HyperlinkedModelSerializer):
         Return an ID like "1-883516-G-A".
         """
         return '-'.join([
-            obj.tags['chrom_b37'],
-            obj.tags['pos_b37'],
-            obj.tags['ref_allele_b37'],
-            obj.tags['var_allele_b37'],
+            obj.tags['chrom-b37'],
+            obj.tags['pos-b37'],
+            obj.tags['ref-allele-b37'],
+            obj.tags['var-allele-b37'],
         ])

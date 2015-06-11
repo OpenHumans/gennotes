@@ -397,8 +397,8 @@
 },
 {
   "fields": {
-    "codename": "add_revision",
-    "name": "Can add revision",
+    "codename": "add_corsmodel",
+    "name": "Can add cors model",
     "content_type": [
       "corsheaders",
       "corsmodel"
@@ -409,8 +409,8 @@
 },
 {
   "fields": {
-    "codename": "change_revision",
-    "name": "Can change revision",
+    "codename": "change_corsmodel",
+    "name": "Can change cors model",
     "content_type": [
       "corsheaders",
       "corsmodel"
@@ -421,8 +421,8 @@
 },
 {
   "fields": {
-    "codename": "delete_revision",
-    "name": "Can delete revision",
+    "codename": "delete_corsmodel",
+    "name": "Can delete cors model",
     "content_type": [
       "corsheaders",
       "corsmodel"
@@ -433,8 +433,8 @@
 },
 {
   "fields": {
-    "codename": "add_version",
-    "name": "Can add version",
+    "codename": "add_revision",
+    "name": "Can add revision",
     "content_type": [
       "reversion",
       "revision"
@@ -445,8 +445,8 @@
 },
 {
   "fields": {
-    "codename": "change_version",
-    "name": "Can change version",
+    "codename": "change_revision",
+    "name": "Can change revision",
     "content_type": [
       "reversion",
       "revision"
@@ -457,8 +457,8 @@
 },
 {
   "fields": {
-    "codename": "delete_version",
-    "name": "Can delete version",
+    "codename": "delete_revision",
+    "name": "Can delete revision",
     "content_type": [
       "reversion",
       "revision"
@@ -516,7 +516,7 @@
     "user_permissions": [],
     "password": "",
     "email": "",
-    "date_joined": "2015-06-05T00:11:16.019Z"
+    "date_joined": "2015-06-10T19:57:03.889Z"
   },
   "model": "auth.user",
   "pk": 1
@@ -534,7 +534,7 @@
     "user_permissions": [],
     "password": "",
     "email": "",
-    "date_joined": "2015-06-05T00:11:16.022Z"
+    "date_joined": "2015-06-10T19:57:03.892Z"
   },
   "model": "auth.user",
   "pk": 2
@@ -549,758 +549,158 @@
 },
 {
   "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"883516\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 1
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"891344\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 2
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"906168\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 3
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"949696\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"CG\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 4
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"949739\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 5
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"955597\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 6
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"957640\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 7
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"976629\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 8
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"A\", \"pos_b37\": \"976963\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 9
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"T\", \"pos_b37\": \"977330\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 10
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"979514\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
+    "tags": "{\"pos-b37\": \"883516\", \"var-allele-b37\": \"A\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
   "pk": 11
 },
 {
   "fields": {
-    "tags": "{\"ref_allele_b37\": \"A\", \"pos_b37\": \"979748\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+    "tags": "{\"pos-b37\": \"891344\", \"var-allele-b37\": \"A\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
   "pk": 12
 },
 {
   "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"980773\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+    "tags": "{\"pos-b37\": \"906168\", \"var-allele-b37\": \"A\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
   "pk": 13
 },
 {
   "fields": {
-    "tags": "{\"ref_allele_b37\": \"A\", \"pos_b37\": \"981931\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
+    "tags": "{\"pos-b37\": \"949523\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
   "pk": 14
 },
 {
   "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"982213\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
+    "tags": "{\"pos-b37\": \"949696\", \"var-allele-b37\": \"CG\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
   "pk": 15
 },
 {
   "fields": {
-    "tags": "{\"ref_allele_b37\": \"A\", \"pos_b37\": \"982722\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
+    "tags": "{\"pos-b37\": \"949739\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
   "pk": 16
 },
 {
   "fields": {
-    "tags": "{\"ref_allele_b37\": \"T\", \"pos_b37\": \"982783\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
+    "tags": "{\"pos-b37\": \"955597\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
   "pk": 17
 },
 {
   "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"982844\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
+    "tags": "{\"pos-b37\": \"957640\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
   "pk": 18
 },
 {
   "fields": {
-    "tags": "{\"ref_allele_b37\": \"T\", \"pos_b37\": \"982994\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
+    "tags": "{\"pos-b37\": \"976629\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
   "pk": 19
 },
 {
   "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"983006\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
+    "tags": "{\"pos-b37\": \"976963\", \"var-allele-b37\": \"G\", \"ref-allele-b37\": \"A\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
   "pk": 20
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"983506\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 21
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"983604\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 22
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"983612\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 23
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"T\", \"pos_b37\": \"984302\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 24
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"984769\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 25
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"949523\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 26
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"980824\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 27
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"984971\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 28
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"985171\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 29
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"985826\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 30
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"985900\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 31
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"985955\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 32
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"986732\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 33
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"T\", \"pos_b37\": \"986737\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 34
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"987142\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 35
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"987200\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 36
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"989207\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 37
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"990280\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 38
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"1115553\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 39
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"1119314\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 40
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"1149118\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 41
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"A\", \"pos_b37\": \"1167659\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 42
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"1167674\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 43
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"A\", \"pos_b37\": \"1167851\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 44
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"C\", \"pos_b37\": \"1167858\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"T\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 45
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"CGGCGCGCCCTGGAGCGGGAGCA\", \"pos_b37\": \"1167974\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 46
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"GTGCTGGCCA\", \"pos_b37\": \"1168064\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"G\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 47
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"1168124\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"A\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 48
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"CG\", \"pos_b37\": \"1168239\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 49
-},
-{
-  "fields": {
-    "tags": "{\"ref_allele_b37\": \"G\", \"pos_b37\": \"1168277\", \"chrom_b37\": \"1\", \"var_allele_b37\": \"C\"}"
-  },
-  "model": "gennotes_server.variant",
-  "pk": 50
-},
-{
-  "fields": {
-    "variant": 9,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"18ef80437a2f688f9ff76cd4afbdc0a1\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116253\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 1
-},
-{
-  "fields": {
-    "variant": 10,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"6bbaae48006377115d1b2eed38a84533\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116254\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 2
-},
-{
-  "fields": {
-    "variant": 11,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"2977a1ce1f0082085b016cd607519e7a\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116255\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 3
-},
-{
-  "fields": {
-    "variant": 12,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"e73797024ff24f2aaf83cc65aed3fff6\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116256\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 4
-},
-{
-  "fields": {
-    "variant": 13,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"c66ba7b6d12e2a62705176154e78d9bb\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116257\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 5
-},
-{
-  "fields": {
-    "variant": 7,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"493ab81e250de400c068cee6b68a7152\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116258\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 6
-},
-{
-  "fields": {
-    "variant": 14,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"8933e93c9b70cf1cb35d68db0e249889\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116259\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 7
-},
-{
-  "fields": {
-    "variant": 15,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"f0b7cf534955812c93866b511d15b589\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116260\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 8
-},
-{
-  "fields": {
-    "variant": 16,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"aad1a672e09f92208a198930dc7b1b35\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116261\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 9
-},
-{
-  "fields": {
-    "variant": 17,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"663ec71e94cfd07ab31af550a96e37d5\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116262\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 10
-},
-{
-  "fields": {
-    "variant": 18,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"a401c69661fbc74f6e5eb88618a58ffc\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116263\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 11
-},
-{
-  "fields": {
-    "variant": 19,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"b5cacd076e7160e7607faafb5dbbea2a\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116264\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 12
 },
 {
   "fields": {
     "variant": 20,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"a7edcb7b58d6f22ad9d02b7d9fd09644\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116265\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"not specified\", \"clinvar-rcva:significance\": \"Likely benign\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116253\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
-  "pk": 13
+  "pk": 1
 },
 {
   "fields": {
-    "variant": 21,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"7f6a26a9bdefb6e6ccc57a50e6e87cee\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116266\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
+    "variant": 18,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"not specified\", \"clinvar-rcva:significance\": \"Likely benign\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116258\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
-  "pk": 14
+  "pk": 2
 },
 {
   "fields": {
-    "variant": 22,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"009131cb63a88be3505bab2661089bcc\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116267\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
+    "variant": 17,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"not specified\", \"clinvar-rcva:significance\": \"Likely benign\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116272\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
-  "pk": 15
+  "pk": 3
 },
 {
   "fields": {
-    "variant": 23,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"c0b04dcf377b174ea817dd56541f3a03\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116268\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
+    "variant": 19,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"not specified\", \"clinvar-rcva:significance\": \"Benign\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"1\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116282\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
-  "pk": 16
+  "pk": 4
 },
 {
   "fields": {
-    "variant": 24,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"06667df9468cb085dcf34cf219a4a29f\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116269\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
+    "variant": 11,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Malignant melanoma\", \"clinvar-rcva:significance\": \"not provided\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"nucleolar complex associated 2 homolog (S. cerevisiae)\", \"clinvar-rcva:accession\": \"RCV000064926\", \"clinvar-rcva:gene-symbol\": \"NOC2L\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
-  "pk": 17
+  "pk": 5
 },
 {
   "fields": {
-    "variant": 25,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"bf1a2946ae9d586373db9cc9b928340d\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116270\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
+    "variant": 12,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Malignant melanoma\", \"clinvar-rcva:significance\": \"not provided\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"nucleolar complex associated 2 homolog (S. cerevisiae)\", \"clinvar-rcva:accession\": \"RCV000064927\", \"clinvar-rcva:gene-symbol\": \"NOC2L\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
-  "pk": 18
+  "pk": 6
 },
 {
   "fields": {
-    "variant": 28,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"6a0472695d96d05f7e06f26987e730ff\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116271\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
+    "variant": 13,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Malignant melanoma\", \"clinvar-rcva:significance\": \"not provided\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"pleckstrin homology domain containing, family N member 1\", \"clinvar-rcva:accession\": \"RCV000064940\", \"clinvar-rcva:gene-symbol\": \"PLEKHN1\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
-  "pk": 19
+  "pk": 7
 },
 {
   "fields": {
-    "variant": 6,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"e5abcca8b5c31b88c32f15fc01057c5b\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116272\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
+    "variant": 16,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Immunodeficiency 38\", \"clinvar-rcva:significance\": \"Pathogenic\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"4\", \"clinvar-rcva:gene-name\": \"ISG15 ubiquitin-like modifier\", \"clinvar-rcva:accession\": \"RCV000148988\", \"clinvar-rcva:gene-symbol\": \"ISG15\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
-  "pk": 20
+  "pk": 8
 },
 {
   "fields": {
-    "variant": 29,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"88b0757507cce9ac50e3f754c64b47b1\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116273\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
+    "variant": 15,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Immunodeficiency 38\", \"clinvar-rcva:significance\": \"Pathogenic\", \"clinvar-rcva:citations\": \"PMID22859821\", \"clinvar-rcva:version\": \"4\", \"clinvar-rcva:gene-name\": \"ISG15 ubiquitin-like modifier\", \"clinvar-rcva:accession\": \"RCV000148989\", \"clinvar-rcva:gene-symbol\": \"ISG15\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
-  "pk": 21
+  "pk": 9
 },
 {
   "fields": {
-    "variant": 30,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"5133e40e44aeca8514afb999e083fc10\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116274\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
+    "variant": 14,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Immunodeficiency 38\", \"clinvar-rcva:significance\": \"Pathogenic\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"ISG15 ubiquitin-like modifier\", \"clinvar-rcva:accession\": \"RCV000162196\", \"clinvar-rcva:gene-symbol\": \"ISG15\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
-  "pk": 22
+  "pk": 10
 },
 {
   "fields": {
-    "variant": 31,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"4fe74db80472d7b26c73f201946666a8\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116275\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 23
-},
-{
-  "fields": {
-    "variant": 34,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"bfb3dfdf5aec088496cddf9c089ef7cb\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116277\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 24
-},
-{
-  "fields": {
-    "variant": 35,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"429a8965c530e4dbaa8a68832feac89b\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116278\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 25
-},
-{
-  "fields": {
-    "variant": 36,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"d475821644246abf891c3b6586f6fd12\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116279\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 26
-},
-{
-  "fields": {
-    "variant": 37,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Likely benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"a532fa1093f84a46392111b514e2ee6d\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116280\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 27
-},
-{
-  "fields": {
-    "variant": 38,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"f9b4819bb282902f45d81dfd02edd0c9\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116281\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 28
-},
-{
-  "fields": {
-    "variant": 8,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Benign\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not specified\", \"xml:hash\": \"160e165e66036835771680b8a0a3d2e4\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116282\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 29
-},
-{
-  "fields": {
-    "variant": 48,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Spondyloepimetaphyseal dysplasia with joint laxity\", \"xml:hash\": \"a4856d8e3080a5d741383788d57df38f\", \"gene:symbol\": \"B3GALT6\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000054392\", \"gene:name\": \"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 30
-},
-{
-  "fields": {
-    "variant": 44,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Spondyloepimetaphyseal dysplasia with joint laxity\", \"xml:hash\": \"7b1c4b2b76f8b0e02c217f76a622e2a8\", \"gene:symbol\": \"B3GALT6\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000054394\", \"gene:name\": \"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 31
-},
-{
-  "fields": {
-    "variant": 45,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Spondyloepimetaphyseal dysplasia with joint laxity\", \"xml:hash\": \"91fba98164bb957dbfee3194561955bb\", \"gene:symbol\": \"B3GALT6\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000054395\", \"gene:name\": \"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 32
-},
-{
-  "fields": {
-    "variant": 43,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Ehlers-Danlos syndrome, progeroid type, 2\", \"xml:hash\": \"0ae43ca88d35addcdfc572560dce1e6e\", \"gene:symbol\": \"B3GALT6\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000054399\", \"gene:name\": \"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 33
-},
-{
-  "fields": {
-    "variant": 41,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Immunodeficiency 16\", \"xml:hash\": \"10a6bc51546a323395681b36f214e230\", \"gene:symbol\": \"TNFRSF4\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000082860\", \"gene:name\": \"tumor necrosis factor receptor superfamily, member 4\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 34
-},
-{
-  "fields": {
-    "variant": 32,
-    "tags": "{\"clinvar-accession:version\": \"28\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Myasthenic syndrome, congenital, with pre- and postsynaptic defects\", \"xml:hash\": \"cb9e4a001788eacfe7b5eae9802784dd\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000019902\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 35
-},
-{
-  "fields": {
-    "variant": 39,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"not provided\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Malignant melanoma\", \"xml:hash\": \"e44f7fa78ca20226b3fcb86d91c40c02\", \"gene:symbol\": \"TTLL10\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000064012\", \"gene:name\": \"tubulin tyrosine ligase-like family member 10\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 36
-},
-{
-  "fields": {
-    "variant": 40,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"not provided\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Malignant melanoma\", \"xml:hash\": \"4420a0e992742819ba0ddbfbba583b56\", \"gene:symbol\": \"TTLL10\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000064015\", \"gene:name\": \"tubulin tyrosine ligase-like family member 10\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 37
-},
-{
-  "fields": {
-    "variant": 1,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"not provided\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Malignant melanoma\", \"xml:hash\": \"c37662731c8b5810157415f85f762232\", \"gene:symbol\": \"NOC2L\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000064926\", \"gene:name\": \"nucleolar complex associated 2 homolog (S. cerevisiae)\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 38
-},
-{
-  "fields": {
-    "variant": 2,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"not provided\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Malignant melanoma\", \"xml:hash\": \"7cb953c00c3283f2f0918ce62abee4dd\", \"gene:symbol\": \"NOC2L\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000064927\", \"gene:name\": \"nucleolar complex associated 2 homolog (S. cerevisiae)\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 39
-},
-{
-  "fields": {
-    "variant": 3,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"not provided\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Malignant melanoma\", \"xml:hash\": \"50e62113f35bfeea8ae1e4bc1039c0a6\", \"gene:symbol\": \"PLEKHN1\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000064940\", \"gene:name\": \"pleckstrin homology domain containing, family N member 1\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 40
-},
-{
-  "fields": {
-    "variant": 5,
-    "tags": "{\"clinvar-accession:version\": \"4\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Immunodeficiency 38\", \"xml:hash\": \"743770f33838a3b4a320fd4cb67e2702\", \"gene:symbol\": \"ISG15\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000148988\", \"gene:name\": \"ISG15 ubiquitin-like modifier\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 41
-},
-{
-  "fields": {
-    "variant": 4,
-    "tags": "{\"clinvar-accession:version\": \"4\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Immunodeficiency 38\", \"xml:hash\": \"ca836ce64b447ae35f8f087bcf7004ca\", \"gene:symbol\": \"ISG15\", \"citations\": \"PMID22859821\", \"clinvar-accession:id\": \"RCV000148989\", \"gene:name\": \"ISG15 ubiquitin-like modifier\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 42
-},
-{
-  "fields": {
-    "variant": 50,
-    "tags": "{\"clinvar-accession:version\": \"4\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"SPONDYLOEPIMETAPHYSEAL DYSPLASIA WITH JOINT LAXITY, TYPE 1, WITH FRACTURES\", \"xml:hash\": \"1297d70e0bce9e9c1cbb9a9609c02f9b\", \"gene:symbol\": \"B3GALT6\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000054401\", \"gene:name\": \"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 43
-},
-{
-  "fields": {
-    "variant": 33,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Uncertain significance\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not provided\", \"xml:hash\": \"0831847124082e7df5d28383e68fb8f1\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000116276\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 44
-},
-{
-  "fields": {
-    "variant": 42,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Spondyloepimetaphyseal dysplasia with joint laxity\", \"xml:hash\": \"d25cd3d924fa80997ea9b4cc8c96f4d4\", \"gene:symbol\": \"B3GALT6\", \"citations\": \"PMID23664117\", \"clinvar-accession:id\": \"RCV000054390\", \"gene:name\": \"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 45
-},
-{
-  "fields": {
-    "variant": 49,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Ehlers-Danlos syndrome, progeroid type, 2\", \"xml:hash\": \"2a31bd105a39b7dad28a1667148254a4\", \"gene:symbol\": \"B3GALT6\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000054398\", \"gene:name\": \"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 46
-},
-{
-  "fields": {
-    "variant": 47,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Ehlers-Danlos syndrome, progeroid type, 2\", \"xml:hash\": \"964db4583eec97579748c4c2cd8d1104\", \"gene:symbol\": \"B3GALT6\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000054400\", \"gene:name\": \"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 47
-},
-{
-  "fields": {
-    "variant": 46,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"SPONDYLOEPIMETAPHYSEAL DYSPLASIA WITH JOINT LAXITY, TYPE 1, WITH FRACTURES\", \"xml:hash\": \"43d7d3c9b5fd2a2529d23e579f6a85d0\", \"gene:symbol\": \"B3GALT6\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000054403\", \"gene:name\": \"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 48
-},
-{
-  "fields": {
-    "variant": 26,
-    "tags": "{\"clinvar-accession:version\": \"2\", \"clinvar-accession:significance\": \"Pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"Immunodeficiency 38\", \"xml:hash\": \"fe46bc72fe0d3f67b4af2e087557c619\", \"gene:symbol\": \"ISG15\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000162196\", \"gene:name\": \"ISG15 ubiquitin-like modifier\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 49
-},
-{
-  "fields": {
-    "variant": 27,
-    "tags": "{\"clinvar-accession:version\": \"1\", \"clinvar-accession:significance\": \"Likely pathogenic\", \"record_status\": \"current\", \"clinvar-accession:disease-name\": \"not provided\", \"xml:hash\": \"b76ecd0867cb734a0878c429c086d73f\", \"gene:symbol\": \"AGRN\", \"citations\": \"\", \"clinvar-accession:id\": \"RCV000171144\", \"gene:name\": \"agrin\", \"type\": \"clinvar-accession\", \"num_submissions\": \"1\"}"
-  },
-  "model": "gennotes_server.relation",
-  "pk": 50
-},
-{
-  "fields": {
-    "comment": "Variant added based on presence in ClinVar file: clinvar_20150504.vcf.gz",
-    "date_created": "2015-06-05T00:44:29.648Z",
+    "comment": "Relation added based on presence in XML file: ClinVarFullRelease_2015-06.xml.gz",
+    "date_created": "2015-06-10T21:20:43.358Z",
     "manager_slug": "default",
     "user": [
       "clinvar-variant-importer"
@@ -1308,18 +708,6 @@
   },
   "model": "reversion.revision",
   "pk": 1
-},
-{
-  "fields": {
-    "comment": "Relation added based on presence in XML file: ClinVarFullRelease_2015-06.xml.gz",
-    "date_created": "2015-06-10T00:20:34.239Z",
-    "manager_slug": "default",
-    "user": [
-      "clinvar-variant-importer"
-    ]
-  },
-  "model": "reversion.revision",
-  "pk": 2
 },
 {
   "fields": {
@@ -1331,8 +719,8 @@
       "relation"
     ],
     "object_id_int": 1,
-    "serialized_data": "[{\"fields\": {\"variant\": 9, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"18ef80437a2f688f9ff76cd4afbdc0a1\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116253\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 1}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"variant\": 20, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"not specified\\\", \\\"clinvar-rcva:significance\\\": \\\"Likely benign\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116253\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 1}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 1
@@ -1347,8 +735,8 @@
       "relation"
     ],
     "object_id_int": 2,
-    "serialized_data": "[{\"fields\": {\"variant\": 10, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"6bbaae48006377115d1b2eed38a84533\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116254\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 2}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"variant\": 18, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"not specified\\\", \\\"clinvar-rcva:significance\\\": \\\"Likely benign\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116258\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 2}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 2
@@ -1363,8 +751,8 @@
       "relation"
     ],
     "object_id_int": 3,
-    "serialized_data": "[{\"fields\": {\"variant\": 11, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"2977a1ce1f0082085b016cd607519e7a\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116255\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 3}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"variant\": 17, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"not specified\\\", \\\"clinvar-rcva:significance\\\": \\\"Likely benign\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116272\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 3}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 3
@@ -1379,8 +767,8 @@
       "relation"
     ],
     "object_id_int": 4,
-    "serialized_data": "[{\"fields\": {\"variant\": 12, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"e73797024ff24f2aaf83cc65aed3fff6\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116256\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 4}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"variant\": 19, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"not specified\\\", \\\"clinvar-rcva:significance\\\": \\\"Benign\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"1\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116282\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 4}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 4
@@ -1395,8 +783,8 @@
       "relation"
     ],
     "object_id_int": 5,
-    "serialized_data": "[{\"fields\": {\"variant\": 13, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"c66ba7b6d12e2a62705176154e78d9bb\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116257\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 5}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"variant\": 11, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Malignant melanoma\\\", \\\"clinvar-rcva:significance\\\": \\\"not provided\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"nucleolar complex associated 2 homolog (S. cerevisiae)\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000064926\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"NOC2L\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 5}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 5
@@ -1411,8 +799,8 @@
       "relation"
     ],
     "object_id_int": 6,
-    "serialized_data": "[{\"fields\": {\"variant\": 7, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"493ab81e250de400c068cee6b68a7152\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116258\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 6}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"variant\": 12, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Malignant melanoma\\\", \\\"clinvar-rcva:significance\\\": \\\"not provided\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"nucleolar complex associated 2 homolog (S. cerevisiae)\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000064927\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"NOC2L\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 6}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 6
@@ -1427,8 +815,8 @@
       "relation"
     ],
     "object_id_int": 7,
-    "serialized_data": "[{\"fields\": {\"variant\": 14, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"8933e93c9b70cf1cb35d68db0e249889\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116259\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 7}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"variant\": 13, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Malignant melanoma\\\", \\\"clinvar-rcva:significance\\\": \\\"not provided\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"pleckstrin homology domain containing, family N member 1\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000064940\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"PLEKHN1\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 7}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 7
@@ -1443,8 +831,8 @@
       "relation"
     ],
     "object_id_int": 8,
-    "serialized_data": "[{\"fields\": {\"variant\": 15, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"f0b7cf534955812c93866b511d15b589\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116260\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 8}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"variant\": 16, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Immunodeficiency 38\\\", \\\"clinvar-rcva:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"4\\\", \\\"clinvar-rcva:gene-name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000148988\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"ISG15\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 8}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 8
@@ -1459,8 +847,8 @@
       "relation"
     ],
     "object_id_int": 9,
-    "serialized_data": "[{\"fields\": {\"variant\": 16, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"aad1a672e09f92208a198930dc7b1b35\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116261\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 9}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"variant\": 15, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Immunodeficiency 38\\\", \\\"clinvar-rcva:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-rcva:citations\\\": \\\"PMID22859821\\\", \\\"clinvar-rcva:version\\\": \\\"4\\\", \\\"clinvar-rcva:gene-name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000148989\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"ISG15\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 9}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 9
@@ -1475,8 +863,8 @@
       "relation"
     ],
     "object_id_int": 10,
-    "serialized_data": "[{\"fields\": {\"variant\": 17, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"663ec71e94cfd07ab31af550a96e37d5\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116262\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 10}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"variant\": 14, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Immunodeficiency 38\\\", \\\"clinvar-rcva:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000162196\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"ISG15\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 10}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 10
@@ -1484,15 +872,15 @@
 {
   "fields": {
     "format": "json",
-    "object_repr": "Relation object",
+    "object_repr": "pos-b37=883516; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1",
     "object_id": "11",
     "content_type": [
       "gennotes_server",
-      "relation"
+      "variant"
     ],
     "object_id_int": 11,
-    "serialized_data": "[{\"fields\": {\"variant\": 18, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"a401c69661fbc74f6e5eb88618a58ffc\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116263\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 11}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"883516\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 11}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 11
@@ -1500,15 +888,15 @@
 {
   "fields": {
     "format": "json",
-    "object_repr": "Relation object",
+    "object_repr": "pos-b37=891344; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1",
     "object_id": "12",
     "content_type": [
       "gennotes_server",
-      "relation"
+      "variant"
     ],
     "object_id_int": 12,
-    "serialized_data": "[{\"fields\": {\"variant\": 19, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"b5cacd076e7160e7607faafb5dbbea2a\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116264\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 12}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"891344\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 12}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 12
@@ -1516,15 +904,15 @@
 {
   "fields": {
     "format": "json",
-    "object_repr": "Relation object",
+    "object_repr": "pos-b37=906168; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1",
     "object_id": "13",
     "content_type": [
       "gennotes_server",
-      "relation"
+      "variant"
     ],
     "object_id_int": 13,
-    "serialized_data": "[{\"fields\": {\"variant\": 20, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"a7edcb7b58d6f22ad9d02b7d9fd09644\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116265\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 13}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"906168\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 13}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 13
@@ -1532,15 +920,15 @@
 {
   "fields": {
     "format": "json",
-    "object_repr": "Relation object",
+    "object_repr": "pos-b37=949523; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1",
     "object_id": "14",
     "content_type": [
       "gennotes_server",
-      "relation"
+      "variant"
     ],
     "object_id_int": 14,
-    "serialized_data": "[{\"fields\": {\"variant\": 21, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"7f6a26a9bdefb6e6ccc57a50e6e87cee\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116266\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 14}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949523\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 14}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 14
@@ -1548,15 +936,15 @@
 {
   "fields": {
     "format": "json",
-    "object_repr": "Relation object",
+    "object_repr": "pos-b37=949696; var-allele-b37=CG; ref-allele-b37=C; chrom-b37=1",
     "object_id": "15",
     "content_type": [
       "gennotes_server",
-      "relation"
+      "variant"
     ],
     "object_id_int": 15,
-    "serialized_data": "[{\"fields\": {\"variant\": 22, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"009131cb63a88be3505bab2661089bcc\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116267\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 15}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949696\\\", \\\"var-allele-b37\\\": \\\"CG\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 15}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 15
@@ -1564,15 +952,15 @@
 {
   "fields": {
     "format": "json",
-    "object_repr": "Relation object",
+    "object_repr": "pos-b37=949739; var-allele-b37=T; ref-allele-b37=G; chrom-b37=1",
     "object_id": "16",
     "content_type": [
       "gennotes_server",
-      "relation"
+      "variant"
     ],
     "object_id_int": 16,
-    "serialized_data": "[{\"fields\": {\"variant\": 23, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"c0b04dcf377b174ea817dd56541f3a03\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116268\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 16}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949739\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 16}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 16
@@ -1580,15 +968,15 @@
 {
   "fields": {
     "format": "json",
-    "object_repr": "Relation object",
+    "object_repr": "pos-b37=955597; var-allele-b37=T; ref-allele-b37=G; chrom-b37=1",
     "object_id": "17",
     "content_type": [
       "gennotes_server",
-      "relation"
+      "variant"
     ],
     "object_id_int": 17,
-    "serialized_data": "[{\"fields\": {\"variant\": 24, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"06667df9468cb085dcf34cf219a4a29f\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116269\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 17}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"955597\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 17}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 17
@@ -1596,15 +984,15 @@
 {
   "fields": {
     "format": "json",
-    "object_repr": "Relation object",
+    "object_repr": "pos-b37=957640; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1",
     "object_id": "18",
     "content_type": [
       "gennotes_server",
-      "relation"
+      "variant"
     ],
     "object_id_int": 18,
-    "serialized_data": "[{\"fields\": {\"variant\": 25, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"bf1a2946ae9d586373db9cc9b928340d\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116270\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 18}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"957640\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 18}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 18
@@ -1612,15 +1000,15 @@
 {
   "fields": {
     "format": "json",
-    "object_repr": "Relation object",
+    "object_repr": "pos-b37=976629; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1",
     "object_id": "19",
     "content_type": [
       "gennotes_server",
-      "relation"
+      "variant"
     ],
     "object_id_int": 19,
-    "serialized_data": "[{\"fields\": {\"variant\": 28, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"6a0472695d96d05f7e06f26987e730ff\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116271\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 19}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"976629\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 19}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 19
@@ -1628,897 +1016,17 @@
 {
   "fields": {
     "format": "json",
-    "object_repr": "Relation object",
+    "object_repr": "pos-b37=976963; var-allele-b37=G; ref-allele-b37=A; chrom-b37=1",
     "object_id": "20",
     "content_type": [
       "gennotes_server",
-      "relation"
+      "variant"
     ],
     "object_id_int": 20,
-    "serialized_data": "[{\"fields\": {\"variant\": 6, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"e5abcca8b5c31b88c32f15fc01057c5b\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116272\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 20}]",
-    "revision": 2
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"976963\\\", \\\"var-allele-b37\\\": \\\"G\\\", \\\"ref-allele-b37\\\": \\\"A\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 20}]",
+    "revision": 1
   },
   "model": "reversion.version",
   "pk": 20
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "21",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 21,
-    "serialized_data": "[{\"fields\": {\"variant\": 29, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"88b0757507cce9ac50e3f754c64b47b1\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116273\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 21}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 21
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "22",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 22,
-    "serialized_data": "[{\"fields\": {\"variant\": 30, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"5133e40e44aeca8514afb999e083fc10\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116274\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 22}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 22
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "23",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 23,
-    "serialized_data": "[{\"fields\": {\"variant\": 31, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"4fe74db80472d7b26c73f201946666a8\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116275\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 23}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 23
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "24",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 24,
-    "serialized_data": "[{\"fields\": {\"variant\": 34, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"bfb3dfdf5aec088496cddf9c089ef7cb\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116277\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 24}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 24
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "25",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 25,
-    "serialized_data": "[{\"fields\": {\"variant\": 35, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"429a8965c530e4dbaa8a68832feac89b\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116278\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 25}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 25
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=C; pos_b37=949523; chrom_b37=1; var_allele_b37=T",
-    "object_id": "26",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 26,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"C\\\", \\\"pos_b37\\\": \\\"949523\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"T\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 26}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 26
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=G; pos_b37=980824; chrom_b37=1; var_allele_b37=C",
-    "object_id": "27",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 27,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"G\\\", \\\"pos_b37\\\": \\\"980824\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"C\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 27}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 27
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=G; pos_b37=984971; chrom_b37=1; var_allele_b37=A",
-    "object_id": "28",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 28,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"G\\\", \\\"pos_b37\\\": \\\"984971\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"A\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 28}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 28
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=C; pos_b37=985171; chrom_b37=1; var_allele_b37=T",
-    "object_id": "29",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 29,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"C\\\", \\\"pos_b37\\\": \\\"985171\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"T\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 29}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 29
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=G; pos_b37=985826; chrom_b37=1; var_allele_b37=A",
-    "object_id": "30",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 30,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"G\\\", \\\"pos_b37\\\": \\\"985826\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"A\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 30}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 30
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=C; pos_b37=985900; chrom_b37=1; var_allele_b37=T",
-    "object_id": "31",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 31,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"C\\\", \\\"pos_b37\\\": \\\"985900\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"T\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 31}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 31
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=G; pos_b37=985955; chrom_b37=1; var_allele_b37=C",
-    "object_id": "32",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 32,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"G\\\", \\\"pos_b37\\\": \\\"985955\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"C\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 32}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 32
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=G; pos_b37=986732; chrom_b37=1; var_allele_b37=A",
-    "object_id": "33",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 33,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"G\\\", \\\"pos_b37\\\": \\\"986732\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"A\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 33}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 33
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=T; pos_b37=986737; chrom_b37=1; var_allele_b37=C",
-    "object_id": "34",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 34,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"T\\\", \\\"pos_b37\\\": \\\"986737\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"C\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 34}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 34
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=C; pos_b37=987142; chrom_b37=1; var_allele_b37=T",
-    "object_id": "35",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 35,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"C\\\", \\\"pos_b37\\\": \\\"987142\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"T\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 35}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 35
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=C; pos_b37=987200; chrom_b37=1; var_allele_b37=T",
-    "object_id": "36",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 36,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"C\\\", \\\"pos_b37\\\": \\\"987200\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"T\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 36}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 36
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=G; pos_b37=989207; chrom_b37=1; var_allele_b37=C",
-    "object_id": "37",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 37,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"G\\\", \\\"pos_b37\\\": \\\"989207\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"C\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 37}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 37
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=C; pos_b37=990280; chrom_b37=1; var_allele_b37=T",
-    "object_id": "38",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 38,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"C\\\", \\\"pos_b37\\\": \\\"990280\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"T\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 38}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 38
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=C; pos_b37=1115553; chrom_b37=1; var_allele_b37=T",
-    "object_id": "39",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 39,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"C\\\", \\\"pos_b37\\\": \\\"1115553\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"T\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 39}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 39
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=C; pos_b37=1119314; chrom_b37=1; var_allele_b37=G",
-    "object_id": "40",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 40,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"C\\\", \\\"pos_b37\\\": \\\"1119314\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"G\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 40}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 40
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=G; pos_b37=1149118; chrom_b37=1; var_allele_b37=A",
-    "object_id": "41",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 41,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"G\\\", \\\"pos_b37\\\": \\\"1149118\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"A\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 41}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 41
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=A; pos_b37=1167659; chrom_b37=1; var_allele_b37=G",
-    "object_id": "42",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 42,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"A\\\", \\\"pos_b37\\\": \\\"1167659\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"G\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 42}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 42
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=C; pos_b37=1167674; chrom_b37=1; var_allele_b37=T",
-    "object_id": "43",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 43,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"C\\\", \\\"pos_b37\\\": \\\"1167674\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"T\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 43}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 43
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=A; pos_b37=1167851; chrom_b37=1; var_allele_b37=G",
-    "object_id": "44",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 44,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"A\\\", \\\"pos_b37\\\": \\\"1167851\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"G\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 44}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 44
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=C; pos_b37=1167858; chrom_b37=1; var_allele_b37=T",
-    "object_id": "45",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 45,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"C\\\", \\\"pos_b37\\\": \\\"1167858\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"T\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 45}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 45
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=CGGCGCGCCCTGGAGCGGGAGCA; pos_b37=1167974; chrom_b37=1; var_allele_b37=C",
-    "object_id": "46",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 46,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"CGGCGCGCCCTGGAGCGGGAGCA\\\", \\\"pos_b37\\\": \\\"1167974\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"C\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 46}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 46
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=GTGCTGGCCA; pos_b37=1168064; chrom_b37=1; var_allele_b37=G",
-    "object_id": "47",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 47,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"GTGCTGGCCA\\\", \\\"pos_b37\\\": \\\"1168064\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"G\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 47}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 47
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=G; pos_b37=1168124; chrom_b37=1; var_allele_b37=A",
-    "object_id": "48",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 48,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"G\\\", \\\"pos_b37\\\": \\\"1168124\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"A\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 48}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 48
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=CG; pos_b37=1168239; chrom_b37=1; var_allele_b37=C",
-    "object_id": "49",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 49,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"CG\\\", \\\"pos_b37\\\": \\\"1168239\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"C\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 49}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 49
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "ref_allele_b37=G; pos_b37=1168277; chrom_b37=1; var_allele_b37=C",
-    "object_id": "50",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 50,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"ref_allele_b37\\\": \\\"G\\\", \\\"pos_b37\\\": \\\"1168277\\\", \\\"chrom_b37\\\": \\\"1\\\", \\\"var_allele_b37\\\": \\\"C\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 50}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 50
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "30",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 30,
-    "serialized_data": "[{\"fields\": {\"variant\": 48, \"tags\": \"{\\\"gene:name\\\": \\\"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Spondyloepimetaphyseal dysplasia with joint laxity\\\", \\\"xml:hash\\\": \\\"a4856d8e3080a5d741383788d57df38f\\\", \\\"gene:symbol\\\": \\\"B3GALT6\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000054392\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 30}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 51
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "27",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 27,
-    "serialized_data": "[{\"fields\": {\"variant\": 37, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"a532fa1093f84a46392111b514e2ee6d\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116280\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 27}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 52
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "31",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 31,
-    "serialized_data": "[{\"fields\": {\"variant\": 44, \"tags\": \"{\\\"gene:name\\\": \\\"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Spondyloepimetaphyseal dysplasia with joint laxity\\\", \\\"xml:hash\\\": \\\"7b1c4b2b76f8b0e02c217f76a622e2a8\\\", \\\"gene:symbol\\\": \\\"B3GALT6\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000054394\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 31}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 53
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "32",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 32,
-    "serialized_data": "[{\"fields\": {\"variant\": 45, \"tags\": \"{\\\"gene:name\\\": \\\"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Spondyloepimetaphyseal dysplasia with joint laxity\\\", \\\"xml:hash\\\": \\\"91fba98164bb957dbfee3194561955bb\\\", \\\"gene:symbol\\\": \\\"B3GALT6\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000054395\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 32}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 54
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "48",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 48,
-    "serialized_data": "[{\"fields\": {\"variant\": 46, \"tags\": \"{\\\"gene:name\\\": \\\"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"SPONDYLOEPIMETAPHYSEAL DYSPLASIA WITH JOINT LAXITY, TYPE 1, WITH FRACTURES\\\", \\\"xml:hash\\\": \\\"43d7d3c9b5fd2a2529d23e579f6a85d0\\\", \\\"gene:symbol\\\": \\\"B3GALT6\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000054403\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 48}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 55
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "49",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 49,
-    "serialized_data": "[{\"fields\": {\"variant\": 26, \"tags\": \"{\\\"gene:name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Immunodeficiency 38\\\", \\\"xml:hash\\\": \\\"fe46bc72fe0d3f67b4af2e087557c619\\\", \\\"gene:symbol\\\": \\\"ISG15\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000162196\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 49}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 56
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "33",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 33,
-    "serialized_data": "[{\"fields\": {\"variant\": 43, \"tags\": \"{\\\"gene:name\\\": \\\"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Ehlers-Danlos syndrome, progeroid type, 2\\\", \\\"xml:hash\\\": \\\"0ae43ca88d35addcdfc572560dce1e6e\\\", \\\"gene:symbol\\\": \\\"B3GALT6\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000054399\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 33}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 57
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "29",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 29,
-    "serialized_data": "[{\"fields\": {\"variant\": 8, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"160e165e66036835771680b8a0a3d2e4\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116282\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 29}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 58
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "45",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 45,
-    "serialized_data": "[{\"fields\": {\"variant\": 42, \"tags\": \"{\\\"gene:name\\\": \\\"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\\\", \\\"citations\\\": \\\"PMID23664117\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Spondyloepimetaphyseal dysplasia with joint laxity\\\", \\\"xml:hash\\\": \\\"d25cd3d924fa80997ea9b4cc8c96f4d4\\\", \\\"gene:symbol\\\": \\\"B3GALT6\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000054390\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 45}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 59
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "28",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 28,
-    "serialized_data": "[{\"fields\": {\"variant\": 38, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"f9b4819bb282902f45d81dfd02edd0c9\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116281\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 28}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 60
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "34",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 34,
-    "serialized_data": "[{\"fields\": {\"variant\": 41, \"tags\": \"{\\\"gene:name\\\": \\\"tumor necrosis factor receptor superfamily, member 4\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Immunodeficiency 16\\\", \\\"xml:hash\\\": \\\"10a6bc51546a323395681b36f214e230\\\", \\\"gene:symbol\\\": \\\"TNFRSF4\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000082860\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 34}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 61
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "35",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 35,
-    "serialized_data": "[{\"fields\": {\"variant\": 32, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Myasthenic syndrome, congenital, with pre- and postsynaptic defects\\\", \\\"xml:hash\\\": \\\"cb9e4a001788eacfe7b5eae9802784dd\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000019902\\\", \\\"clinvar-accession:version\\\": \\\"28\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 35}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 62
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "43",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 43,
-    "serialized_data": "[{\"fields\": {\"variant\": 50, \"tags\": \"{\\\"gene:name\\\": \\\"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"SPONDYLOEPIMETAPHYSEAL DYSPLASIA WITH JOINT LAXITY, TYPE 1, WITH FRACTURES\\\", \\\"xml:hash\\\": \\\"1297d70e0bce9e9c1cbb9a9609c02f9b\\\", \\\"gene:symbol\\\": \\\"B3GALT6\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000054401\\\", \\\"clinvar-accession:version\\\": \\\"4\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 43}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 63
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "36",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 36,
-    "serialized_data": "[{\"fields\": {\"variant\": 39, \"tags\": \"{\\\"gene:name\\\": \\\"tubulin tyrosine ligase-like family member 10\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Malignant melanoma\\\", \\\"xml:hash\\\": \\\"e44f7fa78ca20226b3fcb86d91c40c02\\\", \\\"gene:symbol\\\": \\\"TTLL10\\\", \\\"clinvar-accession:significance\\\": \\\"not provided\\\", \\\"clinvar-accession:id\\\": \\\"RCV000064012\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 36}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 64
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "26",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 26,
-    "serialized_data": "[{\"fields\": {\"variant\": 36, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not specified\\\", \\\"xml:hash\\\": \\\"d475821644246abf891c3b6586f6fd12\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Benign\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116279\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 26}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 65
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "37",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 37,
-    "serialized_data": "[{\"fields\": {\"variant\": 40, \"tags\": \"{\\\"gene:name\\\": \\\"tubulin tyrosine ligase-like family member 10\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Malignant melanoma\\\", \\\"xml:hash\\\": \\\"4420a0e992742819ba0ddbfbba583b56\\\", \\\"gene:symbol\\\": \\\"TTLL10\\\", \\\"clinvar-accession:significance\\\": \\\"not provided\\\", \\\"clinvar-accession:id\\\": \\\"RCV000064015\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 37}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 66
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "50",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 50,
-    "serialized_data": "[{\"fields\": {\"variant\": 27, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not provided\\\", \\\"xml:hash\\\": \\\"b76ecd0867cb734a0878c429c086d73f\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Likely pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000171144\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 50}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 67
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "38",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 38,
-    "serialized_data": "[{\"fields\": {\"variant\": 1, \"tags\": \"{\\\"gene:name\\\": \\\"nucleolar complex associated 2 homolog (S. cerevisiae)\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Malignant melanoma\\\", \\\"xml:hash\\\": \\\"c37662731c8b5810157415f85f762232\\\", \\\"gene:symbol\\\": \\\"NOC2L\\\", \\\"clinvar-accession:significance\\\": \\\"not provided\\\", \\\"clinvar-accession:id\\\": \\\"RCV000064926\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 38}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 68
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "47",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 47,
-    "serialized_data": "[{\"fields\": {\"variant\": 47, \"tags\": \"{\\\"gene:name\\\": \\\"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Ehlers-Danlos syndrome, progeroid type, 2\\\", \\\"xml:hash\\\": \\\"964db4583eec97579748c4c2cd8d1104\\\", \\\"gene:symbol\\\": \\\"B3GALT6\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000054400\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 47}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 69
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "39",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 39,
-    "serialized_data": "[{\"fields\": {\"variant\": 2, \"tags\": \"{\\\"gene:name\\\": \\\"nucleolar complex associated 2 homolog (S. cerevisiae)\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Malignant melanoma\\\", \\\"xml:hash\\\": \\\"7cb953c00c3283f2f0918ce62abee4dd\\\", \\\"gene:symbol\\\": \\\"NOC2L\\\", \\\"clinvar-accession:significance\\\": \\\"not provided\\\", \\\"clinvar-accession:id\\\": \\\"RCV000064927\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 39}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 70
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "44",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 44,
-    "serialized_data": "[{\"fields\": {\"variant\": 33, \"tags\": \"{\\\"gene:name\\\": \\\"agrin\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"not provided\\\", \\\"xml:hash\\\": \\\"0831847124082e7df5d28383e68fb8f1\\\", \\\"gene:symbol\\\": \\\"AGRN\\\", \\\"clinvar-accession:significance\\\": \\\"Uncertain significance\\\", \\\"clinvar-accession:id\\\": \\\"RCV000116276\\\", \\\"clinvar-accession:version\\\": \\\"1\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 44}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 71
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "40",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 40,
-    "serialized_data": "[{\"fields\": {\"variant\": 3, \"tags\": \"{\\\"gene:name\\\": \\\"pleckstrin homology domain containing, family N member 1\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Malignant melanoma\\\", \\\"xml:hash\\\": \\\"50e62113f35bfeea8ae1e4bc1039c0a6\\\", \\\"gene:symbol\\\": \\\"PLEKHN1\\\", \\\"clinvar-accession:significance\\\": \\\"not provided\\\", \\\"clinvar-accession:id\\\": \\\"RCV000064940\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 40}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 72
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "41",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 41,
-    "serialized_data": "[{\"fields\": {\"variant\": 5, \"tags\": \"{\\\"gene:name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Immunodeficiency 38\\\", \\\"xml:hash\\\": \\\"743770f33838a3b4a320fd4cb67e2702\\\", \\\"gene:symbol\\\": \\\"ISG15\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000148988\\\", \\\"clinvar-accession:version\\\": \\\"4\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 41}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 73
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "46",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 46,
-    "serialized_data": "[{\"fields\": {\"variant\": 49, \"tags\": \"{\\\"gene:name\\\": \\\"UDP-Gal:betaGal beta 1,3-galactosyltransferase polypeptide 6\\\", \\\"citations\\\": \\\"\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Ehlers-Danlos syndrome, progeroid type, 2\\\", \\\"xml:hash\\\": \\\"2a31bd105a39b7dad28a1667148254a4\\\", \\\"gene:symbol\\\": \\\"B3GALT6\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000054398\\\", \\\"clinvar-accession:version\\\": \\\"2\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 46}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 74
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "42",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 42,
-    "serialized_data": "[{\"fields\": {\"variant\": 4, \"tags\": \"{\\\"gene:name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"citations\\\": \\\"PMID22859821\\\", \\\"record_status\\\": \\\"current\\\", \\\"clinvar-accession:disease-name\\\": \\\"Immunodeficiency 38\\\", \\\"xml:hash\\\": \\\"ca836ce64b447ae35f8f087bcf7004ca\\\", \\\"gene:symbol\\\": \\\"ISG15\\\", \\\"clinvar-accession:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-accession:id\\\": \\\"RCV000148989\\\", \\\"clinvar-accession:version\\\": \\\"4\\\", \\\"type\\\": \\\"clinvar-accession\\\", \\\"num_submissions\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 42}]",
-    "revision": 2
-  },
-  "model": "reversion.version",
-  "pk": 75
 }
 ]

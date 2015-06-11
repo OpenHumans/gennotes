@@ -26,10 +26,10 @@ class VariantLookupMixin(object):
             parts = variant_lookup.split('-')
             if parts[0] == 'b37':
                 return {
-                    'tags__chrom_b37': parts[1],
-                    'tags__pos_b37': parts[2],
-                    'tags__ref_allele_b37': parts[3],
-                    'tags__var_allele_b37': parts[4],
+                    'tags__chrom-b37': parts[1],
+                    'tags__pos-b37': parts[2],
+                    'tags__ref-allele-b37': parts[3],
+                    'tags__var-allele-b37': parts[4],
                 }
         except IndexError:
             return None

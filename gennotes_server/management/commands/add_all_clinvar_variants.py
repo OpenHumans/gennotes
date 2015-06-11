@@ -3,6 +3,7 @@ import fileinput
 from ftplib import FTP
 import gzip
 import json
+import logging
 import md5
 from optparse import make_option
 import os
@@ -24,7 +25,7 @@ try:
     # faster implementation using bindings to libxml
     from lxml import etree as ET
 except ImportError:
-    print 'Falling back to default ElementTree implementation'
+    logging.debug('Falling back to default ElementTree implementation')
     from xml.etree import ElementTree as ET
 
 CV_VCF_DIR = 'pub/clinvar/vcf_GRCh37'
@@ -35,11 +36,40 @@ CV_XML_REGEX = r'^ClinVarFullRelease_[0-9]{4}-[0-9]{2}.xml.gz$'
 
 SPLITTER = re.compile('[,|]')
 
-HASH_KEYS = ("type", "clinvar-accession:id", "clinvar-accession:version",
-             "clinvar-accession:significance",
-             "clinvar-accession:disease-name",
-             'num_submissions', 'record_status',
-             'gene:name', 'gene:symbol', 'citations')
+# Keep track of tags used for ReferenceClinVarAssertion data. Tags are keys.
+# Values are tuples of (variable-type, function); during parsing the function
+# is applied to that variable type to retrieve corresponding data from the XML.
+RCVA_DATA = {
+    'type':
+        (None, lambda: 'clinvar-rcva'),
+    'clinvar-rcva:accession':
+        ('rcva', lambda rcva: rcva.find('ClinVarAccession').get('Acc')),
+    'clinvar-rcva:version':
+        ('rcva', lambda rcva: rcva.find('ClinVarAccession').get('Version')),
+    'clinvar-rcva:disease-name':
+        ('rcva', lambda rcva: rcva.findtext(
+            'TraitSet[@Type="Disease"]/Trait[@Type="Disease"]/'
+            'Name/ElementValue[@Type="Preferred"]')),
+    'clinvar-rcva:significance':
+        ('rcva', lambda rcva: rcva.findtext(
+            'ClinicalSignificance/Description')),
+    'clinvar-rcva:num-submissions':
+        ('ele', lambda ele: str(len(ele.findall('ClinVarAssertion')))),
+    'clinvar-rcva:record-status':
+        ('rcva', lambda rcva: rcva.findtext('RecordStatus')),
+    'clinvar-rcva:gene-name':
+        ('rcva', lambda rcva: rcva.find(
+            'MeasureSet/Measure/MeasureRelationship'
+            '[@Type="variant in gene"]').findtext('Name/ElementValue')),
+    'clinvar-rcva:gene-symbol':
+        ('rcva', lambda rcva: rcva.find(
+            'MeasureSet/Measure/MeasureRelationship'
+            '[@Type="variant in gene"]').findtext('Symbol/ElementValue')),
+    'clinvar-rcva:citations':
+        ('rcva', lambda rcva:
+            ';'.join(['PMID%s' % c.text for c in rcva.findall(
+                'MeasureSet/Measure/Citation/ID[@Source="PubMed"]')])),
+    }
 
 
 class Command(BaseCommand):
@@ -56,7 +86,7 @@ class Command(BaseCommand):
 
     def _hash_xml_dict(self, d):
         return md5.md5(json.dumps(
-            zip(HASH_KEYS, [d.get(k, '') for k in HASH_KEYS]))).hexdigest()
+            [(k, d.get(k, '')) for k in RCVA_DATA.keys()])).hexdigest()
 
     def _get_elements(self, fp, tag):
         '''
@@ -114,40 +144,49 @@ class Command(BaseCommand):
     @transaction.atomic()
     @reversion.create_revision()
     def handle(self, local_vcf=None, local_xml=None, *args, **options):
-        print get_user_model().objects.all()
+        # The clinvar_user will be recorded as the editor by reversion.
+        logging.basicConfig(level=logging.DEBUG,
+                            format='%(asctime)s - %(message)s')
         clinvar_user = get_user_model().objects.get(
             username='clinvar-variant-importer')
-        print clinvar_user
-        tempdir = tempfile.mkdtemp()
-        print "Created tempdir {}".format(tempdir)
+
+        # Load ClinVar VCF.
+        logging.debug('Loading ClinVar VCF file...')
+        if not (local_vcf and local_xml):
+            tempdir = tempfile.mkdtemp()
+            logging.debug('Created tempdir {}'.format(tempdir))
         if local_vcf:
             cv_fp, cv_filename = local_vcf, os.path.split(local_vcf)[-1]
         else:
             cv_fp, cv_filename = self._download_latest_clinvar(tempdir)
-        print "Downloaded latest Clinvar, stored at {}".format(cv_fp)
+        logging.debug('Loaded Clinvar VCF, stored at {}'.format(cv_fp))
 
-        # speed optimization
+        logging.debug('Caching existing variants with build 37 lookup info.')
         variant_map = {(
-            v.tags['chrom_b37'],
-            v.tags['pos_b37'],
-            v.tags['ref_allele_b37'],
-            v.tags['var_allele_b37']): v for v in Variant.objects.all()}
+            v.tags['chrom-b37'],
+            v.tags['pos-b37'],
+            v.tags['ref-allele-b37'],
+            v.tags['var-allele-b37']): v for v in Variant.objects.all()}
 
         # Dict to track ClinVar RCV records in VCF and corresponding Variants.
         # Key: RCV accession number. Value: set of tuples of values for Variant
-        # tags: ('chrom_b37', 'pos_b37', 'ref_allele_b37', 'var_allele_b37')
+        # tags: ('chrom-b37', 'pos-b37', 'ref-allele-b37', 'var-allele-b37')
         rcv_map = {}
 
-        print 'Reading VCF'
+        logging.debug('Done caching variants. Reading VCF.')
         clinvar_vcf = self._open(cv_fp)
 
+        # Add Variants if they have ClinVar data. Variants are initially added
+        # only with the build 37 position information from the VCF.
         for line in clinvar_vcf:
             if line.startswith('#'):
                 continue
 
+            # Parse ClinVar information using vcf2clinvar.
             cvvl = ClinVarVCFLine(vcf_line=line).as_dict()
-
             data = line.rstrip('\n').split('\t')
+
+            # Get build 37 position information.
             chrom = map_chrom_to_index(data[0])
             pos = data[1]
             ref_allele = data[3]
@@ -158,17 +197,18 @@ class Command(BaseCommand):
                          if len(v) == 2}
 
             for allele in info_dict['CLNALLE'].split(','):
+                # Check if we already have this Variant. If not, add it.
                 var_allele = all_alleles[int(allele)]
                 var_key = (chrom, pos, ref_allele, var_allele)
                 if var_key not in variant_map:
-                    print 'Inserting new Variant {}, {}, {}, {}'.format(
-                        *var_key)
+                    #logging.debug('Inserting new Variant'
+                    #              '{}, {}, {}, {}'.format(*var_key))
                     variant = Variant(tags={
-                        'chrom_b37': chrom,
+                        'chrom-b37': chrom,
                         # Check pos is a valid int before adding.
-                        'pos_b37': str(int(pos)),
-                        'ref_allele_b37': ref_allele,
-                        'var_allele_b37': var_allele})
+                        'pos-b37': str(int(pos)),
+                        'ref-allele-b37': ref_allele,
+                        'var-allele-b37': var_allele})
                     variant.save()
                     variant_map[var_key] = variant
                     reversion.set_user(user=clinvar_user)
@@ -176,80 +216,79 @@ class Command(BaseCommand):
                         'Variant added based on presence in ClinVar file: ' +
                         cv_filename)
 
+                # Keep track of RCV Assertion IDs we encounter, we'll add later
                 for record in cvvl['alleles'][int(allele)].get('records', []):
-                    rcv, _ = record['acc'].split('.')
-                    rcv_map.setdefault(rcv, set()).add(variant_map[var_key])
+                    rcv_acc, _ = record['acc'].split('.')
+                    rcv_map.setdefault(
+                        rcv_acc, set()).add(variant_map[var_key])
 
         clinvar_vcf.close()
 
-        print 'Multiple variants for single RCV#:'
-        for k, v in rcv_map.iteritems():
-            if len(v) > 1:
-                print '\t', k[0], v
+        # print 'Multiple variants for single RCV Assertion ID:'
+        # for k, v in rcv_map.iteritems():
+        #     if len(v) > 1:
+        #         print '\t', k[0], v
 
+        # Load ClinVar XML file.
+        logging.debug('Loading latest ClinVar XML...')
         if local_xml:
             cv_fp, cv_filename = local_xml, os.path.split(local_xml)[-1]
         else:
             cv_fp, cv_filename = self._download_latest_clinvar_xml(tempdir)
-        print "Downloaded latest Clinvar XML, stored at {}".format(cv_fp)
+        logging.debug('Loaded latest Clinvar XML, stored at {}'.format(cv_fp))
 
-        print "Creating Relation cache"
-        cur = connection.cursor()
-        cur.execute("SELECT id, tags -> 'clinvar-accession:id', "
-                    "tags -> 'clinvar-accession:version', "
-                    "tags -> 'xml:hash' FROM {};".format(
-                        Relation._meta.db_table))  # @UndefinedVariable
-        rcv_hash_cache = {}
-        for id, accid, accver, xhash in cur.fetchall():
-            rcv_hash_cache[(accid, accver)] = (id, xhash)
+        logging.debug('Caching existing clinvar-rcva Relations by accession')
+        rcv_hash_cache = {
+            rel.tags['clinvar-rcva:accession']:
+                (rel.id, self._hash_xml_dict(rel.tags)) for
+            rel in Relation.objects.filter(
+                **{'tags__type': RCVA_DATA['type'][1]()})}
 
-        print 'Reading XML'
+        logging.debug('Reading XML, parsing each ClinVarSet')
         clinvar_xml = self._open(cv_fp)
-        i = 0
+
         for ele in self._get_elements(clinvar_xml, 'ClinVarSet'):
+            # Retrieve Reference ClinVar Assertion (RCVA) data.
+            # Each RCV Assertion is intended to represent a single phenotype,
+            # and may contain multiple Submitter ClinVar Assertions.
+            # Each Variant may have multiple associated RCVA accessions.
+            # Discrepencies in phenotype labeling by SCVAs can lead to multiple
+            # RCVAs which should theoretically be merged.
             rcva = ele.find('ReferenceClinVarAssertion')
-            i += 1
+            rcv_acc = rcva.find('ClinVarAccession').get('Acc')
 
-            ref_acc = rcva.find('ClinVarAccession')
-            rcv, rcv_ver = ref_acc.get('Acc'), ref_acc.get('Version')
-            rel_key = (rcv, rcv_ver)
-
-            if rel_key not in rcv_map:
+            if rcv_acc not in rcv_map:
                 # We do not have a record of this RCV from VCF, skip parsing...
                 continue
 
-            if len(rcv_map[rel_key]) != 1:
+            if len(rcv_map[rcv_acc]) != 1:
                 # either no or too many variations for this RCV
                 continue
 
-            val_store = {"type": "clinvar-accession",
-                         "clinvar-accession:id": rcv,
-                         "clinvar-accession:version": rcv_ver}
-            val_store["clinvar-accession:significance"] = rcva.findtext(
-                'ClinicalSignificance/Description')
-            val_store["clinvar-accession:disease-name"] = rcva.findtext(
-                'TraitSet[@Type="Disease"]/Trait[@Type="Disease"]/'
-                'Name/ElementValue[@Type="Preferred"]')
+            # Use the functions in RCVA_DATA to retrieve data for tags.
+            val_store = dict()
+            for rcva_key in RCVA_DATA:
+                variable_type = RCVA_DATA[rcva_key][0]
+                try:
+                    if not variable_type:
+                        value = RCVA_DATA[rcva_key][1]()
+                    elif variable_type == 'ele':
+                        value = RCVA_DATA[rcva_key][1](ele)
+                    elif variable_type == 'rcva':
+                        value = RCVA_DATA[rcva_key][1](rcva)
+                except AttributeError:
+                    # Some retrieval functions are chained and the parent elem
+                    # isn't present. In that case, the data doesn't exist.
+                    value = None
+                if value:
+                    val_store[rcva_key] = value
 
-            val_store['num_submissions'] = str(len(
-                ele.findall('ClinVarAssertion')))
-            val_store['record_status'] = rcva.findtext('RecordStatus')
+            # Get the hash of this data.
+            xml_hash = self._hash_xml_dict(val_store)
 
-            ch = rcva.find('MeasureSet/Measure/'
-                           'MeasureRelationship[@Type="variant in gene"]')
-            if ch is not None:
-                val_store['gene:name'] = ch.findtext('Name/ElementValue')
-                val_store['gene:symbol'] = ch.findtext('Symbol/ElementValue')
-
-            val_store['citations'] = ';'.join(
-                ['PMID%s' % c.text for c in rcva.findall(
-                    'MeasureSet/Measure/Citation/ID[@Source="PubMed"]')])
-
-            val_store['xml:hash'] = self._hash_xml_dict(val_store)
-
-            if rel_key not in rcv_hash_cache:
+            if rcv_acc not in rcv_hash_cache:
                 # We got a brand new record
-                rel = Relation(variant=list(rcv_map[rel_key])[0],
+                rel = Relation(variant=list(rcv_map[rcv_acc])[0],
                                tags=val_store)
                 rel.save()
                 reversion.set_user(user=clinvar_user)
@@ -257,20 +296,18 @@ class Command(BaseCommand):
                     'Relation added based on presence in XML file: ' +
                     cv_filename)
 
-                rcv_hash_cache[rel_key] = (rel.pk, val_store['xml:hash'])
+                rcv_hash_cache[rcv_acc] = (rel.pk, xml_hash)
 
                 # TODO: set HGVS tag in Variant
 
-                print 'Added new:', i, rcv, rcv_ver,\
-                    rcv_map[rel_key], val_store['xml:hash']
-#                 for k, v in sorted(val_store.iteritems()):
-#                     print '\t %s := %s' % (k, v)
-            elif rcv_hash_cache[rel_key][1] != val_store['xml:hash']:
+                # logging.debug('Added new RCVA, accession: {}, {}'.format(
+                #     rcv_acc, str(rcv_map[rcv_acc])))
+
+            elif rcv_hash_cache[rcv_acc][1] != xml_hash:
                 # XML parameters have changed, update required
-                print 'Need to update', rcv, rcv_ver
+                # logging.debug('Need to update accession: {}'.format(rcv_acc))
                 rel = Relation.objects.get(**{
-                    'tags__clinvar-accession:id': rcv,
-                    'tags__clinvar-accession:version': rcv_ver,
+                    'tags__clinvar-accession:id': rcv_acc,
                     "tags__type": "clinvar-accession"})
                 rel.tags.update(val_store)
                 rel.save()
@@ -283,9 +320,8 @@ class Command(BaseCommand):
                 # nothing to do here, move along
                 pass
 
-#             if i == 100:
-#                 break
-
         clinvar_xml.close()
 
-        shutil.rmtree(tempdir)
+        if not (local_vcf and local_xml):
+            shutil.rmtree(tempdir)
+            logging.debug('Removed tempdir {}'.format(tempdir))
