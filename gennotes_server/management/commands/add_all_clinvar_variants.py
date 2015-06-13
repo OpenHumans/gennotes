@@ -25,7 +25,7 @@ try:
     # faster implementation using bindings to libxml
     from lxml import etree as ET
 except ImportError:
-    logging.debug('Falling back to default ElementTree implementation')
+    logging.info('Falling back to default ElementTree implementation')
     from xml.etree import ElementTree as ET
 
 CV_VCF_DIR = 'pub/clinvar/vcf_GRCh37'
@@ -150,10 +150,10 @@ class Command(BaseCommand):
             reversion.set_user(user=user)
             reversion.set_comment(comment=comment)
 
-    @transaction.atomic()
+
     def handle(self, local_vcf=None, local_xml=None, *args, **options):
         # The clinvar_user will be recorded as the editor by reversion.
-        logging.basicConfig(level=logging.DEBUG,
+        logging.basicConfig(level=logging.INFO,
                             format='%(asctime)s - %(message)s')
         clinvar_user = get_user_model().objects.get(
             username='clinvar-variant-importer')
@@ -166,17 +166,17 @@ class Command(BaseCommand):
         relations_updated = []
 
         # Load ClinVar VCF.
-        logging.debug('Loading ClinVar VCF file...')
+        logging.info('Loading ClinVar VCF file...')
         if not (local_vcf and local_xml):
             tempdir = tempfile.mkdtemp()
-            logging.debug('Created tempdir {}'.format(tempdir))
+            logging.info('Created tempdir {}'.format(tempdir))
         if local_vcf:
             cv_fp, vcf_filename = local_vcf, os.path.split(local_vcf)[-1]
         else:
             cv_fp, vcf_filename = self._download_latest_clinvar(tempdir)
-        logging.debug('Loaded Clinvar VCF, stored at {}'.format(cv_fp))
+        logging.info('Loaded Clinvar VCF, stored at {}'.format(cv_fp))
 
-        logging.debug('Caching existing variants with build 37 lookup info.')
+        logging.info('Caching existing variants with build 37 lookup info.')
         variant_map = {(
             v.tags['chrom-b37'],
             v.tags['pos-b37'],
@@ -188,7 +188,7 @@ class Command(BaseCommand):
         # tags: ('chrom-b37', 'pos-b37', 'ref-allele-b37', 'var-allele-b37')
         rcv_map = {}
 
-        logging.debug('Done caching variants. Reading VCF.')
+        logging.info('Done caching variants. Reading VCF.')
         clinvar_vcf = self._open(cv_fp)
 
         # Add Variants if they have ClinVar data. Variants are initially added
@@ -216,7 +216,7 @@ class Command(BaseCommand):
                 var_allele = all_alleles[int(allele)]
                 var_key = (chrom, pos, ref_allele, var_allele)
                 if var_key not in variant_map:
-                    # logging.debug('Inserting new Variant'
+                    # logging.info('Inserting new Variant'
                     #               '{}, {}, {}, {}'.format(*var_key))
                     variant = Variant(tags={
                         'chrom-b37': chrom,
@@ -233,13 +233,21 @@ class Command(BaseCommand):
                     rcv_map.setdefault(
                         rcv_acc, set()).add(var_key)
 
-        # Close VCF, save these new variants to db as a revision.
+        # Close VCF, save new variants to db bundled revisions of 10k or less.
         clinvar_vcf.close()
-        self._save_as_revision(
-            object_list=variants_new,
-            user=clinvar_user,
-            comment='Variant added based on presence in ClinVar ' +
-                    'VCF file: {}'.format(vcf_filename))
+        logging.info('VCF closed. Now adding {} new variants to db.'.format(
+            len(variants_new)))
+        for i in range(1 + int(len(variants_new) / 10000)):
+            variants_subset = variants_new[i * 10000: (i + 1) * 10000]
+            if len(variants_subset) == 0:
+                break
+            logging.info('Adding {} through {} to db...'.format(
+                1 + i * 10000, i * 10000 + len(variants_subset)))
+            self._save_as_revision(
+                object_list=variants_subset,
+                user=clinvar_user,
+                comment='Variant added based on presence in ClinVar ' +
+                        'VCF file: {}'.format(vcf_filename))
 
         # print 'Multiple variants for single RCV Assertion ID:'
         # for k, v in rcv_map.iteritems():
@@ -247,21 +255,21 @@ class Command(BaseCommand):
         #         print '\t', k[0], v
 
         # Load ClinVar XML file.
-        logging.debug('Loading latest ClinVar XML...')
+        logging.info('Loading latest ClinVar XML...')
         if local_xml:
             cv_fp, xml_filename = local_xml, os.path.split(local_xml)[-1]
         else:
             cv_fp, xml_filename = self._download_latest_clinvar_xml(tempdir)
-        logging.debug('Loaded latest Clinvar XML, stored at {}'.format(cv_fp))
+        logging.info('Loaded latest Clinvar XML, stored at {}'.format(cv_fp))
 
-        logging.debug('Caching existing clinvar-rcva Relations by accession')
+        logging.info('Caching existing clinvar-rcva Relations by accession')
         rcv_hash_cache = {
             rel.tags['clinvar-rcva:accession']:
                 (rel.id, self._hash_xml_dict(rel.tags)) for
             rel in Relation.objects.filter(
                 **{'tags__type': RCVA_DATA['type'][1]()})}
 
-        logging.debug('Reading XML, parsing each ClinVarSet')
+        logging.info('Reading XML, parsing each ClinVarSet')
         clinvar_xml = self._open(cv_fp)
 
         for ele in self._get_elements(clinvar_xml, 'ClinVarSet'):
@@ -312,11 +320,11 @@ class Command(BaseCommand):
 
                 # TODO: set HGVS tag in Variant
 
-                # logging.debug('Added new RCVA, accession: {}, {}'.format(
+                # logging.info('Added new RCVA, accession: {}, {}'.format(
                 #     rcv_acc, str(rcv_map[rcv_acc])))
             elif rcv_hash_cache[rcv_acc][1] != xml_hash:
                 # XML parameters have changed, update required
-                # logging.debug('Need to update accession: {}'.format(rcv_acc))
+                # logging.info('Need to update accession: {}'.format(rcv_acc))
                 rel = Relation.objects.get(**{
                     'tags__clinvar-accession:id': rcv_acc,
                     "tags__type": "clinvar-accession"})
@@ -326,19 +334,36 @@ class Command(BaseCommand):
                 # nothing to do here, move along
                 pass
 
-        self._save_as_revision(
-            object_list=relations_new,
-            user=clinvar_user,
-            comment='Relation added based on presence in ClinVar ' +
-                    'XML file: {}'.format(xml_filename))
-        self._save_as_revision(
-            object_list=relations_updated,
-            user=clinvar_user,
-            comment='Relation updated based on updated data detected in ' +
-                    'ClinVar XML file: {}'.format(xml_filename))
-
         clinvar_xml.close()
+
+        logging.info('ClinVar XML closed. Now adding {}'.format(
+            str(len(relations_new))) + ' new clinvar-rcva Relations to db.')
+        for i in range(1 + int(len(relations_new) / 10000)):
+            relations_subset = relations_new[i * 10000: (i + 1) * 10000]
+            if len(relations_subset) == 0:
+                break
+            logging.info('Adding {} through {} to db...'.format(
+                1 + i * 10000, i * 10000 + len(relations_subset)))
+            self._save_as_revision(
+                object_list=relations_subset,
+                user=clinvar_user,
+                comment='Relation added based on presence in ClinVar ' +
+                        'XML file: {}'.format(xml_filename))
+
+        logging.info('Updating {} clinvar-rcva Relations in db.'.format(
+            str(len(relations_updated))))
+        for i in range(1 + int(len(relations_updated) / 10000)):
+            relations_subset = relations_updated[i * 10000: (i + 1) * 10000]
+            if len(relations_subset) == 0:
+                break
+            logging.info('Adding {} through {} to db...'.format(
+                1 + i * 10000, i * 10000 + len(relations_subset)))
+            self._save_as_revision(
+                object_list=relations_subset,
+                user=clinvar_user,
+                comment='Relation updated based on updated data detected in ' +
+                        'ClinVar XML file: {}'.format(xml_filename))
 
         if not (local_vcf and local_xml):
             shutil.rmtree(tempdir)
-            logging.debug('Removed tempdir {}'.format(tempdir))
+            logging.info('Removed tempdir {}'.format(tempdir))
