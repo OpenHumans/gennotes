@@ -141,8 +141,16 @@ class Command(BaseCommand):
             ftp.retrbinary('RETR {0}'.format(ftp_xml_filename), fh.write)
         return dest_filepath, ftp_xml_filename
 
+
     @transaction.atomic()
     @reversion.create_revision()
+    def _save_as_revision(self, object_list, user, comment):
+        for object in object_list:
+            object.save()
+            reversion.set_user(user=user)
+            reversion.set_comment(comment=comment)
+
+    @transaction.atomic()
     def handle(self, local_vcf=None, local_xml=None, *args, **options):
         # The clinvar_user will be recorded as the editor by reversion.
         logging.basicConfig(level=logging.DEBUG,
@@ -150,15 +158,22 @@ class Command(BaseCommand):
         clinvar_user = get_user_model().objects.get(
             username='clinvar-variant-importer')
 
+        # Store objects that need to be saved (created or updated) to db.
+        # These are saved in a separate function so they're represented as
+        # different Revisions (sets of changes) in django-reversion.
+        variants_new = []
+        relations_new = []
+        relations_updated = []
+
         # Load ClinVar VCF.
         logging.debug('Loading ClinVar VCF file...')
         if not (local_vcf and local_xml):
             tempdir = tempfile.mkdtemp()
             logging.debug('Created tempdir {}'.format(tempdir))
         if local_vcf:
-            cv_fp, cv_filename = local_vcf, os.path.split(local_vcf)[-1]
+            cv_fp, vcf_filename = local_vcf, os.path.split(local_vcf)[-1]
         else:
-            cv_fp, cv_filename = self._download_latest_clinvar(tempdir)
+            cv_fp, vcf_filename = self._download_latest_clinvar(tempdir)
         logging.debug('Loaded Clinvar VCF, stored at {}'.format(cv_fp))
 
         logging.debug('Caching existing variants with build 37 lookup info.')
@@ -201,28 +216,30 @@ class Command(BaseCommand):
                 var_allele = all_alleles[int(allele)]
                 var_key = (chrom, pos, ref_allele, var_allele)
                 if var_key not in variant_map:
-                    #logging.debug('Inserting new Variant'
-                    #              '{}, {}, {}, {}'.format(*var_key))
+                    # logging.debug('Inserting new Variant'
+                    #               '{}, {}, {}, {}'.format(*var_key))
                     variant = Variant(tags={
                         'chrom-b37': chrom,
                         # Check pos is a valid int before adding.
                         'pos-b37': str(int(pos)),
                         'ref-allele-b37': ref_allele,
                         'var-allele-b37': var_allele})
-                    variant.save()
+                    variants_new.append(variant)
                     variant_map[var_key] = variant
-                    reversion.set_user(user=clinvar_user)
-                    reversion.set_comment(
-                        'Variant added based on presence in ClinVar file: ' +
-                        cv_filename)
 
                 # Keep track of RCV Assertion IDs we encounter, we'll add later
                 for record in cvvl['alleles'][int(allele)].get('records', []):
                     rcv_acc, _ = record['acc'].split('.')
                     rcv_map.setdefault(
-                        rcv_acc, set()).add(variant_map[var_key])
+                        rcv_acc, set()).add(var_key)
 
+        # Close VCF, save these new variants to db as a revision.
         clinvar_vcf.close()
+        self._save_as_revision(
+            object_list=variants_new,
+            user=clinvar_user,
+            comment='Variant added based on presence in ClinVar ' +
+                    'VCF file: {}'.format(vcf_filename))
 
         # print 'Multiple variants for single RCV Assertion ID:'
         # for k, v in rcv_map.iteritems():
@@ -232,9 +249,9 @@ class Command(BaseCommand):
         # Load ClinVar XML file.
         logging.debug('Loading latest ClinVar XML...')
         if local_xml:
-            cv_fp, cv_filename = local_xml, os.path.split(local_xml)[-1]
+            cv_fp, xml_filename = local_xml, os.path.split(local_xml)[-1]
         else:
-            cv_fp, cv_filename = self._download_latest_clinvar_xml(tempdir)
+            cv_fp, xml_filename = self._download_latest_clinvar_xml(tempdir)
         logging.debug('Loaded latest Clinvar XML, stored at {}'.format(cv_fp))
 
         logging.debug('Caching existing clinvar-rcva Relations by accession')
@@ -288,21 +305,15 @@ class Command(BaseCommand):
 
             if rcv_acc not in rcv_hash_cache:
                 # We got a brand new record
-                rel = Relation(variant=list(rcv_map[rcv_acc])[0],
+                rel = Relation(variant=variant_map[list(rcv_map[rcv_acc])[0]],
                                tags=val_store)
-                rel.save()
-                reversion.set_user(user=clinvar_user)
-                reversion.set_comment(
-                    'Relation added based on presence in XML file: ' +
-                    cv_filename)
-
+                relations_new.append(rel)
                 rcv_hash_cache[rcv_acc] = (rel.pk, xml_hash)
 
                 # TODO: set HGVS tag in Variant
 
                 # logging.debug('Added new RCVA, accession: {}, {}'.format(
                 #     rcv_acc, str(rcv_map[rcv_acc])))
-
             elif rcv_hash_cache[rcv_acc][1] != xml_hash:
                 # XML parameters have changed, update required
                 # logging.debug('Need to update accession: {}'.format(rcv_acc))
@@ -310,15 +321,21 @@ class Command(BaseCommand):
                     'tags__clinvar-accession:id': rcv_acc,
                     "tags__type": "clinvar-accession"})
                 rel.tags.update(val_store)
-                rel.save()
-
-                reversion.set_user(user=clinvar_user)
-                reversion.set_comment(
-                    'Relation updated based on presence in XML file: ' +
-                    cv_filename + ' and hash difference')
+                relations_updated.append(rel)
             else:
                 # nothing to do here, move along
                 pass
+
+        self._save_as_revision(
+            object_list=relations_new,
+            user=clinvar_user,
+            comment='Relation added based on presence in ClinVar ' +
+                    'XML file: {}'.format(xml_filename))
+        self._save_as_revision(
+            object_list=relations_updated,
+            user=clinvar_user,
+            comment='Relation updated based on updated data detected in ' +
+                    'ClinVar XML file: {}'.format(xml_filename))
 
         clinvar_xml.close()
 
