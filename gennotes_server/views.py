@@ -58,7 +58,7 @@ class VariantLookupMixin(object):
 #  tags:='{"foo": "bar"}'                # set tags to '{"foo": "bar"}'
 class VariantViewSet(VariantLookupMixin, viewsets.ModelViewSet):
     """
-    A viewset for Variants which uses "1-883516-G-A" notation for lookups.
+    A viewset for Variants which uses "b37-1-883516-G-A" notation for lookups.
     """
 
     permission_classes = (IsVerifiedOrReadOnly,)
