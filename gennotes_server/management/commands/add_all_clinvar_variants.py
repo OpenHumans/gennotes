@@ -326,8 +326,8 @@ class Command(BaseCommand):
                 # XML parameters have changed, update required
                 # logging.info('Need to update accession: {}'.format(rcv_acc))
                 rel = Relation.objects.get(**{
-                    'tags__clinvar-accession:id': rcv_acc,
-                    "tags__type": "clinvar-accession"})
+                    'tags__clinvar-rcva:accession': rcv_acc,
+                    "tags__type": "clinvar-rcva"})
                 rel.tags.update(val_store)
                 relations_updated.append(rel)
             else:
