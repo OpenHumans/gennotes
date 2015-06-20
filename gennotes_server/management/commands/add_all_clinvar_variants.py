@@ -69,6 +69,17 @@ RCVA_DATA = {
         ('rcva', lambda rcva:
             ';'.join(['PMID%s' % c.text for c in rcva.findall(
                 'MeasureSet/Measure/Citation/ID[@Source="PubMed"]')])),
+    'clinvar-rcva:esp-allele-frequency':
+        ('rcva', lambda rcva:
+            # Using list comprehension to enable conditional wo/ separate fxn
+            [xref.findtext('../Attribute[@Type="AlleleFrequency"]') if xref is
+             not None else None for xref in [
+                 rcva.find('MeasureSet/Measure/AttributeSet/XRef[@DB=' +
+                           '"NHLBI GO Exome Sequencing Project (ESP)"]')]][0]),
+    'clinvar-rcva:preferred-name':
+        ('rcva', lambda rcva: rcva.findtext(
+            'MeasureSet[@Type="Variant"]/Measure/Name/' +
+            'ElementValue[@Type="Preferred"]')),
     }
 
 
@@ -321,15 +332,16 @@ class Command(BaseCommand):
                 # TODO: set HGVS tag in Variant
 
                 # logging.info('Added new RCVA, accession: {}, {}'.format(
-                #     rcv_acc, str(rcv_map[rcv_acc])))
+                #              rcv_acc, str(val_store)))
             elif rcv_hash_cache[rcv_acc][1] != xml_hash:
                 # XML parameters have changed, update required
-                # logging.info('Need to update accession: {}'.format(rcv_acc))
                 rel = Relation.objects.get(**{
                     'tags__clinvar-rcva:accession': rcv_acc,
                     "tags__type": "clinvar-rcva"})
                 rel.tags.update(val_store)
                 relations_updated.append(rel)
+                # logging.info('Need to update accession {} with: {}'.format(
+                #     rcv_acc, str(val_store)))
             else:
                 # nothing to do here, move along
                 pass
