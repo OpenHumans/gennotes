@@ -46,10 +46,9 @@ RCVA_DATA = {
         ('rcva', lambda rcva: rcva.find('ClinVarAccession').get('Acc')),
     'clinvar-rcva:version':
         ('rcva', lambda rcva: rcva.find('ClinVarAccession').get('Version')),
-    'clinvar-rcva:disease-name':
+    'clinvar-rcva:trait-name':
         ('rcva', lambda rcva: rcva.findtext(
-            'TraitSet[@Type="Disease"]/Trait[@Type="Disease"]/'
-            'Name/ElementValue[@Type="Preferred"]')),
+            'TraitSet/Trait/Name/ElementValue[@Type="Preferred"]')),
     'clinvar-rcva:significance':
         ('rcva', lambda rcva: rcva.findtext(
             'ClinicalSignificance/Description')),
@@ -335,9 +334,7 @@ class Command(BaseCommand):
                 #              rcv_acc, str(val_store)))
             elif rcv_hash_cache[rcv_acc][1] != xml_hash:
                 # XML parameters have changed, update required
-                rel = Relation.objects.get(**{
-                    'tags__clinvar-rcva:accession': rcv_acc,
-                    "tags__type": "clinvar-rcva"})
+                rel = Relation.objects.get(id=rcv_hash_cache[rcv_acc][0])
                 rel.tags.update(val_store)
                 relations_updated.append(rel)
                 # logging.info('Need to update accession {} with: {}'.format(
