@@ -36,7 +36,6 @@ class VariantLookupMixin(object):
         return None
 
     def get_object(self):
-        print "In get_object"
         queryset = self.get_queryset()
         queryset = self.filter_queryset(queryset)
 
