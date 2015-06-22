@@ -49,6 +49,10 @@ RCVA_DATA = {
     'clinvar-rcva:trait-name':
         ('rcva', lambda rcva: rcva.findtext(
             'TraitSet/Trait/Name/ElementValue[@Type="Preferred"]')),
+    'clinvar-rcva:trait-type':
+        ('rcva', lambda rcva: rcva.find(
+            'TraitSet/Trait/Name/ElementValue[@Type="Preferred"]/../..'
+            ).get('Type')),
     'clinvar-rcva:significance':
         ('rcva', lambda rcva: rcva.findtext(
             'ClinicalSignificance/Description')),
