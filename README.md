@@ -23,16 +23,22 @@ room: https://gitter.im/PersonalGenomesOrg/gennotes
 Also check out the issues, some of these have generated various subtasks!
 
 - **Programmatic tag submission:** Methods (widget/API) for client apps to update or submit new tags
-- **Display GenNotes data in Genevieve:** make Genevieve client variant report with an AJAX GenNotes query, displaying returned ClinVar & Genevieve tag data
 - **Implement tag submission:** Implement tag submission on Genevieve client to add/update following tags
-  - (tagging clinvar-accession) "genevieve_inheritance": [dominant/recessive/additive/-] (default: -)
-  - (tagging clinvar-accession) "genevieve_evidence": [well-established/reported/disputed/disproven] (default: reported)
-  - (tagging clinvar-accession) "genevieve_notes": free text field for explaining rationale for current genevieve evaluation
+  - (tagging clinvar-accession) "genevieve-inheritance": [dominant/recessive/additive/unspecified) (default: unspecified)
+  - (tagging clinvar-accession) "genevieve-evidence": [well-established/reported/disputed/disproven] (default: reported)
+  - (tagging clinvar-accession) "genevieve-notes": free text field for explaining rationale for current genevieve evaluation
 
 ## Additional ideas
 
-- Parse and import ExAC key/value tags for variant positions
-- Parse and import dbSNP key/value tags for variant positions
+- ~~Parse and import ExAC key/value tags for variant positions~~
+  - As long as ExAC is released under [ODbL](http://opendatacommons.org/licenses/odbl/1.0/), it can't be integrated with a public domain resource. :(
+
+## Examples
+
+**Note both projects are in active development!**
+
+- An example query retrieving GenNotes data: http://gennotes.herokuapp.com/api/variant/b37-1-100672060-T-T/
+- [Genevieve genome report screenshot](https://cloud.githubusercontent.com/assets/82631/8336384/13b34ae4-1a72-11e5-8e84-bc47a62ca060.png)
 
 ## Local development set-up
 
