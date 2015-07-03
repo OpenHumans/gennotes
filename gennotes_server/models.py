@@ -22,10 +22,10 @@ class Variant(models.Model):
     The following keys are currently special/protected. They're used to find a
     variant based on location and sequence and are indexed in our db to
     optimize searches:
-    'chrom_b37', 'pos_b37', 'ref_allele_b37', 'var_allele_b37'
+    'chrom-b37', 'pos-b37', 'ref-allele-b37', 'var-allele-b37'
     """
     tags = HStoreField()
-    
+
     def __unicode__(self):
         return u'; '.join([u'%s=%s' % (k, v) for k, v in self.tags.iteritems()])
 

@@ -34,13 +34,13 @@ class Migration(migrations.Migration):
         ),
         migrations.RunSQL(
             'CREATE INDEX "gennotes_server_variant_tags_chrom_b37_idx" on ' +
-            "gennotes_server_variant USING btree (( tags->'chrom_b37' )); " +
+            "gennotes_server_variant USING btree (( tags->'chrom-b37' )); " +
             'CREATE INDEX "gennotes_server_variant_tags_pos_b37_idx" on ' +
-            "gennotes_server_variant USING btree (( tags->'pos_b37' ));"
+            "gennotes_server_variant USING btree (( tags->'pos-b37' ));"
             'CREATE INDEX "gennotes_server_variant_tags_ref_allele_b37_idx" on ' +
-            "gennotes_server_variant USING btree (( tags->'ref_allele_b37' ));"
+            "gennotes_server_variant USING btree (( tags->'ref-allele-b37' ));"
             'CREATE INDEX "gennotes_server_variant_tags_var_allele_b37_idx" on ' +
-            "gennotes_server_variant USING btree (( tags->'var_allele_b37' ));"
+            "gennotes_server_variant USING btree (( tags->'var-allele-b37' ));"
             'CREATE INDEX "gennotes_server_relation_type_idx" on ' +
             "gennotes_server_relation USING btree (( tags->'type' ));"
         ),
