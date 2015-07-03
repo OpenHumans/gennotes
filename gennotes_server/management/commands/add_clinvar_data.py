@@ -195,7 +195,11 @@ class Command(BaseCommand):
             v.tags['chrom-b37'],
             v.tags['pos-b37'],
             v.tags['ref-allele-b37'],
-            v.tags['var-allele-b37']): v for v in Variant.objects.all()}
+            v.tags['var-allele-b37']): v for v in Variant.objects.all() if
+            'chrom-b37' in v.tags and
+            'pos-b37' in v.tags and
+            'ref-allele-b37' in v.tags and
+            'var-allele-b37' in v.tags}
 
         # Dict to track ClinVar RCV records in VCF and corresponding Variants.
         # Key: RCV accession number. Value: set of tuples of values for Variant
