@@ -1,12 +1,18 @@
 import json
+import logging
 
 from django.contrib.auth import get_user_model
+from django.db import transaction
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
-from rest_framework import viewsets
+import rest_framework
+from rest_framework import viewsets as rest_framework_viewsets
 from rest_framework.generics import RetrieveAPIView
+from rest_framework.response import Response
+
+import reversion
 
 from .models import Relation, Variant
 from .permissions import IsVerifiedOrReadOnly
@@ -15,10 +21,10 @@ from .serializers import RelationSerializer, UserSerializer, VariantSerializer
 
 class VariantLookupMixin(object):
     """
-    Apply this mixin to any view or viewset to get lookup by variant.
+    Mixin method for looking up a variant according to b37 position.
     """
 
-    def _get_variant_filter_kwargs(self, variant_lookup):
+    def _custom_variant_filter_kwargs(self, variant_lookup):
         """
         For a variant lookup string, return the variant filter arguments.
         """
@@ -35,29 +41,23 @@ class VariantLookupMixin(object):
             return None
         return None
 
-    def get_object(self):
-        queryset = self.get_queryset()
-        queryset = self.filter_queryset(queryset)
 
-        filter_kwargs = self._get_variant_filter_kwargs(self.kwargs['pk'])
-
-        if not filter_kwargs:
-            raise Http404('No {} matches the given query.'.format(
-                queryset.model._meta.object_name))
-
-        return get_object_or_404(queryset, **filter_kwargs)
-
-
-# http GET localhost:8000/api/variant/   # all variants
-# http GET localhost:8000/api/variant/1-123456-C-T/ # a specific variant
-#
-# TODO: you should never be able to PATCH a variant, each change to a variant
-# should create a new changeset
-# http -a youruser:yourpass PATCH localhost:8000/api/variant/1-123456-C-T/ \
-#  tags:='{"foo": "bar"}'                # set tags to '{"foo": "bar"}'
-class VariantViewSet(VariantLookupMixin, viewsets.ModelViewSet):
+class VariantViewSet(VariantLookupMixin,
+                     rest_framework.mixins.RetrieveModelMixin,
+                     rest_framework.mixins.ListModelMixin,
+                     rest_framework.mixins.UpdateModelMixin,
+                     rest_framework_viewsets.GenericViewSet):
     """
-    A viewset for Variants which uses "b37-1-883516-G-A" notation for lookups.
+    A viewset for Variants, allows id and position based lookups.
+
+    Similar to rest_framework.viewsets.ModelViewSet, but create and delete
+    methods ('POST' and 'DELETE') are not implemented.
+
+    Update is implemented ('PUT' and 'PATCH'), and uses django-reversion to
+    record the revision, user, and commit comment.
+
+    In addition to lookup by primary key, objects may be referenced by
+    build 37 information (e.g. 'b37-1-123456-C-T').
     """
 
     permission_classes = (IsVerifiedOrReadOnly,)
@@ -87,18 +87,66 @@ class VariantViewSet(VariantLookupMixin, viewsets.ModelViewSet):
         queryset = queryset.filter(Q_obj)
         return queryset
 
+    def get_object(self):
+        """
+        Primary key lookup if pk numeric, otherwise use custom filter kwargs.
+
+        This allows us to also support build 37 lookup by chromosome, position,
+        reference and variant.
+        """
+        if self.kwargs['pk'].isdigit():
+            return super(VariantViewSet, self).get_object()
+
+        queryset = self.filter_queryset(self.get_queryset())
+
+        filter_kwargs = self._custom_variant_filter_kwargs(self.kwargs['pk'])
+        if not filter_kwargs:
+            raise Http404('No {} matches the given query.'.format(
+                queryset.model._meta.object_name))
+
+        obj = get_object_or_404(queryset, **filter_kwargs)
+        self.check_object_permissions(self.request, obj)
+        return obj
+
+    def retrieve(self, request, *args, **kwargs):
+        print "In VariantViewSet retrieve"
+        return super(VariantViewSet, self).retrieve(request, *args, **kwargs)
+
+    @transaction.atomic()
+    @reversion.create_revision()
+    def update(self, request, *args, **kwargs):
+        """Custom update method to record revision information."""
+        partial = kwargs.pop('partial', False)
+        commit_comment = request.data.pop('commit-comment', '')
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data,
+                                         partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        reversion.set_user(user=self.request.user)
+        reversion.set_comment(comment=commit_comment)
+        return Response(serializer.data)
+
 
 # http GET localhost:8000/api/relation/   # all relations
 # http GET localhost:8000/api/relation/2/ # relation with ID 2
 # http -a youruser:yourpass PATCH localhost:8000/api/relation/2/ \
 #  tags:='{"foo": "bar"}'                # set tags to '{"foo": "bar"}'
-class RelationViewSet(viewsets.ModelViewSet):
+class RelationViewSet(rest_framework.viewsets.ModelViewSet):
     """
     A viewset for Relations.
     """
     permission_classes = (IsVerifiedOrReadOnly,)
     queryset = Relation.objects.all()
     serializer_class = RelationSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        print "In RelationViewSet retrieve"
+        return super(RelationViewSet, self).retrieve(request, *args, **kwargs)
+
+    def dispatch(self, *args, **kwargs):
+        print "In RelationViewSet dispatch"
+        return super(RelationViewSet, self).dispatch(*args, **kwargs)
 
 
 class CurrentUserView(RetrieveAPIView):

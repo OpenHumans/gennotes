@@ -25,6 +25,7 @@ class Variant(models.Model):
     'chrom-b37', 'pos-b37', 'ref-allele-b37', 'var-allele-b37'
     """
     tags = HStoreField()
+    special_tags = ['chrom-b37', 'pos-b37', 'ref-allele-b37', 'var-allele-b37']
 
     def __unicode__(self):
         return u'; '.join([u'%s=%s' % (k, v) for k, v in self.tags.iteritems()])
@@ -41,6 +42,9 @@ class Relation(models.Model):
     """
     variant = models.ForeignKey(Variant)
     tags = HStoreField()
+
+    def __unicode__(self):
+        return 'Relation: {}, Type: {}'.format(str(self.pk), self.tags['type'])
 
 
 reversion.register(Variant)
