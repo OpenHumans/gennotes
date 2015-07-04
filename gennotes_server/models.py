@@ -42,9 +42,16 @@ class Relation(models.Model):
     """
     variant = models.ForeignKey(Variant)
     tags = HStoreField()
+    special_tags = ['type']
+    required_tags = ['type']
 
     def __unicode__(self):
         return 'Relation: {}, Type: {}'.format(str(self.pk), self.tags['type'])
+
+
+class CommitDeletion(models.Model):
+    revision = models.ForeignKey(reversion.models.Revision)
+    deletion = models.BooleanField(default=True)
 
 
 reversion.register(Variant)
