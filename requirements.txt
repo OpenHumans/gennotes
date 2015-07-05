@@ -1,4 +1,4 @@
-Django==1.8
+Django==1.8.2
 PyYAML==3.11
 Pygments==2.0.2
 argparse==1.2.1
