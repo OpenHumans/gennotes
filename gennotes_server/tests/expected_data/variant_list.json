@@ -1,0 +1,300 @@
+{
+  "count": 10,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "b37_id": "b37-1-883516-G-A",
+      "relation_set": [
+        {
+          "tags": {
+            "clinvar-rcva:accession": "RCV000064926",
+            "clinvar-rcva:gene-name": "nucleolar complex associated 2 homolog (S. cerevisiae)",
+            "clinvar-rcva:gene-symbol": "NOC2L",
+            "clinvar-rcva:num-submissions": "1",
+            "clinvar-rcva:preferred-name": "NM_015658.3(NOC2L):c.1654C>T (p.Leu552=)",
+            "clinvar-rcva:record-status": "current",
+            "clinvar-rcva:significance": "not provided",
+            "clinvar-rcva:trait-name": "Malignant melanoma",
+            "clinvar-rcva:trait-type": "Disease",
+            "clinvar-rcva:version": "2",
+            "type": "clinvar-rcva"
+          },
+          "url": "http://testserver/api/relation/8/",
+          "variant": "http://testserver/api/variant/1/"
+        }
+      ],
+      "tags": {
+        "chrom-b37": "1",
+        "pos-b37": "883516",
+        "ref-allele-b37": "G",
+        "var-allele-b37": "A"
+      },
+      "url": "http://testserver/api/variant/1/"
+    },
+    {
+      "b37_id": "b37-1-891344-G-A",
+      "relation_set": [
+        {
+          "tags": {
+            "clinvar-rcva:accession": "RCV000064927",
+            "clinvar-rcva:gene-name": "nucleolar complex associated 2 homolog (S. cerevisiae)",
+            "clinvar-rcva:gene-symbol": "NOC2L",
+            "clinvar-rcva:num-submissions": "1",
+            "clinvar-rcva:preferred-name": "NM_015658.3(NOC2L):c.657C>T (p.Leu219=)",
+            "clinvar-rcva:record-status": "current",
+            "clinvar-rcva:significance": "not provided",
+            "clinvar-rcva:trait-name": "Malignant melanoma",
+            "clinvar-rcva:trait-type": "Disease",
+            "clinvar-rcva:version": "2",
+            "type": "clinvar-rcva"
+          },
+          "url": "http://testserver/api/relation/9/",
+          "variant": "http://testserver/api/variant/2/"
+        }
+      ],
+      "tags": {
+        "chrom-b37": "1",
+        "pos-b37": "891344",
+        "ref-allele-b37": "G",
+        "var-allele-b37": "A"
+      },
+      "url": "http://testserver/api/variant/2/"
+    },
+    {
+      "b37_id": "b37-1-906168-G-A",
+      "relation_set": [
+        {
+          "tags": {
+            "clinvar-rcva:accession": "RCV000064940",
+            "clinvar-rcva:gene-name": "pleckstrin homology domain containing, family N member 1",
+            "clinvar-rcva:gene-symbol": "PLEKHN1",
+            "clinvar-rcva:num-submissions": "1",
+            "clinvar-rcva:preferred-name": "NM_001160184.1(PLEKHN1):c.484+30G>A",
+            "clinvar-rcva:record-status": "current",
+            "clinvar-rcva:significance": "not provided",
+            "clinvar-rcva:trait-name": "Malignant melanoma",
+            "clinvar-rcva:trait-type": "Disease",
+            "clinvar-rcva:version": "2",
+            "type": "clinvar-rcva"
+          },
+          "url": "http://testserver/api/relation/10/",
+          "variant": "http://testserver/api/variant/3/"
+        }
+      ],
+      "tags": {
+        "chrom-b37": "1",
+        "pos-b37": "906168",
+        "ref-allele-b37": "G",
+        "var-allele-b37": "A"
+      },
+      "url": "http://testserver/api/variant/3/"
+    },
+    {
+      "b37_id": "b37-1-949523-C-T",
+      "relation_set": [
+        {
+          "tags": {
+            "clinvar-rcva:accession": "RCV000162196",
+            "clinvar-rcva:gene-name": "ISG15 ubiquitin-like modifier",
+            "clinvar-rcva:gene-symbol": "ISG15",
+            "clinvar-rcva:num-submissions": "1",
+            "clinvar-rcva:preferred-name": "NM_005101.3(ISG15):c.163C>T (p.Gln55Ter)",
+            "clinvar-rcva:record-status": "current",
+            "clinvar-rcva:significance": "Pathogenic",
+            "clinvar-rcva:trait-name": "Immunodeficiency 38",
+            "clinvar-rcva:trait-type": "Disease",
+            "clinvar-rcva:version": "2",
+            "type": "clinvar-rcva"
+          },
+          "url": "http://testserver/api/relation/7/",
+          "variant": "http://testserver/api/variant/4/"
+        }
+      ],
+      "tags": {
+        "chrom-b37": "1",
+        "pos-b37": "949523",
+        "ref-allele-b37": "C",
+        "var-allele-b37": "T"
+      },
+      "url": "http://testserver/api/variant/4/"
+    },
+    {
+      "b37_id": "b37-1-949696-C-CG",
+      "relation_set": [
+        {
+          "tags": {
+            "clinvar-rcva:accession": "RCV000148989",
+            "clinvar-rcva:citations": "PMID22859821",
+            "clinvar-rcva:gene-name": "ISG15 ubiquitin-like modifier",
+            "clinvar-rcva:gene-symbol": "ISG15",
+            "clinvar-rcva:num-submissions": "1",
+            "clinvar-rcva:preferred-name": "NM_005101.3(ISG15):c.339dupG (p.Leu114Alafs)",
+            "clinvar-rcva:record-status": "current",
+            "clinvar-rcva:significance": "Pathogenic",
+            "clinvar-rcva:trait-name": "Immunodeficiency 38",
+            "clinvar-rcva:trait-type": "Disease",
+            "clinvar-rcva:version": "4",
+            "type": "clinvar-rcva"
+          },
+          "url": "http://testserver/api/relation/6/",
+          "variant": "http://testserver/api/variant/5/"
+        }
+      ],
+      "tags": {
+        "chrom-b37": "1",
+        "pos-b37": "949696",
+        "ref-allele-b37": "C",
+        "var-allele-b37": "CG"
+      },
+      "url": "http://testserver/api/variant/5/"
+    },
+    {
+      "b37_id": "b37-1-949739-G-T",
+      "relation_set": [
+        {
+          "tags": {
+            "clinvar-rcva:accession": "RCV000148988",
+            "clinvar-rcva:gene-name": "ISG15 ubiquitin-like modifier",
+            "clinvar-rcva:gene-symbol": "ISG15",
+            "clinvar-rcva:num-submissions": "1",
+            "clinvar-rcva:preferred-name": "NM_005101.3(ISG15):c.379G>T (p.Glu127Ter)",
+            "clinvar-rcva:record-status": "current",
+            "clinvar-rcva:significance": "Pathogenic",
+            "clinvar-rcva:trait-name": "Immunodeficiency 38",
+            "clinvar-rcva:trait-type": "Disease",
+            "clinvar-rcva:version": "4",
+            "type": "clinvar-rcva"
+          },
+          "url": "http://testserver/api/relation/5/",
+          "variant": "http://testserver/api/variant/6/"
+        }
+      ],
+      "tags": {
+        "chrom-b37": "1",
+        "pos-b37": "949739",
+        "ref-allele-b37": "G",
+        "var-allele-b37": "T"
+      },
+      "url": "http://testserver/api/variant/6/"
+    },
+    {
+      "b37_id": "b37-1-955597-G-T",
+      "relation_set": [
+        {
+          "tags": {
+            "clinvar-rcva:accession": "RCV000116272",
+            "clinvar-rcva:gene-name": "agrin",
+            "clinvar-rcva:gene-symbol": "AGRN",
+            "clinvar-rcva:num-submissions": "1",
+            "clinvar-rcva:preferred-name": "NM_198576.3(AGRN):c.45G>T (p.Pro15=)",
+            "clinvar-rcva:record-status": "current",
+            "clinvar-rcva:significance": "Likely benign",
+            "clinvar-rcva:trait-name": "not specified",
+            "clinvar-rcva:trait-type": "Disease",
+            "clinvar-rcva:version": "2",
+            "type": "clinvar-rcva"
+          },
+          "url": "http://testserver/api/relation/2/",
+          "variant": "http://testserver/api/variant/7/"
+        }
+      ],
+      "tags": {
+        "chrom-b37": "1",
+        "pos-b37": "955597",
+        "ref-allele-b37": "G",
+        "var-allele-b37": "T"
+      },
+      "url": "http://testserver/api/variant/7/"
+    },
+    {
+      "b37_id": "b37-1-957640-C-T",
+      "relation_set": [
+        {
+          "tags": {
+            "clinvar-rcva:accession": "RCV000116258",
+            "clinvar-rcva:esp-allele-frequency": "0.031754574812",
+            "clinvar-rcva:gene-name": "agrin",
+            "clinvar-rcva:gene-symbol": "AGRN",
+            "clinvar-rcva:num-submissions": "1",
+            "clinvar-rcva:preferred-name": "NM_198576.3(AGRN):c.261C>T (p.Asp87=)",
+            "clinvar-rcva:record-status": "current",
+            "clinvar-rcva:significance": "Likely benign",
+            "clinvar-rcva:trait-name": "not specified",
+            "clinvar-rcva:trait-type": "Disease",
+            "clinvar-rcva:version": "2",
+            "type": "clinvar-rcva"
+          },
+          "url": "http://testserver/api/relation/3/",
+          "variant": "http://testserver/api/variant/8/"
+        }
+      ],
+      "tags": {
+        "chrom-b37": "1",
+        "pos-b37": "957640",
+        "ref-allele-b37": "C",
+        "var-allele-b37": "T"
+      },
+      "url": "http://testserver/api/variant/8/"
+    },
+    {
+      "b37_id": "b37-1-976629-C-T",
+      "relation_set": [
+        {
+          "tags": {
+            "clinvar-rcva:accession": "RCV000116282",
+            "clinvar-rcva:gene-name": "agrin",
+            "clinvar-rcva:gene-symbol": "AGRN",
+            "clinvar-rcva:num-submissions": "1",
+            "clinvar-rcva:preferred-name": "NM_198576.3(AGRN):c.804C>T (p.Ala268=)",
+            "clinvar-rcva:record-status": "current",
+            "clinvar-rcva:significance": "Benign",
+            "clinvar-rcva:trait-name": "not specified",
+            "clinvar-rcva:trait-type": "Disease",
+            "clinvar-rcva:version": "1",
+            "type": "clinvar-rcva"
+          },
+          "url": "http://testserver/api/relation/4/",
+          "variant": "http://testserver/api/variant/9/"
+        }
+      ],
+      "tags": {
+        "chrom-b37": "1",
+        "pos-b37": "976629",
+        "ref-allele-b37": "C",
+        "var-allele-b37": "T"
+      },
+      "url": "http://testserver/api/variant/9/"
+    },
+    {
+      "b37_id": "b37-1-976963-A-G",
+      "relation_set": [
+        {
+          "tags": {
+            "clinvar-rcva:accession": "RCV000116253",
+            "clinvar-rcva:esp-allele-frequency": "0.014089016971",
+            "clinvar-rcva:gene-name": "agrin",
+            "clinvar-rcva:gene-symbol": "AGRN",
+            "clinvar-rcva:num-submissions": "1",
+            "clinvar-rcva:preferred-name": "NM_198576.3(AGRN):c.1058A>G (p.Gln353Arg)",
+            "clinvar-rcva:record-status": "current",
+            "clinvar-rcva:significance": "Likely benign",
+            "clinvar-rcva:trait-name": "not specified",
+            "clinvar-rcva:trait-type": "Disease",
+            "clinvar-rcva:version": "2",
+            "type": "clinvar-rcva"
+          },
+          "url": "http://testserver/api/relation/1/",
+          "variant": "http://testserver/api/variant/10/"
+        }
+      ],
+      "tags": {
+        "chrom-b37": "1",
+        "pos-b37": "976963",
+        "ref-allele-b37": "A",
+        "var-allele-b37": "G"
+      },
+      "url": "http://testserver/api/variant/10/"
+    }
+  ]
+}

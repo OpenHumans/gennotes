@@ -1,0 +1,29 @@
+{
+  "b37_id": "b37-1-883516-G-A",
+  "relation_set": [
+    {
+      "tags": {
+        "clinvar-rcva:accession": "RCV000064926",
+        "clinvar-rcva:gene-name": "nucleolar complex associated 2 homolog (S. cerevisiae)",
+        "clinvar-rcva:gene-symbol": "NOC2L",
+        "clinvar-rcva:num-submissions": "1",
+        "clinvar-rcva:preferred-name": "NM_015658.3(NOC2L):c.1654C>T (p.Leu552=)",
+        "clinvar-rcva:record-status": "current",
+        "clinvar-rcva:significance": "not provided",
+        "clinvar-rcva:trait-name": "Malignant melanoma",
+        "clinvar-rcva:trait-type": "Disease",
+        "clinvar-rcva:version": "2",
+        "type": "clinvar-rcva"
+      },
+      "url": "http://testserver/api/relation/8/",
+      "variant": "http://testserver/api/variant/1/"
+    }
+  ],
+  "tags": {
+    "chrom-b37": "1",
+    "pos-b37": "883516",
+    "ref-allele-b37": "G",
+    "var-allele-b37": "A"
+  },
+  "url": "http://testserver/api/variant/1/"
+}

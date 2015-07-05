@@ -1,3 +1,4 @@
+import json
 import logging
 
 from rest_framework.test import APITestCase as BaseAPITestCase
