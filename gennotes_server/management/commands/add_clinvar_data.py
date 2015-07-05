@@ -13,13 +13,12 @@ import tempfile
 
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
-from django.db import transaction, connection
+from django.db import transaction
 import reversion
 from vcf2clinvar.clinvar import ClinVarVCFLine
 
 from gennotes_server.models import Variant, Relation
 from gennotes_server.utils import map_chrom_to_index
-
 
 try:
     # faster implementation using bindings to libxml
@@ -96,6 +95,9 @@ class Command(BaseCommand):
         make_option('-x', '--local-xml',
                     dest='local_xml',
                     help='Open local ClinVar XML file'),
+        make_option('-n', '--num-vars',
+                    dest='max_num',
+                    help="Maximum number of variants to store in db.")
         )
 
     def _hash_xml_dict(self, d):
@@ -155,7 +157,6 @@ class Command(BaseCommand):
             ftp.retrbinary('RETR {0}'.format(ftp_xml_filename), fh.write)
         return dest_filepath, ftp_xml_filename
 
-
     @transaction.atomic()
     @reversion.create_revision()
     def _save_as_revision(self, object_list, user, comment):
@@ -164,8 +165,7 @@ class Command(BaseCommand):
             reversion.set_user(user=user)
             reversion.set_comment(comment=comment)
 
-
-    def handle(self, local_vcf=None, local_xml=None, *args, **options):
+    def handle(self, local_vcf=None, local_xml=None, max_num=None, *args, **options):
         # The clinvar_user will be recorded as the editor by reversion.
         logging.basicConfig(level=logging.INFO,
                             format='%(asctime)s - %(message)s')
@@ -211,14 +211,16 @@ class Command(BaseCommand):
 
         # Add Variants if they have ClinVar data. Variants are initially added
         # only with the build 37 position information from the VCF.
-        n = 0
+        num_vars = 0
         for line in clinvar_vcf:
             if line.startswith('#'):
                 continue
 
-            n += 1
-            if n > 10:
+            # Useful for generating small dataset for our testing fixture.
+            num_vars += 1
+            if max_num and num_vars > int(max_num):
                 break
+
             # Parse ClinVar information using vcf2clinvar.
             cvvl = ClinVarVCFLine(vcf_line=line).as_dict()
             data = line.rstrip('\n').split('\t')
