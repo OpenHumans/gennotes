@@ -5,8 +5,8 @@ from django.contrib.auth import get_user_model
 from django.db import migrations
 
 
-def add_clinvar_bot_users(apps, schema_editor):
-    usernames = ['clinvar-variant-importer', 'clinvar-data-importer']
+def add_clinvar_bot_user(apps, schema_editor):
+    usernames = ['clinvar-data-importer']
     for username in usernames:
         get_user_model().objects.get_or_create(username=username)
 
@@ -18,5 +18,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(add_clinvar_bot_users),
+        migrations.RunPython(add_clinvar_bot_user),
     ]

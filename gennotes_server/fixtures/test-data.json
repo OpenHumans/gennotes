@@ -1,543 +1,124 @@
 [
 {
   "fields": {
-    "codename": "add_logentry",
-    "name": "Can add log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ]
+    "model": "logentry",
+    "app_label": "admin"
   },
-  "model": "auth.permission",
-  "pk": 1
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "change_logentry",
-    "name": "Can change log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ]
+    "model": "permission",
+    "app_label": "auth"
   },
-  "model": "auth.permission",
-  "pk": 2
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "delete_logentry",
-    "name": "Can delete log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ]
+    "model": "group",
+    "app_label": "auth"
   },
-  "model": "auth.permission",
-  "pk": 3
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "add_permission",
-    "name": "Can add permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ]
+    "model": "user",
+    "app_label": "auth"
   },
-  "model": "auth.permission",
-  "pk": 4
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "change_permission",
-    "name": "Can change permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ]
+    "model": "contenttype",
+    "app_label": "contenttypes"
   },
-  "model": "auth.permission",
-  "pk": 5
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "delete_permission",
-    "name": "Can delete permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ]
+    "model": "session",
+    "app_label": "sessions"
   },
-  "model": "auth.permission",
-  "pk": 6
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "add_group",
-    "name": "Can add group",
-    "content_type": [
-      "auth",
-      "group"
-    ]
+    "model": "site",
+    "app_label": "sites"
   },
-  "model": "auth.permission",
-  "pk": 7
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "change_group",
-    "name": "Can change group",
-    "content_type": [
-      "auth",
-      "group"
-    ]
+    "model": "variant",
+    "app_label": "gennotes_server"
   },
-  "model": "auth.permission",
-  "pk": 8
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "delete_group",
-    "name": "Can delete group",
-    "content_type": [
-      "auth",
-      "group"
-    ]
+    "model": "relation",
+    "app_label": "gennotes_server"
   },
-  "model": "auth.permission",
-  "pk": 9
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "add_user",
-    "name": "Can add user",
-    "content_type": [
-      "auth",
-      "user"
-    ]
+    "model": "commitdeletion",
+    "app_label": "gennotes_server"
   },
-  "model": "auth.permission",
-  "pk": 10
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "change_user",
-    "name": "Can change user",
-    "content_type": [
-      "auth",
-      "user"
-    ]
+    "model": "emailaddress",
+    "app_label": "account"
   },
-  "model": "auth.permission",
-  "pk": 11
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "delete_user",
-    "name": "Can delete user",
-    "content_type": [
-      "auth",
-      "user"
-    ]
+    "model": "emailconfirmation",
+    "app_label": "account"
   },
-  "model": "auth.permission",
-  "pk": 12
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "add_contenttype",
-    "name": "Can add content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ]
+    "model": "corsmodel",
+    "app_label": "corsheaders"
   },
-  "model": "auth.permission",
-  "pk": 13
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "change_contenttype",
-    "name": "Can change content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ]
+    "model": "revision",
+    "app_label": "reversion"
   },
-  "model": "auth.permission",
-  "pk": 14
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "delete_contenttype",
-    "name": "Can delete content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ]
+    "model": "version",
+    "app_label": "reversion"
   },
-  "model": "auth.permission",
-  "pk": 15
+  "model": "contenttypes.contenttype"
 },
 {
   "fields": {
-    "codename": "add_session",
-    "name": "Can add session",
-    "content_type": [
-      "sessions",
-      "session"
-    ]
+    "expire_date": "2015-07-18T20:53:27.085Z",
+    "session_data": "NDc1NTRkM2JmY2MxY2U0ZDM5Y2M0NTg0NGQ0MjM1ODQzZmY2ZGI5MDp7fQ=="
   },
-  "model": "auth.permission",
-  "pk": 16
+  "model": "sessions.session",
+  "pk": "evnty9e24hvj74yvanhgetaes4hre19h"
 },
 {
   "fields": {
-    "codename": "change_session",
-    "name": "Can change session",
-    "content_type": [
-      "sessions",
-      "session"
-    ]
+    "expire_date": "2015-07-18T23:54:38.559Z",
+    "session_data": "OWEzMGY5OGJmZDI1OGFlYzBjMWQ3ZGZiZWE3MWIwMmE4ZDAyMmQ5ZTp7Il9hdXRoX3VzZXJfaGFzaCI6IjYzMzhmZDQ3YzM4ZjVlZTlkMTY3YjY3ZTIxZDFkYjgzMmE3NDdiNjQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2lkIjoiMiIsImFjY291bnRfdmVyaWZpZWRfZW1haWwiOm51bGx9"
   },
-  "model": "auth.permission",
-  "pk": 17
-},
-{
-  "fields": {
-    "codename": "delete_session",
-    "name": "Can delete session",
-    "content_type": [
-      "sessions",
-      "session"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 18
-},
-{
-  "fields": {
-    "codename": "add_site",
-    "name": "Can add site",
-    "content_type": [
-      "sites",
-      "site"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 19
-},
-{
-  "fields": {
-    "codename": "change_site",
-    "name": "Can change site",
-    "content_type": [
-      "sites",
-      "site"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 20
-},
-{
-  "fields": {
-    "codename": "delete_site",
-    "name": "Can delete site",
-    "content_type": [
-      "sites",
-      "site"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 21
-},
-{
-  "fields": {
-    "codename": "add_variant",
-    "name": "Can add variant",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 22
-},
-{
-  "fields": {
-    "codename": "change_variant",
-    "name": "Can change variant",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 23
-},
-{
-  "fields": {
-    "codename": "delete_variant",
-    "name": "Can delete variant",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 24
-},
-{
-  "fields": {
-    "codename": "add_relation",
-    "name": "Can add relation",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 25
-},
-{
-  "fields": {
-    "codename": "change_relation",
-    "name": "Can change relation",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 26
-},
-{
-  "fields": {
-    "codename": "delete_relation",
-    "name": "Can delete relation",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 27
-},
-{
-  "fields": {
-    "codename": "add_emailaddress",
-    "name": "Can add email address",
-    "content_type": [
-      "account",
-      "emailaddress"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 28
-},
-{
-  "fields": {
-    "codename": "change_emailaddress",
-    "name": "Can change email address",
-    "content_type": [
-      "account",
-      "emailaddress"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 29
-},
-{
-  "fields": {
-    "codename": "delete_emailaddress",
-    "name": "Can delete email address",
-    "content_type": [
-      "account",
-      "emailaddress"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 30
-},
-{
-  "fields": {
-    "codename": "add_emailconfirmation",
-    "name": "Can add email confirmation",
-    "content_type": [
-      "account",
-      "emailconfirmation"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 31
-},
-{
-  "fields": {
-    "codename": "change_emailconfirmation",
-    "name": "Can change email confirmation",
-    "content_type": [
-      "account",
-      "emailconfirmation"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 32
-},
-{
-  "fields": {
-    "codename": "delete_emailconfirmation",
-    "name": "Can delete email confirmation",
-    "content_type": [
-      "account",
-      "emailconfirmation"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 33
-},
-{
-  "fields": {
-    "codename": "add_corsmodel",
-    "name": "Can add cors model",
-    "content_type": [
-      "corsheaders",
-      "corsmodel"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 34
-},
-{
-  "fields": {
-    "codename": "change_corsmodel",
-    "name": "Can change cors model",
-    "content_type": [
-      "corsheaders",
-      "corsmodel"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 35
-},
-{
-  "fields": {
-    "codename": "delete_corsmodel",
-    "name": "Can delete cors model",
-    "content_type": [
-      "corsheaders",
-      "corsmodel"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 36
-},
-{
-  "fields": {
-    "codename": "add_revision",
-    "name": "Can add revision",
-    "content_type": [
-      "reversion",
-      "revision"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 37
-},
-{
-  "fields": {
-    "codename": "change_revision",
-    "name": "Can change revision",
-    "content_type": [
-      "reversion",
-      "revision"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 38
-},
-{
-  "fields": {
-    "codename": "delete_revision",
-    "name": "Can delete revision",
-    "content_type": [
-      "reversion",
-      "revision"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 39
-},
-{
-  "fields": {
-    "codename": "add_version",
-    "name": "Can add version",
-    "content_type": [
-      "reversion",
-      "version"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 40
-},
-{
-  "fields": {
-    "codename": "change_version",
-    "name": "Can change version",
-    "content_type": [
-      "reversion",
-      "version"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 41
-},
-{
-  "fields": {
-    "codename": "delete_version",
-    "name": "Can delete version",
-    "content_type": [
-      "reversion",
-      "version"
-    ]
-  },
-  "model": "auth.permission",
-  "pk": 42
-},
-{
-  "fields": {
-    "username": "clinvar-variant-importer",
-    "first_name": "",
-    "last_name": "",
-    "is_active": true,
-    "is_superuser": false,
-    "is_staff": false,
-    "last_login": null,
-    "groups": [],
-    "user_permissions": [],
-    "password": "",
-    "email": "",
-    "date_joined": "2015-06-10T19:57:03.889Z"
-  },
-  "model": "auth.user",
-  "pk": 1
-},
-{
-  "fields": {
-    "username": "clinvar-data-importer",
-    "first_name": "",
-    "last_name": "",
-    "is_active": true,
-    "is_superuser": false,
-    "is_staff": false,
-    "last_login": null,
-    "groups": [],
-    "user_permissions": [],
-    "password": "",
-    "email": "",
-    "date_joined": "2015-06-10T19:57:03.892Z"
-  },
-  "model": "auth.user",
-  "pk": 2
+  "model": "sessions.session",
+  "pk": "r13jvm8ize1bx44l9i3nkfqtb7i3ttnu"
 },
 {
   "fields": {
@@ -552,158 +133,1029 @@
     "tags": "{\"pos-b37\": \"883516\", \"var-allele-b37\": \"A\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
-  "pk": 11
+  "pk": 1
 },
 {
   "fields": {
     "tags": "{\"pos-b37\": \"891344\", \"var-allele-b37\": \"A\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
-  "pk": 12
+  "pk": 2
 },
 {
   "fields": {
     "tags": "{\"pos-b37\": \"906168\", \"var-allele-b37\": \"A\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
-  "pk": 13
+  "pk": 3
 },
 {
   "fields": {
     "tags": "{\"pos-b37\": \"949523\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
-  "pk": 14
+  "pk": 4
 },
 {
   "fields": {
     "tags": "{\"pos-b37\": \"949696\", \"var-allele-b37\": \"CG\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
-  "pk": 15
+  "pk": 5
 },
 {
   "fields": {
     "tags": "{\"pos-b37\": \"949739\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
-  "pk": 16
+  "pk": 6
 },
 {
   "fields": {
     "tags": "{\"pos-b37\": \"955597\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
-  "pk": 17
+  "pk": 7
 },
 {
   "fields": {
     "tags": "{\"pos-b37\": \"957640\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
-  "pk": 18
+  "pk": 8
 },
 {
   "fields": {
     "tags": "{\"pos-b37\": \"976629\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
-  "pk": 19
+  "pk": 9
 },
 {
   "fields": {
     "tags": "{\"pos-b37\": \"976963\", \"var-allele-b37\": \"G\", \"ref-allele-b37\": \"A\", \"chrom-b37\": \"1\"}"
   },
   "model": "gennotes_server.variant",
-  "pk": 20
+  "pk": 10
 },
 {
   "fields": {
-    "variant": 20,
-    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"not specified\", \"clinvar-rcva:significance\": \"Likely benign\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116253\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"type\": \"clinvar-rcva\"}"
+    "variant": 10,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:trait-type\": \"Disease\", \"clinvar-rcva:preferred-name\": \"NM_198576.3(AGRN):c.1058A>G (p.Gln353Arg)\", \"clinvar-rcva:significance\": \"Likely benign\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116253\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"clinvar-rcva:esp-allele-frequency\": \"0.014089016971\", \"clinvar-rcva:trait-name\": \"not specified\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
   "pk": 1
 },
 {
   "fields": {
-    "variant": 18,
-    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"not specified\", \"clinvar-rcva:significance\": \"Likely benign\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116258\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"type\": \"clinvar-rcva\"}"
+    "variant": 7,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:trait-type\": \"Disease\", \"clinvar-rcva:preferred-name\": \"NM_198576.3(AGRN):c.45G>T (p.Pro15=)\", \"clinvar-rcva:significance\": \"Likely benign\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116272\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"clinvar-rcva:trait-name\": \"not specified\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
   "pk": 2
 },
 {
   "fields": {
-    "variant": 17,
-    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"not specified\", \"clinvar-rcva:significance\": \"Likely benign\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116272\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"type\": \"clinvar-rcva\"}"
+    "variant": 8,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:trait-type\": \"Disease\", \"clinvar-rcva:preferred-name\": \"NM_198576.3(AGRN):c.261C>T (p.Asp87=)\", \"clinvar-rcva:significance\": \"Likely benign\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116258\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"clinvar-rcva:esp-allele-frequency\": \"0.031754574812\", \"clinvar-rcva:trait-name\": \"not specified\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
   "pk": 3
 },
 {
   "fields": {
-    "variant": 19,
-    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"not specified\", \"clinvar-rcva:significance\": \"Benign\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"1\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116282\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"type\": \"clinvar-rcva\"}"
+    "variant": 9,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:trait-type\": \"Disease\", \"clinvar-rcva:preferred-name\": \"NM_198576.3(AGRN):c.804C>T (p.Ala268=)\", \"clinvar-rcva:significance\": \"Benign\", \"clinvar-rcva:version\": \"1\", \"clinvar-rcva:gene-name\": \"agrin\", \"clinvar-rcva:accession\": \"RCV000116282\", \"clinvar-rcva:gene-symbol\": \"AGRN\", \"clinvar-rcva:trait-name\": \"not specified\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
   "pk": 4
 },
 {
   "fields": {
-    "variant": 11,
-    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Malignant melanoma\", \"clinvar-rcva:significance\": \"not provided\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"nucleolar complex associated 2 homolog (S. cerevisiae)\", \"clinvar-rcva:accession\": \"RCV000064926\", \"clinvar-rcva:gene-symbol\": \"NOC2L\", \"type\": \"clinvar-rcva\"}"
+    "variant": 6,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:trait-type\": \"Disease\", \"clinvar-rcva:preferred-name\": \"NM_005101.3(ISG15):c.379G>T (p.Glu127Ter)\", \"clinvar-rcva:significance\": \"Pathogenic\", \"clinvar-rcva:version\": \"4\", \"clinvar-rcva:gene-name\": \"ISG15 ubiquitin-like modifier\", \"clinvar-rcva:accession\": \"RCV000148988\", \"clinvar-rcva:gene-symbol\": \"ISG15\", \"clinvar-rcva:trait-name\": \"Immunodeficiency 38\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
   "pk": 5
 },
 {
   "fields": {
-    "variant": 12,
-    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Malignant melanoma\", \"clinvar-rcva:significance\": \"not provided\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"nucleolar complex associated 2 homolog (S. cerevisiae)\", \"clinvar-rcva:accession\": \"RCV000064927\", \"clinvar-rcva:gene-symbol\": \"NOC2L\", \"type\": \"clinvar-rcva\"}"
+    "variant": 5,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:trait-type\": \"Disease\", \"clinvar-rcva:preferred-name\": \"NM_005101.3(ISG15):c.339dupG (p.Leu114Alafs)\", \"clinvar-rcva:significance\": \"Pathogenic\", \"clinvar-rcva:citations\": \"PMID22859821\", \"clinvar-rcva:version\": \"4\", \"clinvar-rcva:gene-name\": \"ISG15 ubiquitin-like modifier\", \"clinvar-rcva:accession\": \"RCV000148989\", \"clinvar-rcva:gene-symbol\": \"ISG15\", \"clinvar-rcva:trait-name\": \"Immunodeficiency 38\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
   "pk": 6
 },
 {
   "fields": {
-    "variant": 13,
-    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Malignant melanoma\", \"clinvar-rcva:significance\": \"not provided\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"pleckstrin homology domain containing, family N member 1\", \"clinvar-rcva:accession\": \"RCV000064940\", \"clinvar-rcva:gene-symbol\": \"PLEKHN1\", \"type\": \"clinvar-rcva\"}"
+    "variant": 4,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:trait-type\": \"Disease\", \"clinvar-rcva:preferred-name\": \"NM_005101.3(ISG15):c.163C>T (p.Gln55Ter)\", \"clinvar-rcva:significance\": \"Pathogenic\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"ISG15 ubiquitin-like modifier\", \"clinvar-rcva:accession\": \"RCV000162196\", \"clinvar-rcva:gene-symbol\": \"ISG15\", \"clinvar-rcva:trait-name\": \"Immunodeficiency 38\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
   "pk": 7
 },
 {
   "fields": {
-    "variant": 16,
-    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Immunodeficiency 38\", \"clinvar-rcva:significance\": \"Pathogenic\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"4\", \"clinvar-rcva:gene-name\": \"ISG15 ubiquitin-like modifier\", \"clinvar-rcva:accession\": \"RCV000148988\", \"clinvar-rcva:gene-symbol\": \"ISG15\", \"type\": \"clinvar-rcva\"}"
+    "variant": 1,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:trait-type\": \"Disease\", \"clinvar-rcva:preferred-name\": \"NM_015658.3(NOC2L):c.1654C>T (p.Leu552=)\", \"clinvar-rcva:significance\": \"not provided\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"nucleolar complex associated 2 homolog (S. cerevisiae)\", \"clinvar-rcva:accession\": \"RCV000064926\", \"clinvar-rcva:gene-symbol\": \"NOC2L\", \"clinvar-rcva:trait-name\": \"Malignant melanoma\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
   "pk": 8
 },
 {
   "fields": {
-    "variant": 15,
-    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Immunodeficiency 38\", \"clinvar-rcva:significance\": \"Pathogenic\", \"clinvar-rcva:citations\": \"PMID22859821\", \"clinvar-rcva:version\": \"4\", \"clinvar-rcva:gene-name\": \"ISG15 ubiquitin-like modifier\", \"clinvar-rcva:accession\": \"RCV000148989\", \"clinvar-rcva:gene-symbol\": \"ISG15\", \"type\": \"clinvar-rcva\"}"
+    "variant": 2,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:trait-type\": \"Disease\", \"clinvar-rcva:preferred-name\": \"NM_015658.3(NOC2L):c.657C>T (p.Leu219=)\", \"clinvar-rcva:significance\": \"not provided\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"nucleolar complex associated 2 homolog (S. cerevisiae)\", \"clinvar-rcva:accession\": \"RCV000064927\", \"clinvar-rcva:gene-symbol\": \"NOC2L\", \"clinvar-rcva:trait-name\": \"Malignant melanoma\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
   "pk": 9
 },
 {
   "fields": {
-    "variant": 14,
-    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:disease-name\": \"Immunodeficiency 38\", \"clinvar-rcva:significance\": \"Pathogenic\", \"clinvar-rcva:citations\": \"\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"ISG15 ubiquitin-like modifier\", \"clinvar-rcva:accession\": \"RCV000162196\", \"clinvar-rcva:gene-symbol\": \"ISG15\", \"type\": \"clinvar-rcva\"}"
+    "variant": 3,
+    "tags": "{\"clinvar-rcva:record-status\": \"current\", \"clinvar-rcva:num-submissions\": \"1\", \"clinvar-rcva:trait-type\": \"Disease\", \"clinvar-rcva:preferred-name\": \"NM_001160184.1(PLEKHN1):c.484+30G>A\", \"clinvar-rcva:significance\": \"not provided\", \"clinvar-rcva:version\": \"2\", \"clinvar-rcva:gene-name\": \"pleckstrin homology domain containing, family N member 1\", \"clinvar-rcva:accession\": \"RCV000064940\", \"clinvar-rcva:gene-symbol\": \"PLEKHN1\", \"clinvar-rcva:trait-name\": \"Malignant melanoma\", \"type\": \"clinvar-rcva\"}"
   },
   "model": "gennotes_server.relation",
   "pk": 10
 },
 {
   "fields": {
-    "comment": "Relation added based on presence in XML file: ClinVarFullRelease_2015-06.xml.gz",
-    "date_created": "2015-06-10T21:20:43.358Z",
+    "email_address": 1,
+    "key": "da2dgg2qz00ftqnmo9pnl4ucqfeqfjw7qlolwddaphxxaisosxmpxz9yoiqbk3l1",
+    "sent": "2015-07-04T23:54:24.342Z",
+    "created": "2015-07-04T23:54:24.325Z"
+  },
+  "model": "account.emailconfirmation",
+  "pk": 1
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "pos-b37=883516; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1",
+    "object_id": "1",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ],
+    "object_id_int": 1,
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"883516\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 1}]",
+    "revision": 1
+  },
+  "model": "reversion.version",
+  "pk": 1
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "pos-b37=891344; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1",
+    "object_id": "2",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ],
+    "object_id_int": 2,
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"891344\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 2}]",
+    "revision": 1
+  },
+  "model": "reversion.version",
+  "pk": 2
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "pos-b37=906168; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1",
+    "object_id": "3",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ],
+    "object_id_int": 3,
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"906168\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 3}]",
+    "revision": 1
+  },
+  "model": "reversion.version",
+  "pk": 3
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "pos-b37=949523; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1",
+    "object_id": "4",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ],
+    "object_id_int": 4,
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949523\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 4}]",
+    "revision": 1
+  },
+  "model": "reversion.version",
+  "pk": 4
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "pos-b37=949696; var-allele-b37=CG; ref-allele-b37=C; chrom-b37=1",
+    "object_id": "5",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ],
+    "object_id_int": 5,
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949696\\\", \\\"var-allele-b37\\\": \\\"CG\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 5}]",
+    "revision": 1
+  },
+  "model": "reversion.version",
+  "pk": 5
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "pos-b37=949739; var-allele-b37=T; ref-allele-b37=G; chrom-b37=1",
+    "object_id": "6",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ],
+    "object_id_int": 6,
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949739\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 6}]",
+    "revision": 1
+  },
+  "model": "reversion.version",
+  "pk": 6
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "pos-b37=955597; var-allele-b37=T; ref-allele-b37=G; chrom-b37=1",
+    "object_id": "7",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ],
+    "object_id_int": 7,
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"955597\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 7}]",
+    "revision": 1
+  },
+  "model": "reversion.version",
+  "pk": 7
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "pos-b37=957640; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1",
+    "object_id": "8",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ],
+    "object_id_int": 8,
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"957640\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 8}]",
+    "revision": 1
+  },
+  "model": "reversion.version",
+  "pk": 8
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "pos-b37=976629; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1",
+    "object_id": "9",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ],
+    "object_id_int": 9,
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"976629\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 9}]",
+    "revision": 1
+  },
+  "model": "reversion.version",
+  "pk": 9
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "pos-b37=976963; var-allele-b37=G; ref-allele-b37=A; chrom-b37=1",
+    "object_id": "10",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ],
+    "object_id_int": 10,
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"976963\\\", \\\"var-allele-b37\\\": \\\"G\\\", \\\"ref-allele-b37\\\": \\\"A\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 10}]",
+    "revision": 1
+  },
+  "model": "reversion.version",
+  "pk": 10
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "Relation: 1, Type: clinvar-rcva",
+    "object_id": "1",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ],
+    "object_id_int": 1,
+    "serialized_data": "[{\"fields\": {\"variant\": 10, \"tags\": \"{\\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:trait-type\\\": \\\"Disease\\\", \\\"clinvar-rcva:significance\\\": \\\"Likely benign\\\", \\\"clinvar-rcva:preferred-name\\\": \\\"NM_198576.3(AGRN):c.1058A>G (p.Gln353Arg)\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116253\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"clinvar-rcva:esp-allele-frequency\\\": \\\"0.014089016971\\\", \\\"clinvar-rcva:trait-name\\\": \\\"not specified\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 1}]",
+    "revision": 2
+  },
+  "model": "reversion.version",
+  "pk": 11
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "Relation: 2, Type: clinvar-rcva",
+    "object_id": "2",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ],
+    "object_id_int": 2,
+    "serialized_data": "[{\"fields\": {\"variant\": 7, \"tags\": \"{\\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:trait-type\\\": \\\"Disease\\\", \\\"clinvar-rcva:significance\\\": \\\"Likely benign\\\", \\\"clinvar-rcva:preferred-name\\\": \\\"NM_198576.3(AGRN):c.45G>T (p.Pro15=)\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116272\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"clinvar-rcva:trait-name\\\": \\\"not specified\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 2}]",
+    "revision": 2
+  },
+  "model": "reversion.version",
+  "pk": 12
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "Relation: 3, Type: clinvar-rcva",
+    "object_id": "3",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ],
+    "object_id_int": 3,
+    "serialized_data": "[{\"fields\": {\"variant\": 8, \"tags\": \"{\\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:trait-type\\\": \\\"Disease\\\", \\\"clinvar-rcva:significance\\\": \\\"Likely benign\\\", \\\"clinvar-rcva:preferred-name\\\": \\\"NM_198576.3(AGRN):c.261C>T (p.Asp87=)\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116258\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"clinvar-rcva:esp-allele-frequency\\\": \\\"0.031754574812\\\", \\\"clinvar-rcva:trait-name\\\": \\\"not specified\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 3}]",
+    "revision": 2
+  },
+  "model": "reversion.version",
+  "pk": 13
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "Relation: 4, Type: clinvar-rcva",
+    "object_id": "4",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ],
+    "object_id_int": 4,
+    "serialized_data": "[{\"fields\": {\"variant\": 9, \"tags\": \"{\\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:trait-type\\\": \\\"Disease\\\", \\\"clinvar-rcva:significance\\\": \\\"Benign\\\", \\\"clinvar-rcva:preferred-name\\\": \\\"NM_198576.3(AGRN):c.804C>T (p.Ala268=)\\\", \\\"clinvar-rcva:version\\\": \\\"1\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116282\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"clinvar-rcva:trait-name\\\": \\\"not specified\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 4}]",
+    "revision": 2
+  },
+  "model": "reversion.version",
+  "pk": 14
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "Relation: 5, Type: clinvar-rcva",
+    "object_id": "5",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ],
+    "object_id_int": 5,
+    "serialized_data": "[{\"fields\": {\"variant\": 6, \"tags\": \"{\\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:trait-type\\\": \\\"Disease\\\", \\\"clinvar-rcva:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-rcva:preferred-name\\\": \\\"NM_005101.3(ISG15):c.379G>T (p.Glu127Ter)\\\", \\\"clinvar-rcva:version\\\": \\\"4\\\", \\\"clinvar-rcva:gene-name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000148988\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"ISG15\\\", \\\"clinvar-rcva:trait-name\\\": \\\"Immunodeficiency 38\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 5}]",
+    "revision": 2
+  },
+  "model": "reversion.version",
+  "pk": 15
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "Relation: 6, Type: clinvar-rcva",
+    "object_id": "6",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ],
+    "object_id_int": 6,
+    "serialized_data": "[{\"fields\": {\"variant\": 5, \"tags\": \"{\\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:trait-type\\\": \\\"Disease\\\", \\\"clinvar-rcva:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-rcva:preferred-name\\\": \\\"NM_005101.3(ISG15):c.339dupG (p.Leu114Alafs)\\\", \\\"clinvar-rcva:citations\\\": \\\"PMID22859821\\\", \\\"clinvar-rcva:version\\\": \\\"4\\\", \\\"clinvar-rcva:gene-name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000148989\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"ISG15\\\", \\\"clinvar-rcva:trait-name\\\": \\\"Immunodeficiency 38\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 6}]",
+    "revision": 2
+  },
+  "model": "reversion.version",
+  "pk": 16
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "Relation: 7, Type: clinvar-rcva",
+    "object_id": "7",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ],
+    "object_id_int": 7,
+    "serialized_data": "[{\"fields\": {\"variant\": 4, \"tags\": \"{\\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:trait-type\\\": \\\"Disease\\\", \\\"clinvar-rcva:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-rcva:preferred-name\\\": \\\"NM_005101.3(ISG15):c.163C>T (p.Gln55Ter)\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000162196\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"ISG15\\\", \\\"clinvar-rcva:trait-name\\\": \\\"Immunodeficiency 38\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 7}]",
+    "revision": 2
+  },
+  "model": "reversion.version",
+  "pk": 17
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "Relation: 8, Type: clinvar-rcva",
+    "object_id": "8",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ],
+    "object_id_int": 8,
+    "serialized_data": "[{\"fields\": {\"variant\": 1, \"tags\": \"{\\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:trait-type\\\": \\\"Disease\\\", \\\"clinvar-rcva:significance\\\": \\\"not provided\\\", \\\"clinvar-rcva:preferred-name\\\": \\\"NM_015658.3(NOC2L):c.1654C>T (p.Leu552=)\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"nucleolar complex associated 2 homolog (S. cerevisiae)\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000064926\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"NOC2L\\\", \\\"clinvar-rcva:trait-name\\\": \\\"Malignant melanoma\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 8}]",
+    "revision": 2
+  },
+  "model": "reversion.version",
+  "pk": 18
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "Relation: 9, Type: clinvar-rcva",
+    "object_id": "9",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ],
+    "object_id_int": 9,
+    "serialized_data": "[{\"fields\": {\"variant\": 2, \"tags\": \"{\\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:trait-type\\\": \\\"Disease\\\", \\\"clinvar-rcva:significance\\\": \\\"not provided\\\", \\\"clinvar-rcva:preferred-name\\\": \\\"NM_015658.3(NOC2L):c.657C>T (p.Leu219=)\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"nucleolar complex associated 2 homolog (S. cerevisiae)\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000064927\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"NOC2L\\\", \\\"clinvar-rcva:trait-name\\\": \\\"Malignant melanoma\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 9}]",
+    "revision": 2
+  },
+  "model": "reversion.version",
+  "pk": 19
+},
+{
+  "fields": {
+    "format": "json",
+    "object_repr": "Relation: 10, Type: clinvar-rcva",
+    "object_id": "10",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ],
+    "object_id_int": 10,
+    "serialized_data": "[{\"fields\": {\"variant\": 3, \"tags\": \"{\\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:trait-type\\\": \\\"Disease\\\", \\\"clinvar-rcva:significance\\\": \\\"not provided\\\", \\\"clinvar-rcva:preferred-name\\\": \\\"NM_001160184.1(PLEKHN1):c.484+30G>A\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"pleckstrin homology domain containing, family N member 1\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000064940\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"PLEKHN1\\\", \\\"clinvar-rcva:trait-name\\\": \\\"Malignant melanoma\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 10}]",
+    "revision": 2
+  },
+  "model": "reversion.version",
+  "pk": 20
+},
+{
+  "fields": {
+    "codename": "add_logentry",
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_logentry",
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_logentry",
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_permission",
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_permission",
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_permission",
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_group",
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_group",
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_group",
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_user",
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_user",
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_user",
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_contenttype",
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_contenttype",
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_contenttype",
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_session",
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_session",
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_session",
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_site",
+    "name": "Can add site",
+    "content_type": [
+      "sites",
+      "site"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_site",
+    "name": "Can change site",
+    "content_type": [
+      "sites",
+      "site"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_site",
+    "name": "Can delete site",
+    "content_type": [
+      "sites",
+      "site"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_variant",
+    "name": "Can add variant",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_variant",
+    "name": "Can change variant",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_variant",
+    "name": "Can delete variant",
+    "content_type": [
+      "gennotes_server",
+      "variant"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_relation",
+    "name": "Can add relation",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_relation",
+    "name": "Can change relation",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_relation",
+    "name": "Can delete relation",
+    "content_type": [
+      "gennotes_server",
+      "relation"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_commitdeletion",
+    "name": "Can add commit deletion",
+    "content_type": [
+      "gennotes_server",
+      "commitdeletion"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_commitdeletion",
+    "name": "Can change commit deletion",
+    "content_type": [
+      "gennotes_server",
+      "commitdeletion"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_commitdeletion",
+    "name": "Can delete commit deletion",
+    "content_type": [
+      "gennotes_server",
+      "commitdeletion"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_emailaddress",
+    "name": "Can add email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_emailaddress",
+    "name": "Can change email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_emailaddress",
+    "name": "Can delete email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_emailconfirmation",
+    "name": "Can add email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_emailconfirmation",
+    "name": "Can change email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_emailconfirmation",
+    "name": "Can delete email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_corsmodel",
+    "name": "Can add cors model",
+    "content_type": [
+      "corsheaders",
+      "corsmodel"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_corsmodel",
+    "name": "Can change cors model",
+    "content_type": [
+      "corsheaders",
+      "corsmodel"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_corsmodel",
+    "name": "Can delete cors model",
+    "content_type": [
+      "corsheaders",
+      "corsmodel"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_revision",
+    "name": "Can add revision",
+    "content_type": [
+      "reversion",
+      "revision"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_revision",
+    "name": "Can change revision",
+    "content_type": [
+      "reversion",
+      "revision"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_revision",
+    "name": "Can delete revision",
+    "content_type": [
+      "reversion",
+      "revision"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "add_version",
+    "name": "Can add version",
+    "content_type": [
+      "reversion",
+      "version"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "change_version",
+    "name": "Can change version",
+    "content_type": [
+      "reversion",
+      "version"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "codename": "delete_version",
+    "name": "Can delete version",
+    "content_type": [
+      "reversion",
+      "version"
+    ]
+  },
+  "model": "auth.permission"
+},
+{
+  "fields": {
+    "username": "clinvar-data-importer",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": null,
+    "groups": [],
+    "user_permissions": [],
+    "password": "",
+    "email": "",
+    "date_joined": "2015-07-04T20:38:04.414Z"
+  },
+  "model": "auth.user"
+},
+{
+  "fields": {
+    "username": "testuser",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": false,
+    "is_staff": false,
+    "last_login": "2015-07-04T23:54:38.553Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$iLAzMU2UwJOd$Op5XrV6s/CG2EjbNa+BECyA3XDPDQj+G6zBks70X1wg=",
+    "email": "mpball@gmail.com",
+    "date_joined": "2015-07-04T23:54:24.227Z"
+  },
+  "model": "auth.user"
+},
+{
+  "fields": {
+    "verified": true,
+    "user": [
+      "testuser"
+    ],
+    "primary": true,
+    "email": "mpball@gmail.com"
+  },
+  "model": "account.emailaddress",
+  "pk": 1
+},
+{
+  "fields": {
+    "comment": "Variant added based on presence in ClinVar VCF file: clinvar_20150629.vcf.gz",
+    "date_created": "2015-07-04T20:40:04.302Z",
     "manager_slug": "default",
     "user": [
-      "clinvar-variant-importer"
+      "clinvar-data-importer"
     ]
   },
   "model": "reversion.revision",
@@ -711,322 +1163,14 @@
 },
 {
   "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "1",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 1,
-    "serialized_data": "[{\"fields\": {\"variant\": 20, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"not specified\\\", \\\"clinvar-rcva:significance\\\": \\\"Likely benign\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116253\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 1}]",
-    "revision": 1
+    "comment": "Relation added based on presence in ClinVar XML file: ClinVarFullRelease_2015-07.xml.gz",
+    "date_created": "2015-07-04T20:43:18.524Z",
+    "manager_slug": "default",
+    "user": [
+      "clinvar-data-importer"
+    ]
   },
-  "model": "reversion.version",
-  "pk": 1
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "2",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 2,
-    "serialized_data": "[{\"fields\": {\"variant\": 18, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"not specified\\\", \\\"clinvar-rcva:significance\\\": \\\"Likely benign\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116258\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 2}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
+  "model": "reversion.revision",
   "pk": 2
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "3",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 3,
-    "serialized_data": "[{\"fields\": {\"variant\": 17, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"not specified\\\", \\\"clinvar-rcva:significance\\\": \\\"Likely benign\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116272\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 3}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 3
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "4",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 4,
-    "serialized_data": "[{\"fields\": {\"variant\": 19, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"not specified\\\", \\\"clinvar-rcva:significance\\\": \\\"Benign\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"1\\\", \\\"clinvar-rcva:gene-name\\\": \\\"agrin\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000116282\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"AGRN\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 4}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 4
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "5",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 5,
-    "serialized_data": "[{\"fields\": {\"variant\": 11, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Malignant melanoma\\\", \\\"clinvar-rcva:significance\\\": \\\"not provided\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"nucleolar complex associated 2 homolog (S. cerevisiae)\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000064926\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"NOC2L\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 5}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 5
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "6",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 6,
-    "serialized_data": "[{\"fields\": {\"variant\": 12, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Malignant melanoma\\\", \\\"clinvar-rcva:significance\\\": \\\"not provided\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"nucleolar complex associated 2 homolog (S. cerevisiae)\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000064927\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"NOC2L\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 6}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 6
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "7",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 7,
-    "serialized_data": "[{\"fields\": {\"variant\": 13, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Malignant melanoma\\\", \\\"clinvar-rcva:significance\\\": \\\"not provided\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"pleckstrin homology domain containing, family N member 1\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000064940\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"PLEKHN1\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 7}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 7
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "8",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 8,
-    "serialized_data": "[{\"fields\": {\"variant\": 16, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Immunodeficiency 38\\\", \\\"clinvar-rcva:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"4\\\", \\\"clinvar-rcva:gene-name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000148988\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"ISG15\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 8}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 8
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "9",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 9,
-    "serialized_data": "[{\"fields\": {\"variant\": 15, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Immunodeficiency 38\\\", \\\"clinvar-rcva:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-rcva:citations\\\": \\\"PMID22859821\\\", \\\"clinvar-rcva:version\\\": \\\"4\\\", \\\"clinvar-rcva:gene-name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000148989\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"ISG15\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 9}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 9
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "Relation object",
-    "object_id": "10",
-    "content_type": [
-      "gennotes_server",
-      "relation"
-    ],
-    "object_id_int": 10,
-    "serialized_data": "[{\"fields\": {\"variant\": 14, \"tags\": \"{\\\"clinvar-rcva:num-submissions\\\": \\\"1\\\", \\\"clinvar-rcva:record-status\\\": \\\"current\\\", \\\"clinvar-rcva:disease-name\\\": \\\"Immunodeficiency 38\\\", \\\"clinvar-rcva:significance\\\": \\\"Pathogenic\\\", \\\"clinvar-rcva:citations\\\": \\\"\\\", \\\"clinvar-rcva:version\\\": \\\"2\\\", \\\"clinvar-rcva:gene-name\\\": \\\"ISG15 ubiquitin-like modifier\\\", \\\"clinvar-rcva:accession\\\": \\\"RCV000162196\\\", \\\"clinvar-rcva:gene-symbol\\\": \\\"ISG15\\\", \\\"type\\\": \\\"clinvar-rcva\\\"}\"}, \"model\": \"gennotes_server.relation\", \"pk\": 10}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 10
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "pos-b37=883516; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1",
-    "object_id": "11",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 11,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"883516\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 11}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 11
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "pos-b37=891344; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1",
-    "object_id": "12",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 12,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"891344\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 12}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 12
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "pos-b37=906168; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1",
-    "object_id": "13",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 13,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"906168\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 13}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 13
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "pos-b37=949523; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1",
-    "object_id": "14",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 14,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949523\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 14}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 14
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "pos-b37=949696; var-allele-b37=CG; ref-allele-b37=C; chrom-b37=1",
-    "object_id": "15",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 15,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949696\\\", \\\"var-allele-b37\\\": \\\"CG\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 15}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 15
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "pos-b37=949739; var-allele-b37=T; ref-allele-b37=G; chrom-b37=1",
-    "object_id": "16",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 16,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949739\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 16}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 16
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "pos-b37=955597; var-allele-b37=T; ref-allele-b37=G; chrom-b37=1",
-    "object_id": "17",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 17,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"955597\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 17}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 17
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "pos-b37=957640; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1",
-    "object_id": "18",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 18,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"957640\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 18}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 18
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "pos-b37=976629; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1",
-    "object_id": "19",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 19,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"976629\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 19}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 19
-},
-{
-  "fields": {
-    "format": "json",
-    "object_repr": "pos-b37=976963; var-allele-b37=G; ref-allele-b37=A; chrom-b37=1",
-    "object_id": "20",
-    "content_type": [
-      "gennotes_server",
-      "variant"
-    ],
-    "object_id_int": 20,
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"976963\\\", \\\"var-allele-b37\\\": \\\"G\\\", \\\"ref-allele-b37\\\": \\\"A\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 20}]",
-    "revision": 1
-  },
-  "model": "reversion.version",
-  "pk": 20
 }
 ]

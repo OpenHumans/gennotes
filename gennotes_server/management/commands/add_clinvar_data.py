@@ -170,7 +170,7 @@ class Command(BaseCommand):
         logging.basicConfig(level=logging.INFO,
                             format='%(asctime)s - %(message)s')
         clinvar_user = get_user_model().objects.get(
-            username='clinvar-variant-importer')
+            username='clinvar-data-importer')
 
         # Store objects that need to be saved (created or updated) to db.
         # These are saved in a separate function so they're represented as
@@ -211,10 +211,14 @@ class Command(BaseCommand):
 
         # Add Variants if they have ClinVar data. Variants are initially added
         # only with the build 37 position information from the VCF.
+        n = 0
         for line in clinvar_vcf:
             if line.startswith('#'):
                 continue
 
+            n += 1
+            if n > 10:
+                break
             # Parse ClinVar information using vcf2clinvar.
             cvvl = ClinVarVCFLine(vcf_line=line).as_dict()
             data = line.rstrip('\n').split('\t')
