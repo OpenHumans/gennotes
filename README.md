@@ -18,17 +18,51 @@ room: https://gitter.im/PersonalGenomesOrg/gennotes
 
 **Languages**: Python (Django), JavaScript, CSS, HTML
 
-## Ongoing goals
+## Motivation
+
+GenNotes and Genevieve are about accessing and improving genomic knowledge. We believe access and discussion of knowledge is a right and necessity for informed citizenry in the age of genomics. We want to facilitate access to published claims regarding the effects of variants in an individual genome, and enable discussion and consensus understanding of these claims.
+
+We’d like to start by building understanding around ClinVar, a public domain resource that aggregates and reports assertions of clinical impact of genetic variants. While invaluable, these assertions can be flawed – this is especially apparent when evaluating assertions made for an individual genome. Coupling "genome reports" and "consensus, structured note-taking" helps evaluate assertions efficiently, and improves the quality of reports generated for future genomes.
+
+To this end, we’d like to develop a set of related open source tools:
+- **GenNotes**
+  - A web server storing publicly shared and flexibly structured tags associated with genetic variants. These tags are structured as key/value tags, in the manner of Open Street Map. These can be arbitrary keys, but initially we'd like to focus on ClinVar and Genevieve tags.
+- **Genevieve**
+  - A client web app that can process individual genomes to find variants matching ClinVar positions. Using GenNotes, the client retrieves and reports the latest ClinVar and Genevieve tags for this variant list.
+- **Connect these**
+  - We want to enable Genevieve users to submit and edit structured notes to the GenNotes server regarding ClinVar assertions. We envision the associated GenNotes accounts to be open to all, and for contributors to Genevieve notes to agree to a CC0 public dedication for their edits.
+
+### Not for clinical use!
+
+The tools that we create for this project may involve claims related to health and disease, but primary literature is research: reports may be contradicted or challenged by later findings. Edits may come from any source and are not vetted. None of the resources produced in this project are for medical use and they should not be used as a substitute for professional medical care or advice. Users seeking information about a personal genetic disease, syndrome, or condition should consult with a qualified healthcare professional.
+
+## TODO List
 
 Also check out the issues, some of these have generated various subtasks!
 
-- **Programmatic tag submission:** Methods (widget/API) for client apps to update or submit new tags
-- **Implement tag submission:** Implement tag submission on Genevieve client to add/update following tags
-  - (tagging clinvar-accession) "genevieve-inheritance": [dominant/recessive/additive/unspecified) (default: unspecified)
-  - (tagging clinvar-accession) "genevieve-evidence": [well-established/reported/disputed/disproven] (default: reported)
-  - (tagging clinvar-accession) "genevieve-notes": free text field for explaining rationale for current genevieve evaluation
+- **Testing revisions:** Add tests to confirm that all API-submitted edits
+are recording as revisions.
+- **Testing verified email:** Add tests to confirm that a users email must be
+verified before having permission to perform Variant and Relation editing via
+API.
+- **Documentation:** An API for submitting edits now exists. Documentation
+currently in docstrings should move to somewhere more visible.
+- **Programmatic tag submission:** Methods (widget/API) for client apps to
+update or submit new tags on behalf of users
+  - **Method 1:** A client-side JavaScript widget submits to API directly for
+the user.
+  - **Method 2:** User grants permisison via OAuth2 for third party to submit
+edits on their behalf.
+- **Implement tag submission:** Implement tag submission on Genevieve client
+to add/update following tags
+  - (tagging clinvar-accession) "genevieve-inheritance":
+[dominant/recessive/additive/unspecified) (default: unspecified)
+  - (tagging clinvar-accession) "genevieve-evidence":
+[well-established/reported/disputed/disproven] (default: reported)
+  - (tagging clinvar-accession) "genevieve-notes": free text field for
+explaining rationale for current genevieve evaluation
 
-## Additional ideas
+## Wishlist
 
 - ~~Parse and import ExAC key/value tags for variant positions~~
   - As long as ExAC is released under [ODbL](http://opendatacommons.org/licenses/odbl/1.0/), it can't be integrated with a public domain resource. :(
@@ -82,21 +116,3 @@ to start learning! Maybe you'd be interested in contributing to [Genevieve](http
 ### Testing
 
 Test your code changes by running `python manage.py test`.
-
-## Motivation
-
-GenNotes and Genevieve are about accessing and improving genomic knowledge. We believe access and discussion of knowledge is a right and necessity for informed citizenry in the age of genomics. We want to facilitate access to published claims regarding the effects of variants in an individual genome, and enable discussion and consensus understanding of these claims.
-
-We’d like to start by building understanding around ClinVar, a public domain resource that aggregates and reports assertions of clinical impact of genetic variants. While invaluable, these assertions can be flawed – this is especially apparent when evaluating assertions made for an individual genome. Coupling "genome reports" and "consensus, structured note-taking" helps evaluate assertions efficiently, and improves the quality of reports generated for future genomes.
-
-To this end, we’d like to develop a set of related open source tools:
-- **GenNotes**
-  - A web server storing publicly shared and flexibly structured tags associated with genetic variants. These tags are structured as key/value tags, in the manner of Open Street Map. These can be arbitrary keys, but initially we'd like to focus on ClinVar and Genevieve tags.
-- **Genevieve**
-  - A client web app that can process individual genomes to find variants matching ClinVar positions. Using GenNotes, the client retrieves and reports the latest ClinVar and Genevieve tags for this variant list.
-- **Connect these**
-  - We want to enable Genevieve users to submit and edit structured notes to the GenNotes server regarding ClinVar assertions. We envision the associated GenNotes accounts to be open to all, and for contributors to Genevieve notes to agree to a CC0 public dedication for their edits.
-
-### Not for clinical use!
-
-The tools that we create for this project may involve claims related to health and disease, but primary literature is research: reports may be contradicted or challenged by later findings. Edits may come from any source and are not vetted. None of the resources produced in this project are for medical use and they should not be used as a substitute for professional medical care or advice. Users seeking information about a personal genetic disease, syndrome, or condition should consult with a qualified healthcare professional.
