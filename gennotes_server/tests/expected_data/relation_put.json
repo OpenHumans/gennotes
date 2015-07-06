@@ -1,0 +1,8 @@
+{
+  "tags": {
+    "comment": "All other tags deleted!",
+    "type": "clinvar-rcva"
+  },
+  "url": "http://testserver/api/relation/1/",
+  "variant": "http://testserver/api/variant/10/"
+}

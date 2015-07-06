@@ -65,6 +65,10 @@ class RelationSerializer(SafeTagUpdateMixin,
     PATCH update will update any tags included in the request tag data. If
     special tags are listed, their values must be unchanged.
     """
+    variant = serializers.HyperlinkedRelatedField(
+        queryset=Variant.objects.all(), view_name='variant-detail',
+        required=False)
+
     class Meta:
         model = Relation
 
@@ -72,6 +76,11 @@ class RelationSerializer(SafeTagUpdateMixin,
         """
         Check that all required tags are included in tag data before creating.
         """
+        if ['tags', 'variant'] != sorted(validated_data.keys()):
+            raise serializers.ValidationError(detail={
+                'detail': "Create (POST) should include the 'tags' and "
+                "'variant' fields. Your request contains the following "
+                'fields: {}'.format(str(validated_data.keys()))})
         if 'tags' in validated_data:
             for tag in Relation.required_tags:
                 if tag not in validated_data['tags']:

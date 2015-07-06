@@ -52,7 +52,7 @@ class RevisionUpdateMixin(object):
     def update(self, request, *args, **kwargs):
         """Custom update method to record revision information."""
         partial = kwargs.pop('partial', False)
-        commit_comment = request.data.pop('commit-comment', '')
+        commit_comment = request.data.get('commit-comment', '')
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data,
                                          partial=partial)
@@ -193,7 +193,7 @@ class RelationViewSet(RevisionUpdateMixin,
     @transaction.atomic()
     @reversion.create_revision()
     def create(self, request, *args, **kwargs):
-        commit_comment = request.data.pop('commit-comment', '')
+        commit_comment = request.data.get('commit-comment', '')
         reversion.set_user(user=self.request.user)
         reversion.set_comment(comment=commit_comment)
         return super(RelationViewSet, self).create(request, *args, **kwargs)
@@ -201,12 +201,11 @@ class RelationViewSet(RevisionUpdateMixin,
     @transaction.atomic()
     @reversion.create_revision()
     def record_destroy(self, request, instance):
-        commit_comment = request.data.pop('commit-comment', '')
+        commit_comment = request.data.get('commit-comment', '')
         instance.save()
         reversion.set_user(user=self.request.user)
         reversion.set_comment(comment=commit_comment)
         reversion.add_meta(CommitDeletion)
-        print "Saving deletion commit with comment {} and CommitDeletion meta.".format(commit_comment)
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()

@@ -1,0 +1,8 @@
+{
+  "tags": {
+    "other-test-tag": "some-value",
+    "type": "test-relation"
+  },
+  "url": "http://testserver/api/relation/11/",
+  "variant": "http://testserver/api/variant/1/"
+}

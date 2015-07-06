@@ -4,7 +4,7 @@ from test_helpers import APITestCase
 
 ERR_NO_DELETE = {'detail': 'Method "DELETE" not allowed.'}
 ERR_NO_POST = {'detail': 'Method "POST" not allowed.'}
-ERR_UNAUTH = {'detail': 'Authentication credentials were not provided.'}
+ERR_NOAUTH = {'detail': 'Authentication credentials were not provided.'}
 ERR_CHR_CHNG = {'detail': "Updates (PUT or PATCH) must not attempt to change "
                           "the values for special tags. Your request "
                           "attempts to change the value for tag 'chrom-b37' "
@@ -29,7 +29,7 @@ class VariantTests(APITestCase):
                          'ref-allele-b37': 'A', 'var-allele-b37': 'G'}}
         # Unauthenticated
         self.verify_request(path='/b37-1-883516-G-A/', method='post',
-                            expected_data=ERR_UNAUTH, expected_status=403,
+                            expected_data=ERR_NOAUTH, expected_status=403,
                             data=data, format='json')
         # Authenticated
         self.client.login(username='testuser', password='password')
@@ -44,7 +44,7 @@ class VariantTests(APITestCase):
         """
         # Unauthenticated
         self.verify_request(path='/b37-1-883516-G-A/', method='delete',
-                            expected_data=ERR_UNAUTH, expected_status=403)
+                            expected_data=ERR_NOAUTH, expected_status=403)
         # Authenticated
         self.client.login(username='testuser', password='password')
         self.verify_request(path='/b37-1-883516-G-A/', method='delete',
@@ -55,8 +55,6 @@ class VariantTests(APITestCase):
         """
         Test getting data for a single Variant.
         """
-        response = self.client.get('/api/variant/b37-1-883516-G-A/')
-
         with open('gennotes_server/tests/expected_data/variant.json') as f:
             expected_data = json.load(f)
 
@@ -107,7 +105,7 @@ class VariantTests(APITestCase):
 
         # Test unauthorized.
         self.verify_request(path='/b37-1-883516-G-A/', method='put',
-                            expected_data=ERR_UNAUTH, expected_status=403,
+                            expected_data=ERR_NOAUTH, expected_status=403,
                             data=good_data, format='json')
 
         # Test bad data.
@@ -164,7 +162,7 @@ class VariantTests(APITestCase):
 
         # Test unauthorized.
         self.verify_request(path='/b37-1-883516-G-A/', method='patch',
-                            expected_data=ERR_UNAUTH, expected_status=403,
+                            expected_data=ERR_NOAUTH, expected_status=403,
                             data=good_data_1, format='json')
 
         # Test bad data.

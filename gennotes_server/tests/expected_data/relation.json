@@ -1,0 +1,18 @@
+{
+  "tags": {
+    "clinvar-rcva:accession": "RCV000116253",
+    "clinvar-rcva:esp-allele-frequency": "0.014089016971",
+    "clinvar-rcva:gene-name": "agrin",
+    "clinvar-rcva:gene-symbol": "AGRN",
+    "clinvar-rcva:num-submissions": "1",
+    "clinvar-rcva:preferred-name": "NM_198576.3(AGRN):c.1058A>G (p.Gln353Arg)",
+    "clinvar-rcva:record-status": "current",
+    "clinvar-rcva:significance": "Likely benign",
+    "clinvar-rcva:trait-name": "not specified",
+    "clinvar-rcva:trait-type": "Disease",
+    "clinvar-rcva:version": "2",
+    "type": "clinvar-rcva"
+  },
+  "url": "http://testserver/api/relation/1/",
+  "variant": "http://testserver/api/variant/10/"
+}
