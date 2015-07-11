@@ -31,18 +31,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = to_bool('DEBUG', 'False')
+USING_SSL = to_bool('USING_SSL', str(not DEBUG))
 
 # Settings per Heroku instructions:
 # https://devcenter.heroku.com/articles/getting-started-with-django
 ALLOWED_HOSTS = ['*']
-if DEBUG:
-    # Turn off django-sslify in development.
-    SSLIFY_DISABLE = True
-else:
-    # Add settings for SSL in production.
+if USING_SSL:
+    # Add settings for SSL in production on Heroku.
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+else:
+    # Turn off django-sslify.
+    SSLIFY_DISABLE = True
 
 # Application definition
 
