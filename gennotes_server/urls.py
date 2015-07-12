@@ -14,6 +14,11 @@ router.register(r'relation', RelationViewSet)
 router.register(r'variant', VariantViewSet)
 
 urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^oauth2/', include('oauth2_provider.urls',
+        namespace='oauth2_provider')),
+
     url(r'^api/', include(router.urls)),
     url(r'^api/me/$', CurrentUserView.as_view(), name='current-user'),
 
@@ -24,8 +29,6 @@ urlpatterns = [
     url(r'^$',
         TemplateView.as_view(template_name='gennotes_server/home.html'),
         name='home'),
-
-    url(r'^admin/', include(admin.site.urls)),
 
     # django-allauth URLs
     url(r'^accounts/', include('allauth.urls')),

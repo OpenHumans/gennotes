@@ -66,6 +66,7 @@ INSTALLED_APPS = (
     'allauth.account',
     'corsheaders',
     'django_extensions',
+    'oauth2_provider',
     'reversion',
     'rest_framework',
     'rest_framework_swagger'
