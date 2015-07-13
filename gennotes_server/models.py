@@ -11,6 +11,8 @@ later optimizing with db indexing and Django): `^[a-z][a-z0-9]*(_[a-z0-9]+)*`.
 from django.contrib.postgres.fields import HStoreField
 from django.db import models
 
+from oauth2_provider.models import AbstractApplication
+
 import reversion
 
 
@@ -56,3 +58,34 @@ class CommitDeletion(models.Model):
 
 reversion.register(Variant)
 reversion.register(Relation)
+
+
+class EditingApplication(AbstractApplication):
+    """
+    OAuth2 provider application for submitting edits on behalf of users.
+
+    (Putting notes here for now on how to get token...)
+    1) send user to:
+        /oauth2-app/authorize?client_id=[client-id-here]&response_type=code
+    2) your default redirect_uri will receive the following:
+        yourdomain.com/path/to/redirect_uri?code=[grant-code]
+    3) exchange that grant code for a token immediately. example w/ requests:
+        Set this up with your client_id and client_secret:
+            client_auth = requests.auth.HTTPBasicAuth(client_id, client_secret)
+        Set code:
+            code = [the grant-code you just received]
+        Set redirect_uri (required by our framework...):
+            redirect_uri = [a redirect uri you registered]
+        Set the GenNotes receiving uri... e.g. for local testing I use:
+            token_uri = 'http://localhost:8000/oauth2-app/token/'
+        POST to this:
+            requests.post(token_uri, data={'grant_type': 'authorization_code',
+                'code': code, 'redirect_uri': redirect_uri}, auth=client_auth)
+        The response should contain an access token, e.g.:
+            {'access_token': '1hu94IRBX3da0euOiX0u3E9h',
+             'token_type': 'Bearer',
+             'expires_in': 36000,
+             'refresh_token': 'WSuwoeBO0e9JFHqY7TnpDi7jUjgAex',
+             'scope': 'commit-edit'}
+    """
+    description = models.CharField(max_length=300)

@@ -6,7 +6,11 @@ from django.views.generic import TemplateView
 
 from rest_framework import routers
 
-from .views import CurrentUserView, RelationViewSet, VariantViewSet
+from .views import (CurrentUserView,
+                    EditingAppRegistration,
+                    EditingAppUpdate,
+                    RelationViewSet,
+                    VariantViewSet)
 
 router = routers.DefaultRouter()
 
@@ -16,7 +20,10 @@ router.register(r'variant', VariantViewSet)
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^oauth2/', include('oauth2_provider.urls',
+    url(r'^oauth2-app/applications/register', EditingAppRegistration.as_view(),
+        name='oauth2_provider:register'),
+    url(r'^oauth2-app/applications/(?P<pk>\d+)/update/$', EditingAppUpdate.as_view(), name="update"),
+    url(r'^oauth2-app/', include('oauth2_provider.urls',
         namespace='oauth2_provider')),
 
     url(r'^api/', include(router.urls)),

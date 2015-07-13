@@ -7,6 +7,9 @@ from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
+from oauth2_provider.views import (ApplicationRegistration,
+                                   ApplicationUpdate)
+
 import rest_framework
 from rest_framework import viewsets as rest_framework_viewsets
 from rest_framework.generics import RetrieveAPIView
@@ -14,7 +17,8 @@ from rest_framework.response import Response
 
 import reversion
 
-from .models import CommitDeletion, Relation, Variant
+from .forms import EditingAppRegistrationForm
+from .models import CommitDeletion, Relation, Variant, EditingApplication
 from .permissions import IsVerifiedOrReadOnly
 from .serializers import RelationSerializer, UserSerializer, VariantSerializer
 
@@ -223,3 +227,16 @@ class CurrentUserView(RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+
+class EditingAppRegistration(ApplicationRegistration):
+    form_class = EditingAppRegistrationForm
+
+    def form_valid(self, form):
+        form.instance.client_type = EditingApplication.CLIENT_CONFIDENTIAL
+        form.instance.authorization_grant_type = EditingApplication.GRANT_AUTHORIZATION_CODE
+        return super(EditingAppRegistration, self).form_valid(form)
+
+
+class EditingAppUpdate(ApplicationUpdate):
+    fields = ['name', 'description', 'redirect_uris']

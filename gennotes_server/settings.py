@@ -190,6 +190,14 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100,
 }
 
+# Settings for Django OAuth Toolkit
+OAUTH2_PROVIDER_APPLICATION_MODEL = 'gennotes_server.EditingApplication'
+OAUTH2_PROVIDER = {
+    'SCOPES': {
+        'commit-edit': "Commit GenNotes changes with this user's ID",
+    },
+}
+
 # Settings for CORS (in dev)
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
