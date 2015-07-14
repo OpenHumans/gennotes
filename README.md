@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/PersonalGenomesOrg/gennotes](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/PersonalGenomesOrg/gennotes?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**GenNotes** and **Genevieve** are a pair of projects designed to empower
+**GenNotes** and **[Genevieve](https://github.com/PersonalGenomesOrg/genevieve)** are a pair of projects designed to empower
 individuals to understand putative effects reported for variants in an
 individual genome. We worked on these during the [Mozilla Science
 Lab Global Sprint 2015](https://www.mozillascience.org/global-sprint-2015), and
