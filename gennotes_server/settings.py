@@ -81,6 +81,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 ) + global_settings.TEMPLATE_CONTEXT_PROCESSORS
 
 AUTHENTICATION_BACKENDS = (
+    'oauth2_provider.backends.OAuth2Backend',
+
     # Needed to login by username in Django admin
     'django.contrib.auth.backends.ModelBackend',
 
@@ -97,6 +99,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -186,16 +189,23 @@ LOGIN_REDIRECT_URL = 'home'
 
 # Settings for Django REST Framework
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # OAuth2 authorization for API usage
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+        # Other authorization methods
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
     'DEFAULT_PAGINATION_CLASS': 'gennotes_server.pagination.PageNumberPaginationUpTo1000',
     'PAGE_SIZE': 100,
 }
 
 # Settings for Django OAuth Toolkit
 OAUTH2_PROVIDER_APPLICATION_MODEL = 'gennotes_server.EditingApplication'
+
 OAUTH2_PROVIDER = {
-    'SCOPES': {
-        'commit-edit': "Commit GenNotes changes with this user's ID",
-    },
+    'SCOPES': {'username': 'Can read your GenNotes user ID and username',
+               'commit-edit': 'Can commit changes to GenNotes Variants and Relations on your behalf.'}
 }
 
 # Settings for CORS (in dev)

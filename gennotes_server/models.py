@@ -79,7 +79,8 @@ class EditingApplication(AbstractApplication):
         Set the GenNotes receiving uri... e.g. for local testing I use:
             token_uri = 'http://localhost:8000/oauth2-app/token/'
         POST to this:
-            requests.post(token_uri, data={'grant_type': 'authorization_code',
+            response_token = requests.post(token_uri, data={
+                'grant_type': 'authorization_code',
                 'code': code, 'redirect_uri': redirect_uri}, auth=client_auth)
         The response should contain an access token, e.g.:
             {'access_token': '1hu94IRBX3da0euOiX0u3E9h',
@@ -87,5 +88,10 @@ class EditingApplication(AbstractApplication):
              'expires_in': 36000,
              'refresh_token': 'WSuwoeBO0e9JFHqY7TnpDi7jUjgAex',
              'scope': 'commit-edit'}
+        To use the refresh token to get new tokens:
+            refresh_token = response.json()['refresh_token']
+            response_refresh = requests.post(token_uri, data={
+                'grant_type': 'refresh_token',
+                'refresh_token': refresh_token}, auth=client_auth)
     """
     description = models.CharField(max_length=300)

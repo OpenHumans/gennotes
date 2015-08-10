@@ -7,10 +7,12 @@ from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
+from oauth2_provider.ext.rest_framework import TokenHasReadWriteScope, TokenHasScope
 from oauth2_provider.views import (ApplicationRegistration,
                                    ApplicationUpdate)
 
 import rest_framework
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets as rest_framework_viewsets
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
@@ -19,7 +21,7 @@ import reversion
 
 from .forms import EditingAppRegistrationForm
 from .models import CommitDeletion, Relation, Variant, EditingApplication
-from .permissions import IsVerifiedOrReadOnly
+from .permissions import EditAuthorizedOrReadOnly
 from .serializers import RelationSerializer, UserSerializer, VariantSerializer
 
 
@@ -103,14 +105,7 @@ class VariantViewSet(VariantLookupMixin,
                             'tags' field
         - commit-comment    (optional) records a comment for this commit
 
-    Example PATCH and PUT on localhost:8000 using requests:
-        requests.patch(
-            'http://localhost:8000/api/variant/1234/',
-            data=json.dumps({
-                'tags': {'example-tag': 'example-value'}
-                'commit-comment': 'Adding an example tag using PATCH.'}),
-            headers={'Content-type': 'application/json'},
-            auth=('username', 'password'))
+    Example PUT on localhost:8000 using requests & HTTP Basic Authentication:
         requests.put(
             'http://localhost:8000/api/variant/b37-1-40758116-G-A',
             data=json.dumps({
@@ -122,9 +117,25 @@ class VariantViewSet(VariantLookupMixin,
                 'commit-comment': 'Adding an example tag using PUT.'}),
             headers={'Content-type': 'application/json'},
             auth=('username', 'password'))
+    Example PATCH on localhost:8000 using requests & HTTP Basic Authentication:
+        requests.patch(
+            'http://localhost:8000/api/variant/1234/',
+            data=json.dumps({
+                'tags': {'example-tag': 'example-value'},
+                'commit-comment': 'Adding an example tag using PATCH.'}),
+            headers={'Content-type': 'application/json'},
+            auth=('username', 'password'))
+    Example PATCH on localhost:8000 using requests & OAuth2 access_token:
+        requests.patch(
+            'http://localhost:8000/api/variant/1234/',
+            data=json.dumps({
+                'tags': {'example-tag': 'example-value'},
+                'commit-comment': 'OAuth2 adding example tag using PATCH.'}),
+            headers={'Content-type': 'application/json',
+                     'Authorization': 'Bearer {}'.format(access_token)})
     """
-
-    permission_classes = (IsVerifiedOrReadOnly,)
+    permission_classes = (EditAuthorizedOrReadOnly,)
+    required_scopes = ['commit-edit']
     queryset = Variant.objects.all()
     serializer_class = VariantSerializer
 
@@ -190,7 +201,7 @@ class RelationViewSet(RevisionUpdateMixin,
 
     Create ('POST') records a new Relation.
     """
-    permission_classes = (IsVerifiedOrReadOnly,)
+    permission_classes = (EditAuthorizedOrReadOnly,)
     queryset = Relation.objects.all()
     serializer_class = RelationSerializer
 

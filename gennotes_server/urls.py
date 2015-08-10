@@ -22,7 +22,8 @@ urlpatterns = [
 
     url(r'^oauth2-app/applications/register', EditingAppRegistration.as_view(),
         name='oauth2_provider:register'),
-    url(r'^oauth2-app/applications/(?P<pk>\d+)/update/$', EditingAppUpdate.as_view(), name="update"),
+    url(r'^oauth2-app/applications/(?P<pk>\d+)/update/$',
+        EditingAppUpdate.as_view(), name="update"),
     url(r'^oauth2-app/', include('oauth2_provider.urls',
         namespace='oauth2_provider')),
 
