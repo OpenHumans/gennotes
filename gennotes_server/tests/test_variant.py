@@ -29,7 +29,7 @@ class VariantTests(APITestCase):
                          'ref-allele-b37': 'A', 'var-allele-b37': 'G'}}
         # Unauthenticated
         self.verify_request(path='/b37-1-883516-G-A/', method='post',
-                            expected_data=ERR_NOAUTH, expected_status=403,
+                            expected_data=ERR_NOAUTH, expected_status=401,
                             data=data, format='json')
         # Authenticated
         self.client.login(username='testuser', password='password')
@@ -44,7 +44,7 @@ class VariantTests(APITestCase):
         """
         # Unauthenticated
         self.verify_request(path='/b37-1-883516-G-A/', method='delete',
-                            expected_data=ERR_NOAUTH, expected_status=403)
+                            expected_data=ERR_NOAUTH, expected_status=401)
         # Authenticated
         self.client.login(username='testuser', password='password')
         self.verify_request(path='/b37-1-883516-G-A/', method='delete',
@@ -105,7 +105,7 @@ class VariantTests(APITestCase):
 
         # Test unauthorized.
         self.verify_request(path='/b37-1-883516-G-A/', method='put',
-                            expected_data=ERR_NOAUTH, expected_status=403,
+                            expected_data=ERR_NOAUTH, expected_status=401,
                             data=good_data, format='json')
 
         # Test bad data.
@@ -162,7 +162,7 @@ class VariantTests(APITestCase):
 
         # Test unauthorized.
         self.verify_request(path='/b37-1-883516-G-A/', method='patch',
-                            expected_data=ERR_NOAUTH, expected_status=403,
+                            expected_data=ERR_NOAUTH, expected_status=401,
                             data=good_data_1, format='json')
 
         # Test bad data.

@@ -66,7 +66,7 @@ class RelationTests(APITestCase):
 
         # Test unauthenticated.
         self.verify_request(path='/', method='post',
-                            expected_data=ERR_NOAUTH, expected_status=403,
+                            expected_data=ERR_NOAUTH, expected_status=401,
                             data=good_data, format='json')
 
         self.client.login(username='testuser', password='password')
@@ -92,7 +92,7 @@ class RelationTests(APITestCase):
         """
         # Test unauthenticated.
         self.verify_request(path='/1/', method='delete',
-                            expected_data=ERR_NOAUTH, expected_status=403)
+                            expected_data=ERR_NOAUTH, expected_status=401)
 
         self.client.login(username='testuser', password='password')
 
@@ -123,7 +123,7 @@ class RelationTests(APITestCase):
 
         # Test unauthenticated
         self.verify_request(path='/1/', method='put',
-                            expected_data=ERR_NOAUTH, expected_status=403,
+                            expected_data=ERR_NOAUTH, expected_status=401,
                             data=good_data, format='json')
 
         self.client.login(username='testuser', password='password')
@@ -171,7 +171,7 @@ class RelationTests(APITestCase):
 
         # Test unauthenticated
         self.verify_request(path='/1/', method='patch',
-                            expected_data=ERR_NOAUTH, expected_status=403,
+                            expected_data=ERR_NOAUTH, expected_status=401,
                             data=good_data_1, format='json')
 
         self.client.login(username='testuser', password='password')
