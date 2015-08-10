@@ -51,8 +51,8 @@ currently in docstrings should move to somewhere more visible.
 update or submit new tags on behalf of users
   - **Method 1:** A client-side JavaScript widget submits to API directly for
 the user.
-  - **Method 2:** User grants permisison via OAuth2 for third party to submit
-edits on their behalf.
+  - Done! ~~**Method 2:** User grants permisison via OAuth2 for third party to submit
+edits on their behalf.~~
 - **Implement tag submission:** Implement tag submission on Genevieve client
 to add/update following tags
   - (tagging clinvar-accession) "genevieve-inheritance":
