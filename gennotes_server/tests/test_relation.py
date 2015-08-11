@@ -8,9 +8,10 @@ ERR_TYPE_CHNG = {'detail': "Updates (PUT or PATCH) must not attempt to change "
                            "the values for special tags. Your request "
                            "attempts to change the value for tag 'type' "
                            "from 'clinvar-rcva' to 'test-type'"}
-ERR_VAR_INC = {'detail': "Edits should include the 'tags' field, and only "
-                         "this field. Your request is attempting to edit the"
-                         " following fields: [u'variant', u'tags']"}
+ERR_VAR_INC = {'detail': "Edits must update the 'tags' field of a Variant or "
+                         "Relation, and no other object fields. Your request "
+                         "includes the following object fields: "
+                         "[u'variant', u'tags']"}
 
 logger = logging.getLogger(__name__)
 
@@ -98,6 +99,7 @@ class RelationTests(APITestCase):
 
         # Test good request.
         self.verify_request(path='/1/', method='delete',
+                            data={'edited-version': 11}, format='json',
                             expected_status=204)
 
     def test_put_relation(self):
@@ -105,15 +107,19 @@ class RelationTests(APITestCase):
         Test editing an existing Relation via PUT.
         """
         good_data = {"tags": {"type": "clinvar-rcva",
-                              "comment": "All other tags deleted!"}}
+                              "comment": "All other tags deleted!"},
+                     "edited-version": 11}
         bad_data_1 = {"tags": {"type": "clinvar-rcva",
                                "comment": "All other tags deleted!"},
-                      "variant": "http://testserver/api/variant/10/"}
+                      "variant": "http://testserver/api/variant/10/",
+                      "edited-version": 11}
         err_1 = ERR_VAR_INC
         bad_data_2 = {"tags": {"type": "test-type",
-                               "comment": "All other tags deleted!"}}
+                               "comment": "All other tags deleted!"},
+                      "edited-version": 11}
         err_2 = ERR_TYPE_CHNG
-        bad_data_3 = {"tags": {"comment": "All other tags deleted!"}}
+        bad_data_3 = {"tags": {"comment": "All other tags deleted!"},
+                      "edited-version": 11}
         err_3 = {'detail': "PUT requests must retain all special tags. Your "
                            "request is missing the tag: type"}
 
@@ -154,15 +160,19 @@ class RelationTests(APITestCase):
         """
         Test editing an existing Relation via PATCH.
         """
-        good_data_1 = {"tags": {"comment": "All other tags preserved."}}
+        good_data_1 = {"tags": {"comment": "All other tags preserved."},
+                       "edited-version": 11}
         good_data_2 = {"tags": {"type": "clinvar-rcva",
-                                "comment": "All other tags preserved."}}
+                                "comment": "All other tags preserved."},
+                       "edited-version": 22}
         bad_data_1 = {"tags": {"type": "clinvar-rcva",
                                "comment": "All other tags preserved."},
-                      "variant": "http://testserver/api/variant/10/"}
+                      "variant": "http://testserver/api/variant/10/",
+                      "edited-version": 11}
         err_1 = ERR_VAR_INC
         bad_data_2 = {"tags": {"type": "test-type",
-                               "comment": "All other tags preserved."}}
+                               "comment": "All other tags preserved."},
+                      "edited-version": 11}
         err_2 = ERR_TYPE_CHNG
 
         with open('gennotes_server/tests/expected_data/'

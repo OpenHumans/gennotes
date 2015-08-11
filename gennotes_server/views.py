@@ -1,5 +1,5 @@
+import datetime
 import json
-import logging
 
 from django.contrib.auth import get_user_model
 from django.db import transaction
@@ -7,12 +7,10 @@ from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
-from oauth2_provider.ext.rest_framework import TokenHasReadWriteScope, TokenHasScope
 from oauth2_provider.views import (ApplicationRegistration,
                                    ApplicationUpdate)
 
 import rest_framework
-from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets as rest_framework_viewsets
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
@@ -50,22 +48,27 @@ class VariantLookupMixin(object):
 
 class RevisionUpdateMixin(object):
     """
-    ViewSet update mixin that records a django-reversion revision.
+    ViewSet mixin to record django-reversion revision, report current version.
     """
-
     @transaction.atomic()
     @reversion.create_revision()
     def update(self, request, *args, **kwargs):
-        """Custom update method to record revision information."""
+        """
+        Custom update method that records revisions and reports new version.
+        """
         partial = kwargs.pop('partial', False)
-        commit_comment = request.data.get('commit-comment', '')
         instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data,
-                                         partial=partial)
+        serializer = self.get_serializer(instance,
+                                         data=request.data,
+                                         partial=partial,
+                                         context={'request': request})
         serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-        reversion.set_user(user=self.request.user)
+
+        commit_comment = self.request.data.get('commit-comment', '')
         reversion.set_comment(comment=commit_comment)
+        reversion.set_user(user=self.request.user)
+        self.perform_update(serializer)
+
         return Response(serializer.data)
 
 
@@ -103,6 +106,8 @@ class VariantViewSet(VariantLookupMixin,
     PUT and PATCH use the following data fields:
         - tags              (required) used to update or overwrite a Variant's
                             'tags' field
+        - edited-version    (required) the 'current version' ID this edit
+                            applies to (confirms there are no edit conflicts)
         - commit-comment    (optional) records a comment for this commit
 
     Example PUT on localhost:8000 using requests & HTTP Basic Authentication:
@@ -223,7 +228,27 @@ class RelationViewSet(RevisionUpdateMixin,
         reversion.add_meta(CommitDeletion)
 
     def destroy(self, request, *args, **kwargs):
+        """
+        Check version is the latest. If so: record CommitDeletion, then delete.
+        """
+        if 'edited-version' not in request.data:
+            raise rest_framework.serializers.ValidationError(detail={
+                'detail':
+                    'Delete sumbissions to the API must include a parameter '
+                    "'edited-version' that reports the version ID of the item "
+                    'being deleted.'
+            })
         instance = self.get_object()
+        current_version = reversion.get_for_date(
+            instance, datetime.datetime.now()).id
+        if not current_version == request.data['edited-version']:
+            raise rest_framework.serializers.ValidationError(detail={
+                'detail':
+                    'Edit conflict error! The current version for this object '
+                    'does not match the reported version being deleted.',
+                'current_version': current_version,
+                'submitted_data': self.context['request'].data,
+            })
         self.record_destroy(request, instance)
         return super(RelationViewSet, self).destroy(request, *args, **kwargs)
 

@@ -5,8 +5,10 @@
   "results": [
     {
       "b37_id": "b37-1-883516-G-A",
+      "current_version": 1,
       "relation_set": [
         {
+          "current_version": 18,
           "tags": {
             "clinvar-rcva:accession": "RCV000064926",
             "clinvar-rcva:gene-name": "nucleolar complex associated 2 homolog (S. cerevisiae)",
@@ -34,8 +36,10 @@
     },
     {
       "b37_id": "b37-1-891344-G-A",
+      "current_version": 2,
       "relation_set": [
         {
+          "current_version": 19,
           "tags": {
             "clinvar-rcva:accession": "RCV000064927",
             "clinvar-rcva:gene-name": "nucleolar complex associated 2 homolog (S. cerevisiae)",
@@ -63,8 +67,10 @@
     },
     {
       "b37_id": "b37-1-906168-G-A",
+      "current_version": 3,
       "relation_set": [
         {
+          "current_version": 20,
           "tags": {
             "clinvar-rcva:accession": "RCV000064940",
             "clinvar-rcva:gene-name": "pleckstrin homology domain containing, family N member 1",

@@ -9,9 +9,10 @@ ERR_CHR_CHNG = {'detail': "Updates (PUT or PATCH) must not attempt to change "
                           "the values for special tags. Your request "
                           "attempts to change the value for tag 'chrom-b37' "
                           "from '1' to '2'"}
-ERR_REL_INC = {'detail': "Edits should include the 'tags' field, and only "
-                         "this field. Your request is attempting to edit the"
-                         " following fields: [u'relation_set', u'tags']"}
+ERR_REL_INC = {'detail': "Edits must update the 'tags' field of a Variant or "
+                         "Relation, and no other object fields. Your request "
+                         "includes the following object fields: "
+                         "[u'relation_set', u'tags']"}
 
 
 class VariantTests(APITestCase):
@@ -98,7 +99,8 @@ class VariantTests(APITestCase):
         """
         good_data = {"tags": {"chrom-b37": "1", "pos-b37": "883516",
                               "ref-allele-b37": "G", "var-allele-b37": "A",
-                              "test-tag": "test-value"}}
+                              "test-tag": "test-value"},
+                     "edited-version": 1}
         with open('gennotes_server/tests/expected_data/'
                   'variant_put_patch1.json') as f:
             expected_data = json.load(f)
@@ -115,13 +117,16 @@ class VariantTests(APITestCase):
                                "test-tag": "test-value"},
                       "relation_set": [{
                           "tags": {"type": "test-relation"},
-                          "variant": "http://testserver/api/variant/1/"}]}
+                          "variant": "http://testserver/api/variant/1/"}],
+                      "edited-version": 1}
         err_1 = ERR_REL_INC
         bad_data_2 = {"tags": {"chrom-b37": "2", "pos-b37": "883516",
                                "ref-allele-b37": "G", "var-allele-b37": "A",
-                               "test-tag": "test-value"}}
+                               "test-tag": "test-value"},
+                      "edited-version": 1}
         err_2 = ERR_CHR_CHNG
-        bad_data_3 = {"tags": {"chrom-b37": "1", "test-tag": "test-value"}}
+        bad_data_3 = {"tags": {"chrom-b37": "1", "test-tag": "test-value"},
+                      "edited-version": 1}
         err_3 = {'detail': "PUT requests must retain all special tags. Your "
                            "request is missing the tag: pos-b37"}
 
@@ -151,14 +156,16 @@ class VariantTests(APITestCase):
         """
         Test Variant PATCH responses.
         """
-        good_data_1 = {"tags": {"chrom-b37": "1", "test-tag": "test-value"}}
-        good_data_2 = {"tags": {"test-tag": "test-value-2"}}
+        good_data_1 = {"tags": {"chrom-b37": "1", "test-tag": "test-value"},
+                       "edited-version": 1}
+        good_data_2 = {"tags": {"test-tag": "test-value-2"},
+                       "edited-version": 21}
         with open('gennotes_server/tests/expected_data/'
                   'variant_put_patch1.json') as f:
             expected_data_1 = json.load(f)
         with open('gennotes_server/tests/expected_data/'
                   'variant_patch2.json') as f:
-            expected_data_2= json.load(f)
+            expected_data_2 = json.load(f)
 
         # Test unauthorized.
         self.verify_request(path='/b37-1-883516-G-A/', method='patch',
@@ -172,9 +179,11 @@ class VariantTests(APITestCase):
                                "test-tag": "test-value"},
                       "relation_set": [{
                           "tags": {"type": "test-relation"},
-                          "variant": "http://testserver/api/variant/1/"}]}
+                          "variant": "http://testserver/api/variant/1/"}],
+                      "edited-version": 1}
         err_1 = ERR_REL_INC
-        bad_data_2 = {"tags": {"chrom-b37": "2", "test-tag": "test-value"}}
+        bad_data_2 = {"tags": {"chrom-b37": "2", "test-tag": "test-value"},
+                      "edited-version": 1}
         err_2 = ERR_CHR_CHNG
 
         self.client.login(username='testuser', password='password')

@@ -1,7 +1,9 @@
 {
   "b37_id": "b37-1-883516-G-A",
+  "current_version": "Unknown",
   "relation_set": [
     {
+      "current_version": "Unknown",
       "tags": {
         "clinvar-rcva:accession": "RCV000064926",
         "clinvar-rcva:gene-name": "nucleolar complex associated 2 homolog (S. cerevisiae)",

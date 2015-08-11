@@ -89,7 +89,7 @@ class EditingApplication(AbstractApplication):
              'refresh_token': 'WSuwoeBO0e9JFHqY7TnpDi7jUjgAex',
              'scope': 'commit-edit'}
         To use the refresh token to get new tokens:
-            refresh_token = response.json()['refresh_token']
+            refresh_token = response_token.json()['refresh_token']
             response_refresh = requests.post(token_uri, data={
                 'grant_type': 'refresh_token',
                 'refresh_token': refresh_token}, auth=client_auth)

@@ -1,20 +1,56 @@
+import datetime
+
 from django.contrib.auth import get_user_model
-from rest_framework import serializers
+from rest_framework import permissions, serializers
+import reversion
+
 from .models import Relation, Variant
 
 
-class SafeTagUpdateMixin(object):
-    def update(self, instance, validated_data):
-        """
-        Update which only accepts 'tags' edits and checks for protected tags.
-        """
-        if ['tags'] != validated_data.keys():
-            raise serializers.ValidationError(detail={
-                'detail': "Edits should include the 'tags' field, "
-                'and only this field. Your request is attempting to edit '
-                'the following fields: {}'.format(validated_data.keys())})
-        tag_data = validated_data['tags']
+class CurrentVersionMixin(object):
 
+    def get_current_version(self, obj):
+        """
+        Return current version ID for non-edit methods, otherwise 'Unknown'.
+
+        When editing, a new version will be created by django-reversion.
+        However, due to transaction timing the ID for this new Version hasn't
+        yet been generated and stored by the time the response for the editing
+        API call is generated. Rather than return the old, incorrect ID, we
+        simply report 'Unknown' for editing API calls.
+
+        An editing app will need to perform a new GET request to get the new
+        version ID for the object.
+        """
+        if self.context['request'].method in permissions.SAFE_METHODS:
+            return reversion.get_for_date(obj, datetime.datetime.now()).id
+        else:
+            return 'Unknown'
+
+
+class SafeTagCurrentVersionUpdateMixin(object):
+
+    def _check_current_version(self, instance):
+        """
+        Check that the edited-version parameter matches the current version.
+
+        If different, it indicates a probably "edit conflict": the submitted
+        edit is being made to a stale version of the model.
+        """
+        edited_version = self.context['request'].data['edited-version']
+        current_version = reversion.get_for_date(
+            instance, datetime.datetime.now()).id
+        if not current_version == edited_version:
+            raise serializers.ValidationError(detail={
+                'detail':
+                    'Edit conflict error! The current version for this object '
+                    'does not match the reported version being edited.',
+                'current_version': current_version,
+                'submitted_data': self.context['request'].data,
+            })
+
+    def _check_tag_data(self, instance, validated_data):
+        tag_data = validated_data['tags']
         # For PUT, check that special tags are retained and unchanged.
         if not self.partial:
             for tag in instance.special_tags:
@@ -32,11 +68,37 @@ class SafeTagUpdateMixin(object):
                     'attempts to change the value for tag '
                     "'{}' from '{}' to '{}'".format(
                         tag, instance.tags[tag], tag_data[tag])})
+        return tag_data
+
+    def update(self, instance, validated_data):
+        """
+        Update tags. Accept edit to current version, check protected tags.
+        """
+        if 'edited-version' not in self.context['request'].data:
+            raise serializers.ValidationError(detail={
+                'detail':
+                    'Edit submissions to the API must include a parameter '
+                    "'edited-version' that reports the version ID of the item "
+                    'being edited.'
+            })
+        if ['tags'] != sorted(validated_data.keys()):
+            raise serializers.ValidationError(detail={
+                'detail':
+                    "Edits must update the 'tags' field of a Variant or "
+                    'Relation, and no other object fields. Your request '
+                    'includes the following object fields: {}'.format(
+                        validated_data.keys())
+            })
+
+        self._check_current_version(instance)
+        tag_data = self._check_tag_data(instance, validated_data)
+
         if self.partial:
             instance.tags.update(tag_data)
         else:
             instance.tags = tag_data
         instance.save()
+
         return instance
 
 
@@ -50,7 +112,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'username')
 
 
-class RelationSerializer(SafeTagUpdateMixin,
+class RelationSerializer(CurrentVersionMixin,
+                         SafeTagCurrentVersionUpdateMixin,
                          serializers.HyperlinkedModelSerializer):
     """
     Serialize a Relation object.
@@ -65,6 +128,7 @@ class RelationSerializer(SafeTagUpdateMixin,
     PATCH update will update any tags included in the request tag data. If
     special tags are listed, their values must be unchanged.
     """
+    current_version = serializers.SerializerMethodField()
     variant = serializers.HyperlinkedRelatedField(
         queryset=Variant.objects.all(), view_name='variant-detail',
         required=False)
@@ -90,7 +154,8 @@ class RelationSerializer(SafeTagUpdateMixin,
         return super(RelationSerializer, self).create(validated_data)
 
 
-class VariantSerializer(SafeTagUpdateMixin,
+class VariantSerializer(CurrentVersionMixin,
+                        SafeTagCurrentVersionUpdateMixin,
                         serializers.HyperlinkedModelSerializer):
     """
     Serialize a Variant object.
@@ -105,6 +170,7 @@ class VariantSerializer(SafeTagUpdateMixin,
     special tags are listed, their values must be unchanged.
     """
     b37_id = serializers.SerializerMethodField()
+    current_version = serializers.SerializerMethodField()
     relation_set = RelationSerializer(many=True, required=False)
 
     class Meta:

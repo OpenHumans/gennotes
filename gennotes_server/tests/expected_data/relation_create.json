@@ -1,4 +1,5 @@
 {
+  "current_version": "Unknown",
   "tags": {
     "other-test-tag": "some-value",
     "type": "test-relation"

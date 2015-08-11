@@ -5,8 +5,10 @@
   "results": [
     {
       "b37_id": "b37-1-883516-G-A",
+      "current_version": 1,
       "relation_set": [
         {
+          "current_version": 18,
           "tags": {
             "clinvar-rcva:accession": "RCV000064926",
             "clinvar-rcva:gene-name": "nucleolar complex associated 2 homolog (S. cerevisiae)",
@@ -34,8 +36,10 @@
     },
     {
       "b37_id": "b37-1-891344-G-A",
+      "current_version": 2,
       "relation_set": [
         {
+          "current_version": 19,
           "tags": {
             "clinvar-rcva:accession": "RCV000064927",
             "clinvar-rcva:gene-name": "nucleolar complex associated 2 homolog (S. cerevisiae)",
@@ -63,8 +67,10 @@
     },
     {
       "b37_id": "b37-1-906168-G-A",
+      "current_version": 3,
       "relation_set": [
         {
+          "current_version": 20,
           "tags": {
             "clinvar-rcva:accession": "RCV000064940",
             "clinvar-rcva:gene-name": "pleckstrin homology domain containing, family N member 1",
@@ -92,8 +98,10 @@
     },
     {
       "b37_id": "b37-1-949523-C-T",
+      "current_version": 4,
       "relation_set": [
         {
+          "current_version": 17,
           "tags": {
             "clinvar-rcva:accession": "RCV000162196",
             "clinvar-rcva:gene-name": "ISG15 ubiquitin-like modifier",
@@ -121,8 +129,10 @@
     },
     {
       "b37_id": "b37-1-949696-C-CG",
+      "current_version": 5,
       "relation_set": [
         {
+          "current_version": 16,
           "tags": {
             "clinvar-rcva:accession": "RCV000148989",
             "clinvar-rcva:citations": "PMID22859821",
@@ -151,8 +161,10 @@
     },
     {
       "b37_id": "b37-1-949739-G-T",
+      "current_version": 6,
       "relation_set": [
         {
+          "current_version": 15,
           "tags": {
             "clinvar-rcva:accession": "RCV000148988",
             "clinvar-rcva:gene-name": "ISG15 ubiquitin-like modifier",
@@ -180,8 +192,10 @@
     },
     {
       "b37_id": "b37-1-955597-G-T",
+      "current_version": 7,
       "relation_set": [
         {
+          "current_version": 12,
           "tags": {
             "clinvar-rcva:accession": "RCV000116272",
             "clinvar-rcva:gene-name": "agrin",
@@ -209,8 +223,10 @@
     },
     {
       "b37_id": "b37-1-957640-C-T",
+      "current_version": 8,
       "relation_set": [
         {
+          "current_version": 13,
           "tags": {
             "clinvar-rcva:accession": "RCV000116258",
             "clinvar-rcva:esp-allele-frequency": "0.031754574812",
@@ -239,8 +255,10 @@
     },
     {
       "b37_id": "b37-1-976629-C-T",
+      "current_version": 9,
       "relation_set": [
         {
+          "current_version": 14,
           "tags": {
             "clinvar-rcva:accession": "RCV000116282",
             "clinvar-rcva:gene-name": "agrin",
@@ -268,8 +286,10 @@
     },
     {
       "b37_id": "b37-1-976963-A-G",
+      "current_version": 10,
       "relation_set": [
         {
+          "current_version": 11,
           "tags": {
             "clinvar-rcva:accession": "RCV000116253",
             "clinvar-rcva:esp-allele-frequency": "0.014089016971",

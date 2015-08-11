@@ -4,6 +4,7 @@
   "previous": null,
   "results": [
     {
+      "current_version": 11,
       "tags": {
         "clinvar-rcva:accession": "RCV000116253",
         "clinvar-rcva:esp-allele-frequency": "0.014089016971",
@@ -22,6 +23,7 @@
       "variant": "http://testserver/api/variant/10/"
     },
     {
+      "current_version": 12,
       "tags": {
         "clinvar-rcva:accession": "RCV000116272",
         "clinvar-rcva:gene-name": "agrin",
@@ -39,6 +41,7 @@
       "variant": "http://testserver/api/variant/7/"
     },
     {
+      "current_version": 13,
       "tags": {
         "clinvar-rcva:accession": "RCV000116258",
         "clinvar-rcva:esp-allele-frequency": "0.031754574812",
@@ -57,6 +60,7 @@
       "variant": "http://testserver/api/variant/8/"
     },
     {
+      "current_version": 14,
       "tags": {
         "clinvar-rcva:accession": "RCV000116282",
         "clinvar-rcva:gene-name": "agrin",
@@ -74,6 +78,7 @@
       "variant": "http://testserver/api/variant/9/"
     },
     {
+      "current_version": 15,
       "tags": {
         "clinvar-rcva:accession": "RCV000148988",
         "clinvar-rcva:gene-name": "ISG15 ubiquitin-like modifier",
@@ -91,6 +96,7 @@
       "variant": "http://testserver/api/variant/6/"
     },
     {
+      "current_version": 16,
       "tags": {
         "clinvar-rcva:accession": "RCV000148989",
         "clinvar-rcva:citations": "PMID22859821",
@@ -109,6 +115,7 @@
       "variant": "http://testserver/api/variant/5/"
     },
     {
+      "current_version": 17,
       "tags": {
         "clinvar-rcva:accession": "RCV000162196",
         "clinvar-rcva:gene-name": "ISG15 ubiquitin-like modifier",
@@ -126,6 +133,7 @@
       "variant": "http://testserver/api/variant/4/"
     },
     {
+      "current_version": 18,
       "tags": {
         "clinvar-rcva:accession": "RCV000064926",
         "clinvar-rcva:gene-name": "nucleolar complex associated 2 homolog (S. cerevisiae)",
@@ -143,6 +151,7 @@
       "variant": "http://testserver/api/variant/1/"
     },
     {
+      "current_version": 19,
       "tags": {
         "clinvar-rcva:accession": "RCV000064927",
         "clinvar-rcva:gene-name": "nucleolar complex associated 2 homolog (S. cerevisiae)",
@@ -160,6 +169,7 @@
       "variant": "http://testserver/api/variant/2/"
     },
     {
+      "current_version": 20,
       "tags": {
         "clinvar-rcva:accession": "RCV000064940",
         "clinvar-rcva:gene-name": "pleckstrin homology domain containing, family N member 1",
