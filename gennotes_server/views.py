@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 
 from oauth2_provider.views import (ApplicationRegistration,
                                    ApplicationUpdate)
+from oauth2_provider.ext.rest_framework import TokenHasScope
 
 import rest_framework
 from rest_framework import viewsets as rest_framework_viewsets
@@ -207,6 +208,7 @@ class RelationViewSet(RevisionUpdateMixin,
     Create ('POST') records a new Relation.
     """
     permission_classes = (EditAuthorizedOrReadOnly,)
+    required_scopes = ['commit-edit']
     queryset = Relation.objects.all()
     serializer_class = RelationSerializer
 
@@ -257,6 +259,8 @@ class CurrentUserView(RetrieveAPIView):
     """
     A viewset that returns the current user.
     """
+    permission_classes = (TokenHasScope,)
+    required_scopes = ['username']
 
     model = get_user_model()
     serializer_class = UserSerializer
