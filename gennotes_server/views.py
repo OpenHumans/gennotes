@@ -82,63 +82,16 @@ class VariantViewSet(VariantLookupMixin,
     """
     A viewset for Variants, allowing id and position-based lookups.
 
-    Similar to rest_framework.viewsets.ModelViewSet, but create and delete
-    methods ('POST' and 'DELETE') are not implemented.
-
-    Update is implemented ('PUT' and 'PATCH'), and uses django-reversion to
-    record the revision, user, and commit comment. API users are strongly
-    encouraged to use PATCH to add and edit tags.
-
     In addition to lookup by primary key, Variants may be referenced by
     build 37 information (e.g. 'b37-1-123456-C-T'). Bulk GET requests can be
     formed by specifying a list of variants as a parameter.
 
-    Example GETs on localhost:8000 using requests for all Variants (paginated):
-        requests.get('http://localhost:8000/api/variant/')
-        requests.get('http://localhost:8000/api/variant/',
-                     params={'page_size': 20})
-    Example GETs on localhost:8000 for a specific variant:
-        requests.get('http://localhost:8000/api/variant/1234/')
-        requests.get('http://localhost:8000/api/variant/b37-1-40758116-G-A/')
-    Example GET for a list of variants (specified by id or b37 position):
-        requests.get('http://localhost:8000/api/variant/', params={
-            'variant_list': json.dumps(['123', '1233', 'b37-1-40758116-G-A'])})
+    Similar to rest_framework.viewsets.ModelViewSet, but create and delete
+    methods ('POST' and 'DELETE') are not implemented. Update is implemented
+    ('PUT' and 'PATCH'), and uses django-reversion to record the revision,
+    user, and commit comment.
 
-    PUT and PATCH use the following data fields:
-        - tags              (required) used to update or overwrite a Variant's
-                            'tags' field
-        - edited-version    (required) the 'current version' ID this edit
-                            applies to (confirms there are no edit conflicts)
-        - commit-comment    (optional) records a comment for this commit
-
-    Example PUT on localhost:8000 using requests & HTTP Basic Authentication:
-        requests.put(
-            'http://localhost:8000/api/variant/b37-1-40758116-G-A',
-            data=json.dumps({
-                'tags': {'chrom-b37': '1',
-                         'pos-b37': '40758116',
-                         'ref-allele-b37': 'G',
-                         'var-allele-b37': 'A',
-                         'example-tag': 'example-value'},
-                'commit-comment': 'Adding an example tag using PUT.'}),
-            headers={'Content-type': 'application/json'},
-            auth=('username', 'password'))
-    Example PATCH on localhost:8000 using requests & HTTP Basic Authentication:
-        requests.patch(
-            'http://localhost:8000/api/variant/1234/',
-            data=json.dumps({
-                'tags': {'example-tag': 'example-value'},
-                'commit-comment': 'Adding an example tag using PATCH.'}),
-            headers={'Content-type': 'application/json'},
-            auth=('username', 'password'))
-    Example PATCH on localhost:8000 using requests & OAuth2 access_token:
-        requests.patch(
-            'http://localhost:8000/api/variant/1234/',
-            data=json.dumps({
-                'tags': {'example-tag': 'example-value'},
-                'commit-comment': 'OAuth2 adding example tag using PATCH.'}),
-            headers={'Content-type': 'application/json',
-                     'Authorization': 'Bearer {}'.format(access_token)})
+    See API Guide for more info.
     """
     permission_classes = (EditAuthorizedOrReadOnly,)
     required_scopes = ['commit-edit']
@@ -202,10 +155,8 @@ class RelationViewSet(RevisionUpdateMixin,
     """
     A viewset for Relations.
 
-    Update ('PUT' and 'PATCH') uses django-reversion to record the revision,
-    user, and commit comment.
-
-    Create ('POST') records a new Relation.
+    Updating ('PUT', 'PATCH', 'POST', and "DELETE") uses django-reversion to record
+    the revision, user, and commit comment. See API Guide for more info.
     """
     permission_classes = (EditAuthorizedOrReadOnly,)
     required_scopes = ['commit-edit']

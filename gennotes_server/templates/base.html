@@ -29,7 +29,8 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="{% url 'home' %}">
-            GenNotes</a>
+            GenNotes{% if user.is_authenticated %} &ndash;
+              <small>logged in as <b>{{ user.username }}</b></small>{% endif %}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,6 +42,7 @@
           </ul>
           <!-- Login / Logout on righthand side -->
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'api-guide' %}">API Guide</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'account_logout' %}">Log out</a></li>
             {% else %}

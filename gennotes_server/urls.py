@@ -33,6 +33,9 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
     url(r'^api-docs/', include('rest_framework_swagger.urls')),
+    url(r'^api-guide/?',
+        TemplateView.as_view(template_name='api_guide/guide.html'),
+        name='api-guide'),
 
     url(r'^$',
         TemplateView.as_view(template_name='gennotes_server/home.html'),
