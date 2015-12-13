@@ -208,10 +208,10 @@ class RelationViewSet(RevisionUpdateMixin,
 
 class CurrentUserView(RetrieveAPIView):
     """
-    A viewset that returns the current user.
+    A viewset that returns the current user id, username, and email.
     """
     permission_classes = (TokenHasScope,)
-    required_scopes = ['username']
+    required_scopes = ['username', 'email']
 
     model = get_user_model()
     serializer_class = UserSerializer

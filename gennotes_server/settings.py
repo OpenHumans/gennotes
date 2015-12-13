@@ -204,8 +204,11 @@ REST_FRAMEWORK = {
 OAUTH2_PROVIDER_APPLICATION_MODEL = 'gennotes_server.EditingApplication'
 
 OAUTH2_PROVIDER = {
-    'SCOPES': {'username': 'Can read your GenNotes user ID and username',
-               'commit-edit': 'Can commit changes to GenNotes Variants and Relations on your behalf.'}
+    'SCOPES': {'email': 'Can read your GenNotes email address',
+               'username': 'Can read your GenNotes user ID and username',
+               'commit-edit': ('Can commit changes to GenNotes Variants '
+                               'and Relations on your behalf.')},
+    'REQUEST_APPROVAL_PROMPT': 'auto',
 }
 
 # Settings for CORS (in dev)

@@ -109,7 +109,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ('id', 'username')
+        fields = ('id', 'username', 'email')
 
 
 class RelationSerializer(CurrentVersionMixin,
