@@ -68,7 +68,7 @@ to start learning! Maybe you'd be interested in contributing to [Genevieve](http
     * [As postgres] Create your database user, e.g.: `createuser -P myuser`. Remember the password used, you'll need it in your configuration later!
     * [As postgres] Log in to PostgreSQL, e.g.: `psql mydb`
     * **RECOMMENDED WITH WARNING:** The following grants **superuser** status to your database user:
-      * [As postgres, in psql] `GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser;`
+      * [As postgres, in psql] `ALTER ROLE myuser WITH SUPERUSER;`
     * **ALTERNATE APPROACH:** If superuser isn't possible, you won't be able to run `python manage.py tests` as the database user won't be able to automatically create the test database. You can still set your project up with the following three steps:
       * [As postgres, in psql] Add HStore extension to this database: `CREATE EXTENSION IF NOT EXISTS "hstore";`
       * [As postgres, in psql] Grant database privileges to your user, e.g.: `GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser`
