@@ -8,7 +8,7 @@ for now, I recommend tag keys match this regex format (it may be important for
 later optimizing with db indexing and Django): `^[a-z][a-z0-9]*(_[a-z0-9]+)*`.
     -- Madeleine
 """
-from django.contrib.postgres.fields import HStoreField
+from django.contrib.postgres.fields import HStoreField, JSONField
 from django.db import models
 
 from oauth2_provider.models import AbstractApplication
@@ -44,7 +44,7 @@ class Relation(models.Model):
     'type'
     """
     variant = models.ForeignKey(Variant)
-    tags = HStoreField()
+    tags = JSONField()
     special_tags = ['type']
     required_tags = ['type']
 
