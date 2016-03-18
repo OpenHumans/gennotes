@@ -16,7 +16,7 @@ from rest_framework import viewsets as rest_framework_viewsets
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
 
-import reversion
+from reversion import revisions as reversion
 
 from .forms import EditingAppRegistrationForm
 from .models import CommitDeletion, Relation, Variant, EditingApplication

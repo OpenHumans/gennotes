@@ -13,7 +13,8 @@ from django.db import models
 
 from oauth2_provider.models import AbstractApplication
 
-import reversion
+from reversion import revisions as reversion
+from reversion.models import Revision
 
 
 class Variant(models.Model):
@@ -52,7 +53,7 @@ class Relation(models.Model):
 
 
 class CommitDeletion(models.Model):
-    revision = models.ForeignKey(reversion.models.Revision)
+    revision = models.ForeignKey(Revision)
     deletion = models.BooleanField(default=True)
 
 

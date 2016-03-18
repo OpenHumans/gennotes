@@ -2,7 +2,7 @@ import datetime
 
 from django.contrib.auth import get_user_model
 from rest_framework import permissions, serializers
-import reversion
+from reversion import revisions as reversion
 
 from .models import Relation, Variant
 
