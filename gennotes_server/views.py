@@ -77,6 +77,7 @@ class VariantViewSet(VariantLookupMixin,
                      RevisionUpdateMixin,
                      rest_framework.mixins.RetrieveModelMixin,
                      rest_framework.mixins.ListModelMixin,
+                     rest_framework.mixins.CreateModelMixin,
                      rest_framework.mixins.UpdateModelMixin,
                      rest_framework_viewsets.GenericViewSet):
     """
@@ -86,10 +87,7 @@ class VariantViewSet(VariantLookupMixin,
     build 37 information (e.g. 'b37-1-123456-C-T'). Bulk GET requests can be
     formed by specifying a list of variants as a parameter.
 
-    Similar to rest_framework.viewsets.ModelViewSet, but create and delete
-    methods ('POST' and 'DELETE') are not implemented. Update is implemented
-    ('PUT' and 'PATCH'), and uses django-reversion to record the revision,
-    user, and commit comment.
+    Uses django-reversion to record the revision, user, and commit comment.
 
     See API Guide for more info.
     """
@@ -144,6 +142,14 @@ class VariantViewSet(VariantLookupMixin,
         obj = get_object_or_404(queryset, **filter_kwargs)
         self.check_object_permissions(self.request, obj)
         return obj
+
+    @transaction.atomic()
+    @reversion.create_revision()
+    def create(self, request, *args, **kwargs):
+        commit_comment = request.data.get('commit-comment', '')
+        reversion.set_user(user=self.request.user)
+        reversion.set_comment(comment=commit_comment)
+        return super(VariantViewSet, self).create(request, *args, **kwargs)
 
 
 # http GET localhost:8000/api/relation/   # all relations

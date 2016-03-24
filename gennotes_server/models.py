@@ -27,8 +27,10 @@ class Variant(models.Model):
     optimize searches:
     'chrom_b37', 'pos_b37', 'ref_allele_b37', 'var_allele_b37'
     """
+    ALLOWED_CHROMS = [str(i) for i in range(1, 25)]
     tags = HStoreField()
     special_tags = ['chrom_b37', 'pos_b37', 'ref_allele_b37', 'var_allele_b37']
+    required_tags = special_tags
 
     def __unicode__(self):
         return u'; '.join([u'%s=%s' % (k, v) for k, v in self.tags.iteritems()])

@@ -190,3 +190,25 @@ class VariantSerializer(CurrentVersionMixin,
             obj.tags['ref_allele_b37'],
             obj.tags['var_allele_b37'],
         ])
+
+    def create(self, validated_data):
+        """
+        Check that all required tags are included in tag data before creating.
+        """
+        if ['tags'] != sorted(validated_data.keys()):
+            raise serializers.ValidationError(detail={
+                'detail': "Create (POST) should include the 'tags' field."
+                "Your request contains the following "
+                'fields: {}'.format(str(validated_data.keys()))})
+        if 'tags' in validated_data:
+            for tag in Variant.required_tags:
+                if tag not in validated_data['tags']:
+                    raise serializers.ValidationError(detail={
+                        'detail': 'Create (POST) tag data must include all '
+                        'required tags: {}'.format(Relation.required_tags)})
+                if (tag == 'chrom_b37' and validated_data['tags'][tag] not
+                        in Variant.ALLOWED_CHROMS):
+                    raise serializers.ValidationError(detail={
+                        'detail': 'Chromosomes must be numbers: "1", "2", '
+                        '"3"... and "23" for X, "24" for Y, and "25" for MT.'})
+        return super(VariantSerializer, self).create(validated_data)

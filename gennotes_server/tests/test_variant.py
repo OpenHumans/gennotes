@@ -5,6 +5,8 @@ from test_helpers import APITestCase
 ERR_NO_DELETE = {'detail': 'Method "DELETE" not allowed.'}
 ERR_NO_POST = {'detail': 'Method "POST" not allowed.'}
 ERR_NOAUTH = {'detail': 'Authentication credentials were not provided.'}
+ERR_BAD_CHR = {'detail': 'Chromosomes must be numbers: "1", "2", "3"... and '
+                         '"23" for X, "24" for Y, and "25" for MT.'}
 ERR_CHR_CHNG = {'detail': "Updates (PUT or PATCH) must not attempt to change "
                           "the values for special tags. Your request "
                           "attempts to change the value for tag 'chrom_b37' "
@@ -26,17 +28,30 @@ class VariantTests(APITestCase):
         """
         Test Variant POST responses.
         """
-        data = {'tags': {'chrom_b37': '1', 'pos_b37': '123456',
-                         'ref_allele_b37': 'A', 'var_allele_b37': 'G'}}
+        bad_data = {'tags': {'chrom_b37': '1AF', 'pos_b37': '123456',
+                             'ref_allele_b37': 'A', 'var_allele_b37': 'G'}}
+        good_data = {'tags': {'chrom_b37': '1', 'pos_b37': '123456',
+                              'ref_allele_b37': 'A', 'var_allele_b37': 'G'}}
+
+        with open('gennotes_server/tests/expected_data/variant_create.json') as f:
+            expected_data = json.load(f)
+
         # Unauthenticated
-        self.verify_request(path='/b37-1-883516-G-A/', method='post',
+        self.verify_request(path='/', method='post',
                             expected_data=ERR_NOAUTH, expected_status=401,
-                            data=data, format='json')
+                            data=good_data, format='json')
         # Authenticated
         self.client.login(username='testuser', password='password')
-        self.verify_request(path='/b37-1-883516-G-A/', method='post',
-                            expected_data=ERR_NO_POST, expected_status=405,
-                            data=data, format='json')
+        self.verify_request(path='/', method='post',
+                            expected_data=ERR_BAD_CHR,
+                            expected_status=400,
+                            data=bad_data, format='json')
+        # Authenticated
+        self.client.login(username='testuser', password='password')
+        self.verify_request(path='/', method='post',
+                            expected_data=expected_data,
+                            expected_status=201,
+                            data=good_data, format='json')
         self.client.logout()
 
     def test_delete_variant(self):

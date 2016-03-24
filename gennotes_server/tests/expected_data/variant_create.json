@@ -1,0 +1,12 @@
+{
+  "b37_id": "b37-1-123456-A-G",
+  "current_version": "Unknown",
+  "url": "http://testserver/api/variant/11/",
+  "relation_set": [],
+  "tags": {
+    "ref_allele_b37": "A",
+    "pos_b37": "123456",
+    "chrom_b37": "1",
+    "var_allele_b37": "G"
+  }
+}
