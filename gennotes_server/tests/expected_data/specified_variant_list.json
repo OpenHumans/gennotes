@@ -27,10 +27,10 @@
         }
       ],
       "tags": {
-        "chrom-b37": "1",
-        "pos-b37": "883516",
-        "ref-allele-b37": "G",
-        "var-allele-b37": "A"
+        "chrom_b37": "1",
+        "pos_b37": "883516",
+        "ref_allele_b37": "G",
+        "var_allele_b37": "A"
       },
       "url": "http://testserver/api/variant/1/"
     },
@@ -58,10 +58,10 @@
         }
       ],
       "tags": {
-        "chrom-b37": "1",
-        "pos-b37": "891344",
-        "ref-allele-b37": "G",
-        "var-allele-b37": "A"
+        "chrom_b37": "1",
+        "pos_b37": "891344",
+        "ref_allele_b37": "G",
+        "var_allele_b37": "A"
       },
       "url": "http://testserver/api/variant/2/"
     },
@@ -89,10 +89,10 @@
         }
       ],
       "tags": {
-        "chrom-b37": "1",
-        "pos-b37": "906168",
-        "ref-allele-b37": "G",
-        "var-allele-b37": "A"
+        "chrom_b37": "1",
+        "pos_b37": "906168",
+        "ref_allele_b37": "G",
+        "var_allele_b37": "A"
       },
       "url": "http://testserver/api/variant/3/"
     }

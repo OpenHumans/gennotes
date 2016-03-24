@@ -160,70 +160,70 @@
   "model": "gennotes_server.variant",
   "pk": 1,
   "fields": {
-    "tags": "{\"pos-b37\": \"883516\", \"var-allele-b37\": \"A\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
+    "tags": "{\"pos_b37\": \"883516\", \"var_allele_b37\": \"A\", \"ref_allele_b37\": \"G\", \"chrom_b37\": \"1\"}"
   }
 },
 {
   "model": "gennotes_server.variant",
   "pk": 2,
   "fields": {
-    "tags": "{\"pos-b37\": \"891344\", \"var-allele-b37\": \"A\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
+    "tags": "{\"pos_b37\": \"891344\", \"var_allele_b37\": \"A\", \"ref_allele_b37\": \"G\", \"chrom_b37\": \"1\"}"
   }
 },
 {
   "model": "gennotes_server.variant",
   "pk": 3,
   "fields": {
-    "tags": "{\"pos-b37\": \"906168\", \"var-allele-b37\": \"A\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
+    "tags": "{\"pos_b37\": \"906168\", \"var_allele_b37\": \"A\", \"ref_allele_b37\": \"G\", \"chrom_b37\": \"1\"}"
   }
 },
 {
   "model": "gennotes_server.variant",
   "pk": 4,
   "fields": {
-    "tags": "{\"pos-b37\": \"949523\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
+    "tags": "{\"pos_b37\": \"949523\", \"var_allele_b37\": \"T\", \"ref_allele_b37\": \"C\", \"chrom_b37\": \"1\"}"
   }
 },
 {
   "model": "gennotes_server.variant",
   "pk": 5,
   "fields": {
-    "tags": "{\"pos-b37\": \"949696\", \"var-allele-b37\": \"CG\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
+    "tags": "{\"pos_b37\": \"949696\", \"var_allele_b37\": \"CG\", \"ref_allele_b37\": \"C\", \"chrom_b37\": \"1\"}"
   }
 },
 {
   "model": "gennotes_server.variant",
   "pk": 6,
   "fields": {
-    "tags": "{\"pos-b37\": \"949739\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
+    "tags": "{\"pos_b37\": \"949739\", \"var_allele_b37\": \"T\", \"ref_allele_b37\": \"G\", \"chrom_b37\": \"1\"}"
   }
 },
 {
   "model": "gennotes_server.variant",
   "pk": 7,
   "fields": {
-    "tags": "{\"pos-b37\": \"955597\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"G\", \"chrom-b37\": \"1\"}"
+    "tags": "{\"pos_b37\": \"955597\", \"var_allele_b37\": \"T\", \"ref_allele_b37\": \"G\", \"chrom_b37\": \"1\"}"
   }
 },
 {
   "model": "gennotes_server.variant",
   "pk": 8,
   "fields": {
-    "tags": "{\"pos-b37\": \"957640\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
+    "tags": "{\"pos_b37\": \"957640\", \"var_allele_b37\": \"T\", \"ref_allele_b37\": \"C\", \"chrom_b37\": \"1\"}"
   }
 },
 {
   "model": "gennotes_server.variant",
   "pk": 9,
   "fields": {
-    "tags": "{\"pos-b37\": \"976629\", \"var-allele-b37\": \"T\", \"ref-allele-b37\": \"C\", \"chrom-b37\": \"1\"}"
+    "tags": "{\"pos_b37\": \"976629\", \"var_allele_b37\": \"T\", \"ref_allele_b37\": \"C\", \"chrom_b37\": \"1\"}"
   }
 },
 {
   "model": "gennotes_server.variant",
   "pk": 10,
   "fields": {
-    "tags": "{\"pos-b37\": \"976963\", \"var-allele-b37\": \"G\", \"ref-allele-b37\": \"A\", \"chrom-b37\": \"1\"}"
+    "tags": "{\"pos_b37\": \"976963\", \"var_allele_b37\": \"G\", \"ref_allele_b37\": \"A\", \"chrom_b37\": \"1\"}"
   }
 },
 {
@@ -451,8 +451,8 @@
       "variant"
     ],
     "format": "json",
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"883516\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 1}]",
-    "object_repr": "pos-b37=883516; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1"
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos_b37\\\": \\\"883516\\\", \\\"var_allele_b37\\\": \\\"A\\\", \\\"ref_allele_b37\\\": \\\"G\\\", \\\"chrom_b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 1}]",
+    "object_repr": "pos_b37=883516; var_allele_b37=A; ref_allele_b37=G; chrom_b37=1"
   }
 },
 {
@@ -467,8 +467,8 @@
       "variant"
     ],
     "format": "json",
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"891344\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 2}]",
-    "object_repr": "pos-b37=891344; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1"
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos_b37\\\": \\\"891344\\\", \\\"var_allele_b37\\\": \\\"A\\\", \\\"ref_allele_b37\\\": \\\"G\\\", \\\"chrom_b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 2}]",
+    "object_repr": "pos_b37=891344; var_allele_b37=A; ref_allele_b37=G; chrom_b37=1"
   }
 },
 {
@@ -483,8 +483,8 @@
       "variant"
     ],
     "format": "json",
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"906168\\\", \\\"var-allele-b37\\\": \\\"A\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 3}]",
-    "object_repr": "pos-b37=906168; var-allele-b37=A; ref-allele-b37=G; chrom-b37=1"
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos_b37\\\": \\\"906168\\\", \\\"var_allele_b37\\\": \\\"A\\\", \\\"ref_allele_b37\\\": \\\"G\\\", \\\"chrom_b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 3}]",
+    "object_repr": "pos_b37=906168; var_allele_b37=A; ref_allele_b37=G; chrom_b37=1"
   }
 },
 {
@@ -499,8 +499,8 @@
       "variant"
     ],
     "format": "json",
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949523\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 4}]",
-    "object_repr": "pos-b37=949523; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1"
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos_b37\\\": \\\"949523\\\", \\\"var_allele_b37\\\": \\\"T\\\", \\\"ref_allele_b37\\\": \\\"C\\\", \\\"chrom_b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 4}]",
+    "object_repr": "pos_b37=949523; var_allele_b37=T; ref_allele_b37=C; chrom_b37=1"
   }
 },
 {
@@ -515,8 +515,8 @@
       "variant"
     ],
     "format": "json",
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949696\\\", \\\"var-allele-b37\\\": \\\"CG\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 5}]",
-    "object_repr": "pos-b37=949696; var-allele-b37=CG; ref-allele-b37=C; chrom-b37=1"
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos_b37\\\": \\\"949696\\\", \\\"var_allele_b37\\\": \\\"CG\\\", \\\"ref_allele_b37\\\": \\\"C\\\", \\\"chrom_b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 5}]",
+    "object_repr": "pos_b37=949696; var_allele_b37=CG; ref_allele_b37=C; chrom_b37=1"
   }
 },
 {
@@ -531,8 +531,8 @@
       "variant"
     ],
     "format": "json",
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"949739\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 6}]",
-    "object_repr": "pos-b37=949739; var-allele-b37=T; ref-allele-b37=G; chrom-b37=1"
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos_b37\\\": \\\"949739\\\", \\\"var_allele_b37\\\": \\\"T\\\", \\\"ref_allele_b37\\\": \\\"G\\\", \\\"chrom_b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 6}]",
+    "object_repr": "pos_b37=949739; var_allele_b37=T; ref_allele_b37=G; chrom_b37=1"
   }
 },
 {
@@ -547,8 +547,8 @@
       "variant"
     ],
     "format": "json",
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"955597\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"G\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 7}]",
-    "object_repr": "pos-b37=955597; var-allele-b37=T; ref-allele-b37=G; chrom-b37=1"
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos_b37\\\": \\\"955597\\\", \\\"var_allele_b37\\\": \\\"T\\\", \\\"ref_allele_b37\\\": \\\"G\\\", \\\"chrom_b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 7}]",
+    "object_repr": "pos_b37=955597; var_allele_b37=T; ref_allele_b37=G; chrom_b37=1"
   }
 },
 {
@@ -563,8 +563,8 @@
       "variant"
     ],
     "format": "json",
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"957640\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 8}]",
-    "object_repr": "pos-b37=957640; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1"
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos_b37\\\": \\\"957640\\\", \\\"var_allele_b37\\\": \\\"T\\\", \\\"ref_allele_b37\\\": \\\"C\\\", \\\"chrom_b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 8}]",
+    "object_repr": "pos_b37=957640; var_allele_b37=T; ref_allele_b37=C; chrom_b37=1"
   }
 },
 {
@@ -579,8 +579,8 @@
       "variant"
     ],
     "format": "json",
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"976629\\\", \\\"var-allele-b37\\\": \\\"T\\\", \\\"ref-allele-b37\\\": \\\"C\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 9}]",
-    "object_repr": "pos-b37=976629; var-allele-b37=T; ref-allele-b37=C; chrom-b37=1"
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos_b37\\\": \\\"976629\\\", \\\"var_allele_b37\\\": \\\"T\\\", \\\"ref_allele_b37\\\": \\\"C\\\", \\\"chrom_b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 9}]",
+    "object_repr": "pos_b37=976629; var_allele_b37=T; ref_allele_b37=C; chrom_b37=1"
   }
 },
 {
@@ -595,8 +595,8 @@
       "variant"
     ],
     "format": "json",
-    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos-b37\\\": \\\"976963\\\", \\\"var-allele-b37\\\": \\\"G\\\", \\\"ref-allele-b37\\\": \\\"A\\\", \\\"chrom-b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 10}]",
-    "object_repr": "pos-b37=976963; var-allele-b37=G; ref-allele-b37=A; chrom-b37=1"
+    "serialized_data": "[{\"fields\": {\"tags\": \"{\\\"pos_b37\\\": \\\"976963\\\", \\\"var_allele_b37\\\": \\\"G\\\", \\\"ref_allele_b37\\\": \\\"A\\\", \\\"chrom_b37\\\": \\\"1\\\"}\"}, \"model\": \"gennotes_server.variant\", \"pk\": 10}]",
+    "object_repr": "pos_b37=976963; var_allele_b37=G; ref_allele_b37=A; chrom_b37=1"
   }
 },
 {

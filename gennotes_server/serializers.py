@@ -1,6 +1,7 @@
 import datetime
 
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 from rest_framework import permissions, serializers
 from reversion import revisions as reversion
 
@@ -23,7 +24,7 @@ class CurrentVersionMixin(object):
         version ID for the object.
         """
         if self.context['request'].method in permissions.SAFE_METHODS:
-            return reversion.get_for_date(obj, datetime.datetime.now()).id
+            return reversion.get_for_date(obj, timezone.now()).id
         else:
             return 'Unknown'
 
@@ -39,7 +40,7 @@ class SafeTagCurrentVersionUpdateMixin(object):
         """
         edited_version = self.context['request'].data['edited-version']
         current_version = reversion.get_for_date(
-            instance, datetime.datetime.now()).id
+            instance, timezone.now()).id
         if not current_version == edited_version:
             raise serializers.ValidationError(detail={
                 'detail':
@@ -181,10 +182,11 @@ class VariantSerializer(CurrentVersionMixin,
         """
         Return an ID like "b37-1-883516-G-A".
         """
+        print obj.tags
         return '-'.join([
             'b37',
-            obj.tags['chrom-b37'],
-            obj.tags['pos-b37'],
-            obj.tags['ref-allele-b37'],
-            obj.tags['var-allele-b37'],
+            obj.tags['chrom_b37'],
+            obj.tags['pos_b37'],
+            obj.tags['ref_allele_b37'],
+            obj.tags['var_allele_b37'],
         ])

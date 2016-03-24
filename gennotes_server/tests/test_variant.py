@@ -7,7 +7,7 @@ ERR_NO_POST = {'detail': 'Method "POST" not allowed.'}
 ERR_NOAUTH = {'detail': 'Authentication credentials were not provided.'}
 ERR_CHR_CHNG = {'detail': "Updates (PUT or PATCH) must not attempt to change "
                           "the values for special tags. Your request "
-                          "attempts to change the value for tag 'chrom-b37' "
+                          "attempts to change the value for tag 'chrom_b37' "
                           "from '1' to '2'"}
 ERR_REL_INC = {'detail': "Edits must update the 'tags' field of a Variant or "
                          "Relation, and no other object fields. Your request "
@@ -26,8 +26,8 @@ class VariantTests(APITestCase):
         """
         Test Variant POST responses.
         """
-        data = {'tags': {'chrom-b37': '1', 'pos-b37': '123456',
-                         'ref-allele-b37': 'A', 'var-allele-b37': 'G'}}
+        data = {'tags': {'chrom_b37': '1', 'pos_b37': '123456',
+                         'ref_allele_b37': 'A', 'var_allele_b37': 'G'}}
         # Unauthenticated
         self.verify_request(path='/b37-1-883516-G-A/', method='post',
                             expected_data=ERR_NOAUTH, expected_status=401,
@@ -97,9 +97,9 @@ class VariantTests(APITestCase):
         """
         Test Variant PUT responses.
         """
-        good_data = {"tags": {"chrom-b37": "1", "pos-b37": "883516",
-                              "ref-allele-b37": "G", "var-allele-b37": "A",
-                              "test-tag": "test-value"},
+        good_data = {"tags": {"chrom_b37": "1", "pos_b37": "883516",
+                              "ref_allele_b37": "G", "var_allele_b37": "A",
+                              "test_tag": "test_value"},
                      "edited-version": 1}
         with open('gennotes_server/tests/expected_data/'
                   'variant_put_patch1.json') as f:
@@ -112,23 +112,23 @@ class VariantTests(APITestCase):
 
         # Test bad data.
         # Should only have tags field, and all special tags included unchanged.
-        bad_data_1 = {"tags": {"chrom-b37": "1", "pos-b37": "883516",
-                               "ref-allele-b37": "G", "var-allele-b37": "A",
-                               "test-tag": "test-value"},
+        bad_data_1 = {"tags": {"chrom_b37": "1", "pos_b37": "883516",
+                               "ref_allele_b37": "G", "var_allele_b37": "A",
+                               "test_tag": "test_value"},
                       "relation_set": [{
                           "tags": {"type": "test-relation"},
                           "variant": "http://testserver/api/variant/1/"}],
                       "edited-version": 1}
         err_1 = ERR_REL_INC
-        bad_data_2 = {"tags": {"chrom-b37": "2", "pos-b37": "883516",
-                               "ref-allele-b37": "G", "var-allele-b37": "A",
-                               "test-tag": "test-value"},
+        bad_data_2 = {"tags": {"chrom_b37": "2", "pos_b37": "883516",
+                               "ref_allele_b37": "G", "var_allele_b37": "A",
+                               "test_tag": "test_value"},
                       "edited-version": 1}
         err_2 = ERR_CHR_CHNG
-        bad_data_3 = {"tags": {"chrom-b37": "1", "test-tag": "test-value"},
+        bad_data_3 = {"tags": {"chrom_b37": "1", "test_tag": "test_value"},
                       "edited-version": 1}
         err_3 = {'detail': "PUT requests must retain all special tags. Your "
-                           "request is missing the tag: pos-b37"}
+                           "request is missing the tag: pos_b37"}
 
         self.client.login(username='testuser', password='password')
 
@@ -156,9 +156,9 @@ class VariantTests(APITestCase):
         """
         Test Variant PATCH responses.
         """
-        good_data_1 = {"tags": {"chrom-b37": "1", "test-tag": "test-value"},
+        good_data_1 = {"tags": {"chrom_b37": "1", "test_tag": "test_value"},
                        "edited-version": 1}
-        good_data_2 = {"tags": {"test-tag": "test-value-2"},
+        good_data_2 = {"tags": {"test_tag": "test_value_2"},
                        "edited-version": 21}
         with open('gennotes_server/tests/expected_data/'
                   'variant_put_patch1.json') as f:
@@ -174,15 +174,15 @@ class VariantTests(APITestCase):
 
         # Test bad data.
         # Should only have tags field. If included, special tags unchanged.
-        bad_data_1 = {"tags": {"chrom-b37": "1", "pos-b37": "883516",
-                               "ref-allele-b37": "G", "var-allele-b37": "A",
-                               "test-tag": "test-value"},
+        bad_data_1 = {"tags": {"chrom_b37": "1", "pos_b37": "883516",
+                               "ref_allele_b37": "G", "var_allele_b37": "A",
+                               "test_tag": "test_value"},
                       "relation_set": [{
                           "tags": {"type": "test-relation"},
                           "variant": "http://testserver/api/variant/1/"}],
                       "edited-version": 1}
         err_1 = ERR_REL_INC
-        bad_data_2 = {"tags": {"chrom-b37": "2", "test-tag": "test-value"},
+        bad_data_2 = {"tags": {"chrom_b37": "2", "test_tag": "test_value"},
                       "edited-version": 1}
         err_2 = ERR_CHR_CHNG
 

@@ -22,11 +22,11 @@
     }
   ],
   "tags": {
-    "chrom-b37": "1",
-    "pos-b37": "883516",
-    "ref-allele-b37": "G",
-    "test-tag": "test-value",
-    "var-allele-b37": "A"
+    "chrom_b37": "1",
+    "pos_b37": "883516",
+    "ref_allele_b37": "G",
+    "test_tag": "test_value",
+    "var_allele_b37": "A"
   },
   "url": "http://testserver/api/variant/1/"
 }
