@@ -99,7 +99,7 @@ class RelationTests(APITestCase):
 
         # Test good request.
         self.verify_request(path='/1/', method='delete',
-                            data={'edited-version': 11}, format='json',
+                            data={'edited_version': 11}, format='json',
                             expected_status=204)
 
     def test_put_relation(self):
@@ -108,18 +108,18 @@ class RelationTests(APITestCase):
         """
         good_data = {"tags": {"type": "clinvar-rcva",
                               "comment": "All other tags deleted!"},
-                     "edited-version": 11}
+                     "edited_version": 11}
         bad_data_1 = {"tags": {"type": "clinvar-rcva",
                                "comment": "All other tags deleted!"},
                       "variant": "http://testserver/api/variant/10/",
-                      "edited-version": 11}
+                      "edited_version": 11}
         err_1 = ERR_VAR_INC
         bad_data_2 = {"tags": {"type": "test-type",
                                "comment": "All other tags deleted!"},
-                      "edited-version": 11}
+                      "edited_version": 11}
         err_2 = ERR_TYPE_CHNG
         bad_data_3 = {"tags": {"comment": "All other tags deleted!"},
-                      "edited-version": 11}
+                      "edited_version": 11}
         err_3 = {'detail': "PUT requests must retain all special tags. Your "
                            "request is missing the tag: type"}
 
@@ -161,18 +161,18 @@ class RelationTests(APITestCase):
         Test editing an existing Relation via PATCH.
         """
         good_data_1 = {"tags": {"comment": "All other tags preserved."},
-                       "edited-version": 11}
+                       "edited_version": 11}
         good_data_2 = {"tags": {"type": "clinvar-rcva",
                                 "comment": "All other tags preserved."},
-                       "edited-version": 22}
+                       "edited_version": 22}
         bad_data_1 = {"tags": {"type": "clinvar-rcva",
                                "comment": "All other tags preserved."},
                       "variant": "http://testserver/api/variant/10/",
-                      "edited-version": 11}
+                      "edited_version": 11}
         err_1 = ERR_VAR_INC
         bad_data_2 = {"tags": {"type": "test-type",
                                "comment": "All other tags preserved."},
-                      "edited-version": 11}
+                      "edited_version": 11}
         err_2 = ERR_TYPE_CHNG
 
         with open('gennotes_server/tests/expected_data/'

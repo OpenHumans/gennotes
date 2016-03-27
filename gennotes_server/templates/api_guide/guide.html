@@ -238,9 +238,9 @@ requests.patch(
 
 <p>
   For a Variant, a PATCH specifies the following parameters:
-  <b>'edited-version'</b>, <b>'tags'</b>, and 'commit-comment' (optional).<br>
+  <b>'edited_version'</b>, <b>'tags'</b>, and 'commit-comment' (optional).<br>
   For a Relation, a PATCH specifies the following parameters:
-  <b>'edited-version'</b>, <b>'tags'</b>, 'variant' (optional), and
+  <b>'edited_version'</b>, <b>'tags'</b>, 'variant' (optional), and
   commit-comment (optional).
 </p>
 
@@ -262,7 +262,7 @@ requests.patch(
     'http://localhost:8000/api/relation/123/',
     data=json.dumps({
         'commit-comment': 'Adding an example tag using PATCH and OAuth2 authorization.'}),
-        'edited-version': 456,
+        'edited_version': 456,
         'tags': {'example-tag': 'example-value'},
     headers={'Content-type': 'application/json',
              'Authorization': 'Bearer {}'.format(access_token)})
@@ -279,9 +279,9 @@ requests.patch(
 
 <p>
   For a Variant, a PUT specifies the following parameters:
-  <b>'edited-version'</b>, <b>'tags'</b>, and 'commit-comment' (optional).<br>
+  <b>'edited_version'</b>, <b>'tags'</b>, and 'commit-comment' (optional).<br>
   For a Relation, a PUT specifies the following parameters:
-  <b>'edited-version'</b>, <b>'tags'</b>, <b>'variant'</b>, and
+  <b>'edited_version'</b>, <b>'tags'</b>, <b>'variant'</b>, and
   commit-comment (optional).
 </p>
 
@@ -303,7 +303,7 @@ requests.put(
     'http://localhost:8000/api/relation/123/',
     data=json.dumps({
         'commit-comment': 'Updating a Relation using PUT and OAuth2 authorization.'
-        'edited-version': 456,
+        'edited_version': 456,
         'tags': {
             'example-tag': 'A new example tag, with example value here.',
             'genevieve:notes': 'Some updated notes might also be in here... or maybe we're retaining the original.',
@@ -328,7 +328,7 @@ requests.put(
 
 <p>
   For a Relation, a POST specifies the following parameters:
-  <b>'edited-version'</b>, <b>'tags'</b>, <b>'variant'</b>, and
+  <b>'edited_version'</b>, <b>'tags'</b>, <b>'variant'</b>, and
   commit-comment (optional).
 </p>
 
@@ -371,7 +371,7 @@ requests.post(
 
 <p>
   For a Relation, a DELETE specifies the following parameters:
-  <b>'edited-version'</b>, commit-comment (optional).
+  <b>'edited_version'</b>, commit-comment (optional).
 </p>
 
 <p>
@@ -389,7 +389,7 @@ requests.delete(
     'http://localhost:8000/api/relation/123/',
     data=json.dumps({
         'commit-comment': 'Removing a Relation using DELETE and OAuth2 authorization.',
-        'edited-version': 456,
+        'edited_version': 456,
     }),
     headers={'Content-type': 'application/json',
              'Authorization': 'Bearer {}'.format(access_token)})

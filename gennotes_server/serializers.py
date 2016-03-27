@@ -33,12 +33,12 @@ class SafeTagCurrentVersionUpdateMixin(object):
 
     def _check_current_version(self, instance):
         """
-        Check that the edited-version parameter matches the current version.
+        Check that the edited_version parameter matches the current version.
 
         If different, it indicates a probably "edit conflict": the submitted
         edit is being made to a stale version of the model.
         """
-        edited_version = self.context['request'].data['edited-version']
+        edited_version = self.context['request'].data['edited_version']
         current_version = reversion.get_for_date(
             instance, timezone.now()).id
         if not current_version == edited_version:
@@ -75,11 +75,11 @@ class SafeTagCurrentVersionUpdateMixin(object):
         """
         Update tags. Accept edit to current version, check protected tags.
         """
-        if 'edited-version' not in self.context['request'].data:
+        if 'edited_version' not in self.context['request'].data:
             raise serializers.ValidationError(detail={
                 'detail':
                     'Edit submissions to the API must include a parameter '
-                    "'edited-version' that reports the version ID of the item "
+                    "'edited_version' that reports the version ID of the item "
                     'being edited.'
             })
         if ['tags'] != sorted(validated_data.keys()):
@@ -200,15 +200,22 @@ class VariantSerializer(CurrentVersionMixin,
                 'detail': "Create (POST) should include the 'tags' field."
                 "Your request contains the following "
                 'fields: {}'.format(str(validated_data.keys()))})
-        if 'tags' in validated_data:
-            for tag in Variant.required_tags:
-                if tag not in validated_data['tags']:
-                    raise serializers.ValidationError(detail={
-                        'detail': 'Create (POST) tag data must include all '
-                        'required tags: {}'.format(Relation.required_tags)})
-                if (tag == 'chrom_b37' and validated_data['tags'][tag] not
-                        in Variant.ALLOWED_CHROMS):
-                    raise serializers.ValidationError(detail={
-                        'detail': 'Chromosomes must be numbers: "1", "2", '
-                        '"3"... and "23" for X, "24" for Y, and "25" for MT.'})
+        for tag in Variant.required_tags:
+            if tag not in validated_data['tags']:
+                raise serializers.ValidationError(detail={
+                    'detail': 'Create (POST) tag data must include all '
+                    'required tags: {}'.format(Relation.required_tags)})
+            if (tag == 'chrom_b37' and validated_data['tags'][tag] not
+                    in Variant.ALLOWED_CHROMS):
+                raise serializers.ValidationError(detail={
+                    'detail': 'Chromosomes must be numbers: "1", "2", '
+                    '"3"... and "23" for X, "24" for Y, and "25" for MT.'})
+        if Variant.objects.filter(
+                tags__chrom_b37=validated_data['tags']['chrom_b37'],
+                tags__pos_b37=validated_data['tags']['pos_b37'],
+                tags__ref_allele_b37=validated_data['tags']['ref_allele_b37'],
+                tags__var_allele_b37=validated_data['tags']['var_allele_b37']):
+            raise serializers.ValidationError(detail={
+                'detail': 'A variant for the following data already '
+                          'exists: {}'.format(validated_data['tags'])})
         return super(VariantSerializer, self).create(validated_data)

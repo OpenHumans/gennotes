@@ -115,7 +115,7 @@ class VariantTests(APITestCase):
         good_data = {"tags": {"chrom_b37": "1", "pos_b37": "883516",
                               "ref_allele_b37": "G", "var_allele_b37": "A",
                               "test_tag": "test_value"},
-                     "edited-version": 1}
+                     "edited_version": 1}
         with open('gennotes_server/tests/expected_data/'
                   'variant_put_patch1.json') as f:
             expected_data = json.load(f)
@@ -133,15 +133,15 @@ class VariantTests(APITestCase):
                       "relation_set": [{
                           "tags": {"type": "test-relation"},
                           "variant": "http://testserver/api/variant/1/"}],
-                      "edited-version": 1}
+                      "edited_version": 1}
         err_1 = ERR_REL_INC
         bad_data_2 = {"tags": {"chrom_b37": "2", "pos_b37": "883516",
                                "ref_allele_b37": "G", "var_allele_b37": "A",
                                "test_tag": "test_value"},
-                      "edited-version": 1}
+                      "edited_version": 1}
         err_2 = ERR_CHR_CHNG
         bad_data_3 = {"tags": {"chrom_b37": "1", "test_tag": "test_value"},
-                      "edited-version": 1}
+                      "edited_version": 1}
         err_3 = {'detail': "PUT requests must retain all special tags. Your "
                            "request is missing the tag: pos_b37"}
 
@@ -172,9 +172,9 @@ class VariantTests(APITestCase):
         Test Variant PATCH responses.
         """
         good_data_1 = {"tags": {"chrom_b37": "1", "test_tag": "test_value"},
-                       "edited-version": 1}
+                       "edited_version": 1}
         good_data_2 = {"tags": {"test_tag": "test_value_2"},
-                       "edited-version": 21}
+                       "edited_version": 21}
         with open('gennotes_server/tests/expected_data/'
                   'variant_put_patch1.json') as f:
             expected_data_1 = json.load(f)
@@ -195,10 +195,10 @@ class VariantTests(APITestCase):
                       "relation_set": [{
                           "tags": {"type": "test-relation"},
                           "variant": "http://testserver/api/variant/1/"}],
-                      "edited-version": 1}
+                      "edited_version": 1}
         err_1 = ERR_REL_INC
         bad_data_2 = {"tags": {"chrom_b37": "2", "test_tag": "test_value"},
-                      "edited-version": 1}
+                      "edited_version": 1}
         err_2 = ERR_CHR_CHNG
 
         self.client.login(username='testuser', password='password')

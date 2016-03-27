@@ -190,17 +190,17 @@ class RelationViewSet(RevisionUpdateMixin,
         """
         Check version is the latest. If so: record CommitDeletion, then delete.
         """
-        if 'edited-version' not in request.data:
+        if 'edited_version' not in request.data:
             raise rest_framework.serializers.ValidationError(detail={
                 'detail':
                     'Delete sumbissions to the API must include a parameter '
-                    "'edited-version' that reports the version ID of the item "
+                    "'edited_version' that reports the version ID of the item "
                     'being deleted.'
             })
         instance = self.get_object()
         current_version = reversion.get_for_date(
             instance, datetime.datetime.now()).id
-        if not current_version == request.data['edited-version']:
+        if not current_version == request.data['edited_version']:
             raise rest_framework.serializers.ValidationError(detail={
                 'detail':
                     'Edit conflict error! The current version for this object '
